@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AFE7360F221C7BB8006EBE63 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFE7360E221C7BB8006EBE63 /* main.cpp */; };
+		AFE73617221C8011006EBE63 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE73616221C8011006EBE63 /* libSDL2-2.0.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* Begin PBXFileReference section */
 		AFE7360B221C7BB8006EBE63 /* BrickBraker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BrickBraker; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE7360E221C7BB8006EBE63 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AFE73616221C8011006EBE63 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../usr/local/Cellar/sdl2/2.0.9/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
+		AFE7361C221C9603006EBE63 /* ball.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = ball.bmp; sourceTree = "<group>"; };
+		AFE7361D221C97D8006EBE63 /* space.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = space.bmp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFE73617221C8011006EBE63 /* libSDL2-2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +48,7 @@
 			children = (
 				AFE7360D221C7BB8006EBE63 /* BrickBraker */,
 				AFE7360C221C7BB8006EBE63 /* Products */,
+				AFE73615221C8010006EBE63 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +63,19 @@
 		AFE7360D221C7BB8006EBE63 /* BrickBraker */ = {
 			isa = PBXGroup;
 			children = (
+				AFE7361C221C9603006EBE63 /* ball.bmp */,
+				AFE7361D221C97D8006EBE63 /* space.bmp */,
 				AFE7360E221C7BB8006EBE63 /* main.cpp */,
 			);
 			path = BrickBraker;
+			sourceTree = "<group>";
+		};
+		AFE73615221C8010006EBE63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFE73616221C8011006EBE63 /* libSDL2-2.0.0.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +257,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LJBM9LES6;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/sdl2/2.0.9/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -250,6 +271,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LJBM9LES6;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/sdl2/2.0.9/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
