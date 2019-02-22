@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF11240C2220214C006B5DDF /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF11240A2220214C006B5DDF /* Ball.cpp */; };
+		AF11241222204553006B5DDF /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF11241022204553006B5DDF /* GameManager.cpp */; };
+		AF11241522204979006B5DDF /* Brick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF11241322204979006B5DDF /* Brick.cpp */; };
+		AF11241822204A3A006B5DDF /* Bricks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF11241622204A3A006B5DDF /* Bricks.cpp */; };
 		AFE7360F221C7BB8006EBE63 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFE7360E221C7BB8006EBE63 /* main.cpp */; };
 		AFE73617221C8011006EBE63 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE73616221C8011006EBE63 /* libSDL2-2.0.0.dylib */; };
 /* End PBXBuildFile section */
@@ -24,6 +28,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AF11240A2220214C006B5DDF /* Ball.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
+		AF11240B2220214C006B5DDF /* Ball.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Ball.hpp; sourceTree = "<group>"; };
+		AF11241022204553006B5DDF /* GameManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
+		AF11241122204553006B5DDF /* GameManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameManager.hpp; sourceTree = "<group>"; };
+		AF11241322204979006B5DDF /* Brick.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Brick.cpp; sourceTree = "<group>"; };
+		AF11241422204979006B5DDF /* Brick.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Brick.hpp; sourceTree = "<group>"; };
+		AF11241622204A3A006B5DDF /* Bricks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bricks.cpp; sourceTree = "<group>"; };
+		AF11241722204A3A006B5DDF /* Bricks.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bricks.hpp; sourceTree = "<group>"; };
+		AF11241A22204C45006B5DDF /* Paddle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Paddle.hpp; sourceTree = "<group>"; };
 		AFE7360B221C7BB8006EBE63 /* BrickBraker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BrickBraker; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE7360E221C7BB8006EBE63 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AFE73616221C8011006EBE63 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../usr/local/Cellar/sdl2/2.0.9/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
@@ -66,6 +79,15 @@
 				AFE7361C221C9603006EBE63 /* ball.bmp */,
 				AFE7361D221C97D8006EBE63 /* space.bmp */,
 				AFE7360E221C7BB8006EBE63 /* main.cpp */,
+				AF11240A2220214C006B5DDF /* Ball.cpp */,
+				AF11240B2220214C006B5DDF /* Ball.hpp */,
+				AF11241022204553006B5DDF /* GameManager.cpp */,
+				AF11241122204553006B5DDF /* GameManager.hpp */,
+				AF11241322204979006B5DDF /* Brick.cpp */,
+				AF11241422204979006B5DDF /* Brick.hpp */,
+				AF11241622204A3A006B5DDF /* Bricks.cpp */,
+				AF11241722204A3A006B5DDF /* Bricks.hpp */,
+				AF11241A22204C45006B5DDF /* Paddle.hpp */,
 			);
 			path = BrickBraker;
 			sourceTree = "<group>";
@@ -134,7 +156,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF11240C2220214C006B5DDF /* Ball.cpp in Sources */,
+				AF11241522204979006B5DDF /* Brick.cpp in Sources */,
+				AF11241222204553006B5DDF /* GameManager.cpp in Sources */,
 				AFE7360F221C7BB8006EBE63 /* main.cpp in Sources */,
+				AF11241822204A3A006B5DDF /* Bricks.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
