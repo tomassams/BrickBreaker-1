@@ -14,6 +14,7 @@
 #include "Bricks.hpp"
 #include "Ball.hpp"
 #include "Paddle.hpp"
+#include "InputManager.hpp"
 
 class GameManager{
 	
@@ -31,8 +32,9 @@ private:
 	int WIDTH = 800, HIGHT = 600;
 	int numberOfBrockenBricks = 0;
 	
-	SDL_Window *window;
 	SDL_Event event;
+	
+	SDL_Window *window;
 	SDL_Renderer *renderer;
 	
 	SDL_Surface *ball;
@@ -49,6 +51,7 @@ private:
 	Bricks _bricks;
 	Paddle _paddle;
 	Ball _ball;
+	
 	
 };
 

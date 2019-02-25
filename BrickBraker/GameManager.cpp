@@ -10,6 +10,7 @@
 #include "GameManager.hpp"
 #include <SDL2/SDL.h>
 #include "Paddle.hpp"
+#include "InputManager.hpp"
 
 void GameManager:: initalize()
 {
@@ -46,12 +47,14 @@ void GameManager:: quiteGame()
 	SDL_Quit();
 }
 
+
+//MARK:- Eventhandler
 void GameManager:: eventHandler( SDL_Event event )
 {
 	SDL_PollEvent(&event);
-	
+
 	if (event.type == SDL_QUIT) quite = true;
-	
+
 	else if (event.type==SDL_KEYDOWN){
 		if (event.key.keysym.sym == SDLK_LEFT && _paddle.getPaddleX() > 0)
 			_paddle.moveLeft();
@@ -99,16 +102,20 @@ void GameManager::playGame()
 	} while (!quite);
 }
 
+
+//TODO:- Build a destyr function to remove SDL code when finishing running
 //void Destroy()
 //{
 //	SDL_DelayTexture(Texturename);
 //  SDL_FreeSurface(SurfeToFree);
 //}
 
-void winning()
-{
-	//SDL_Surface *win = SDL_LoadBMP();
-	//SDL_Texture *winTexture = SDL_CreateTextureFromSurface(rendrer, <#SDL_Surface *surface#>)
-	//	SDL_Rect winRect = {250, 200, 350, 350};
-	//	SDL_RenderCopy(rendrer, winTexture, NULL, &winRect)
-}
+
+//TODO:- Make a Winning screen!
+//void winning()
+//{
+//	//SDL_Surface *win = SDL_LoadBMP();
+//	//SDL_Texture *winTexture = SDL_CreateTextureFromSurface(rendrer, <#SDL_Surface *surface#>)
+//	//	SDL_Rect winRect = {250, 200, 350, 350};
+//	//	SDL_RenderCopy(rendrer, winTexture, NULL, &winRect)
+//}

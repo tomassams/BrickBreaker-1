@@ -18,12 +18,3 @@ int main(int argc, const char * argv[]) {
 	GameManager.quiteGame();
 	return 0;
 }
-
-//	SDL_Surface *bk = SDL_LoadBMP("space.bmp");
-//	SDL_Texture *bkTexture = SDL_CreateTextureFromSurface(renderer, bk);
-//	SDL_Rect bkrect = {0 , 0, WIDTH, HIGHT};
-
-//SDL_Texture *battTexture = SDL_CreateTextureFromSurface(renderer, bk);
-
-
-//		SDL_RenderCopy(renderer, bkTexture, NULL, &bkrect);
