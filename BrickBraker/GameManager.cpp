@@ -30,10 +30,18 @@ void GameManager:: initalize()
 	paddleTexture = SDL_CreateTextureFromSurface(renderer, paddle);
 	ballTexture = SDL_CreateTextureFromSurface(renderer, ball);
 	bricktexture = SDL_CreateTextureFromSurface(renderer, brick);
-	
+	activateGame();
+}
+
+void GameManager::activateGame()
+{
 	_bricks.InitilizeBricks();
-	_paddle.setPaddlePositions(WIDTH, HIGHT);
 	
+	_paddle.setPaddlePositions(WIDTH, HIGHT);
+	numberOfBrockenBricks = 0;
+	winner = false;
+	quite = false;
+	_ball.reset();
 }
 
 void GameManager:: destroy()
@@ -61,6 +69,7 @@ void GameManager:: userInput()
 	{
 		case 0:
 			quite = true;
+			winner = true;
 			break;
 			
 		case 1:
@@ -78,11 +87,14 @@ void GameManager:: userInput()
 
 void GameManager::playGame()
 {
+	activateGame();
 	do{
 		userInput();
 		
 		ballrect = _ball.moveBall(_paddle.getPaddleY(), _paddle.getPaddleX());
 		paddleRect = _paddle.paddleRect();
+		
+		if (_ball.isOutOfBounds()){ quite = true; }
 		
 		SDL_RenderCopy(renderer, paddleTexture, NULL, &paddleRect);
 		SDL_RenderCopy(renderer, ballTexture, NULL, &ballrect);
@@ -104,6 +116,11 @@ void GameManager::playGame()
 		if (_bricks.ballBrickCollision(ballrect)) {
 			numberOfBrockenBricks++;
 			_ball.changeVelocityX();
+			
+			if (numberOfBrockenBricks == _bricks.numberOfBricks) {
+				winner = true;
+				quite = true;
+			}
 		}
 		
 		SDL_RenderPresent(renderer);

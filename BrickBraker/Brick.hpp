@@ -8,18 +8,21 @@
 
 #ifndef Brick_hpp
 #define Brick_hpp
-
 #include <stdio.h>
 #include <SDL2/SDL.h>
 class Brick{
+	
 public:
 	SDL_Rect rect;
-	bool isHit() {return onScreen;}
-	void hit() {onScreen = true;}
-	void createBrick(int y, int x) {rect = {y, x, brickW, brickH};}
+	bool isHit() {return isBrickHit;}
+	void hit() {isBrickHit = true;}
+	void createBrick(int y, int x) {
+		isBrickHit = false;
+		rect = {y, x, brickW, brickH};
+	}
 	
 private:
-	bool onScreen = false;
+	bool isBrickHit = false;
 	int brickW = 80, brickH = 35;
 };
 

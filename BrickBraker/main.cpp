@@ -11,8 +11,13 @@
 GameManager GameManager;
 
 int main(int argc, const char * argv[]) {
+	
 	GameManager.initalize();
-	GameManager.playGame();
+	do {
+		GameManager.playGame();
+	} while(!GameManager.doWeHaveAWinner());
+	
 	GameManager.quiteGame();
+	
 	return 0;
 }

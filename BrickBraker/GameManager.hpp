@@ -27,13 +27,17 @@ public:
 	void eventHandler(SDL_Event event);
 	void Destroy();
 	void winning();
+	bool doWeHaveAWinner() const {return winner;}
 	void initalize();
 	void quiteGame();
 	
+	
 private:
+	void activateGame();
 	void destroy();
 	void userInput();
 	bool quite = false;
+	bool winner = false;
 	int WIDTH = 800, HIGHT = 600;
 	int numberOfBrockenBricks = 0;
 	InputManager input;

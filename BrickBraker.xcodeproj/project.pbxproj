@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AF11240C2220214C006B5DDF /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF11240A2220214C006B5DDF /* Ball.cpp */; };
 		AF11241222204553006B5DDF /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF11241022204553006B5DDF /* GameManager.cpp */; };
-		AF11241522204979006B5DDF /* Brick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF11241322204979006B5DDF /* Brick.cpp */; };
 		AF11241822204A3A006B5DDF /* Bricks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF11241622204A3A006B5DDF /* Bricks.cpp */; };
 		AF11241E2222CD36006B5DDF /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF11241C2222CD36006B5DDF /* InputManager.cpp */; };
 		AF81964E222ECE8400EDB3D4 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE73616221C8011006EBE63 /* libSDL2-2.0.0.dylib */; };
@@ -34,7 +33,6 @@
 		AF11240B2220214C006B5DDF /* Ball.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Ball.hpp; sourceTree = "<group>"; };
 		AF11241022204553006B5DDF /* GameManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
 		AF11241122204553006B5DDF /* GameManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameManager.hpp; sourceTree = "<group>"; };
-		AF11241322204979006B5DDF /* Brick.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Brick.cpp; sourceTree = "<group>"; };
 		AF11241422204979006B5DDF /* Brick.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Brick.hpp; sourceTree = "<group>"; };
 		AF11241622204A3A006B5DDF /* Bricks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bricks.cpp; sourceTree = "<group>"; };
 		AF11241722204A3A006B5DDF /* Bricks.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bricks.hpp; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 				AF11240B2220214C006B5DDF /* Ball.hpp */,
 				AF11241022204553006B5DDF /* GameManager.cpp */,
 				AF11241122204553006B5DDF /* GameManager.hpp */,
-				AF11241322204979006B5DDF /* Brick.cpp */,
 				AF11241422204979006B5DDF /* Brick.hpp */,
 				AF11241622204A3A006B5DDF /* Bricks.cpp */,
 				AF11241722204A3A006B5DDF /* Bricks.hpp */,
@@ -163,7 +160,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF11240C2220214C006B5DDF /* Ball.cpp in Sources */,
-				AF11241522204979006B5DDF /* Brick.cpp in Sources */,
 				AF11241E2222CD36006B5DDF /* InputManager.cpp in Sources */,
 				AF11241222204553006B5DDF /* GameManager.cpp in Sources */,
 				AF819653222EEF2B00EDB3D4 /* Paddle.cpp in Sources */,
