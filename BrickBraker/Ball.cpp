@@ -11,22 +11,28 @@
 #include <SDL2/SDL.h>
 
 
-SDL_Rect Ball::moveBall(int HIGHT, int WIDTH, int paddley, int paddlex)
+void Ball::settParam(int h, int w)
 {
-	if (y == WIDTH-20 ||y == -20)
+	HIGHT = h;
+	WIDTH = w;
+}
+
+SDL_Rect Ball::moveBall(int paddley, int paddlex)
+{
+	if (y+ballscaling == WIDTH || y+ballscaling == 0)
 		changeVelocityY();
 	
-	int ballscaling = 20;
-	
-	if ((y + ballscaling >= paddlex && y + ballscaling <= paddlex+100 && x + ballscaling >= paddley && x + ballscaling <= paddley+40)
-		||(x == HIGHT-20 ||x == -20)){
-		changeVelocityX();
-		if ((rand() % 2) +1 == 1) changeVelocityY();
-	}
+	if ((y + ballscaling >= paddlex
+		 && y + ballscaling <= paddlex+100
+		 && x + ballscaling >= paddley
+		 && x + ballscaling <= paddley+40)
+		|| x + ballscaling == HIGHT //TODO:- DEVMODE SHOULD BE REMOVED
+		|| x + ballscaling <= 0)
+	{ changeVelocityX(); }
 
-	
 	x += velx;
 	y += vely;
+	
 	return {y, x, 40, 40};
 }
 

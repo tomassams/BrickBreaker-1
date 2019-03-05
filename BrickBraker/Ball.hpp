@@ -14,12 +14,16 @@
 
 class Ball{
 public:
-	SDL_Rect moveBall(int HIGHT, int WIDTH, int paddley, int paddlex);
+	void settParam(int h, int w);
+	
+	SDL_Rect moveBall(int paddley, int paddlex);
 	void changeVelocityX() {velx = -velx;}
 	void changeVelocityY() {vely = -vely;}
 	
 private:
 	int x = 200, y = 200, velx = 1, vely = 1;
+	int ballscaling = 20;
+	int HIGHT, WIDTH;
 };
 
 #endif /* Ball_hpp */

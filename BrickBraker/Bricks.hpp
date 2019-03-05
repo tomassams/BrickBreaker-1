@@ -22,7 +22,6 @@ public:
 	bool ballBrickCollision(SDL_Rect ballrect);
 	Brick getBrick(int y, int x) {return brickArray[y][x];}
 	
-	
 private:
 	Brick brickArray[brickY][brickX];
 };

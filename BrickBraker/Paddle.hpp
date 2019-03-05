@@ -12,17 +12,21 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 
-class Paddle{
+class Paddle
+{
+
 public:
 	SDL_Rect paddleRect() {return {paddlex, paddley, 80, 20}; }
-	void setPaddlePositions(int w, int h) {paddlex = (w/2)-40; paddley= h-40;}
+	void setParams(int w) {WIDTH = w;}
+	void setPaddlePositions(int w, int h);
 	int getPaddleX() {return paddlex;}
 	int getPaddleY() {return paddley;}
-	void moveLeft() {paddlex -= 20;}
-	void moveRigth() {paddlex += 20;}
+	void moveLeft();
+	void moveRigth();
 	
 private:
-	int paddlex = 0, paddley= 0;
-	
+	int WIDTH;
+	int paddlex = 0, paddley = 0;
+	int paddleSpeed = 2;
 };
 #endif /* Paddle_hpp */

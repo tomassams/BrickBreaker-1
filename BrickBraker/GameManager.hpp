@@ -9,12 +9,15 @@
 #ifndef GameManager_hpp
 #define GameManager_hpp
 
+#include <iostream>
 #include <stdio.h>
 #include <SDL2/SDL.h>
-#include "Bricks.hpp"
+
 #include "Ball.hpp"
-#include "Paddle.hpp"
+#include "Bricks.hpp"
 #include "InputManager.hpp"
+#include "Paddle.hpp"
+
 
 class GameManager{
 	
@@ -28,11 +31,12 @@ public:
 	void quiteGame();
 	
 private:
+	void destroy();
+	void userInput();
 	bool quite = false;
 	int WIDTH = 800, HIGHT = 600;
 	int numberOfBrockenBricks = 0;
-	
-	SDL_Event event;
+	InputManager input;
 	
 	SDL_Window *window;
 	SDL_Renderer *renderer;
@@ -50,9 +54,7 @@ private:
 	
 	Bricks _bricks;
 	Paddle _paddle;
-	Ball _ball;
-	
-	
+	Ball _ball;	
 };
 
 #endif /* GameManager_hpp */

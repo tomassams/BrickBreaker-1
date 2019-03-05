@@ -5,12 +5,7 @@
 //  Created by Henrik Anthony Odden Sandberg on 2/22/19.
 //  Copyright © 2019 Henrik Anthony Odden Sandberg. All rights reserved.
 //
-
-#include <iostream>
 #include "GameManager.hpp"
-#include <SDL2/SDL.h>
-#include "Paddle.hpp"
-#include "InputManager.hpp"
 
 void GameManager:: initalize()
 {
@@ -23,12 +18,12 @@ void GameManager:: initalize()
 		return;
 	}
 	
+	_ball.settParam(HIGHT, WIDTH);
+	_paddle.setParams(WIDTH);
+	
 	ball = SDL_LoadBMP("ball.bmp");
 	paddle = SDL_LoadBMP("paddle.bmp");
 	brick = SDL_LoadBMP("brick_red.bmp");
-	
-	if (ball == NULL) std::cout<< "Could not load the image. SDL Error: " << SDL_GetError() << std::endl;
-	if (paddle == NULL) std::cout<< "Could not load the image. SDL Error: " << SDL_GetError() << std::endl;
 	
 	renderer = SDL_CreateRenderer(window, -1, 0);
 	
@@ -41,36 +36,52 @@ void GameManager:: initalize()
 	
 }
 
+void GameManager:: destroy()
+{
+	SDL_DestroyTexture(paddleTexture);
+	SDL_DestroyTexture(ballTexture);
+	SDL_DestroyTexture(bricktexture);
+	
+	SDL_FreeSurface(ball);
+	SDL_FreeSurface(paddle);
+	SDL_FreeSurface(brick);
+	
+	SDL_DestroyWindow(window);
+}
+
 void GameManager:: quiteGame()
 {
-	SDL_DestroyWindow(window);
+	destroy();
 	SDL_Quit();
 }
 
-
-//MARK:- Eventhandler
-void GameManager:: eventHandler( SDL_Event event )
+void GameManager:: userInput()
 {
-	SDL_PollEvent(&event);
-
-	if (event.type == SDL_QUIT) quite = true;
-
-	else if (event.type==SDL_KEYDOWN){
-		if (event.key.keysym.sym == SDLK_LEFT && _paddle.getPaddleX() > 0)
+	switch (input.update())
+	{
+		case 0:
+			quite = true;
+			break;
+			
+		case 1:
 			_paddle.moveLeft();
-		
-		if (event.key.keysym.sym == SDLK_RIGHT && _paddle.getPaddleX() <= WIDTH-90)
+			break;
+			
+		case 2:
 			_paddle.moveRigth();
+			break;
+			
+		default:
+			return;
 	}
-	
 }
 
 void GameManager::playGame()
 {
 	do{
-		eventHandler(event);
+		userInput();
 		
-		ballrect = _ball.moveBall(HIGHT, WIDTH, _paddle.getPaddleY(), _paddle.getPaddleX());
+		ballrect = _ball.moveBall(_paddle.getPaddleY(), _paddle.getPaddleX());
 		paddleRect = _paddle.paddleRect();
 		
 		SDL_RenderCopy(renderer, paddleTexture, NULL, &paddleRect);
@@ -91,24 +102,16 @@ void GameManager::playGame()
 			}
 		
 		if (_bricks.ballBrickCollision(ballrect)) {
-			if ((rand() % 2) +1 == 1) _ball.changeVelocityX();;
-			if ((rand() % 2) +1 == 1) _ball.changeVelocityY();
+			numberOfBrockenBricks++;
+			_ball.changeVelocityX();
 		}
 		
 		SDL_RenderPresent(renderer);
 		SDL_RenderClear(renderer);
-		SDL_Delay(4);
+		SDL_Delay(2);
 		
 	} while (!quite);
 }
-
-
-//TODO:- Build a destyr function to remove SDL code when finishing running
-//void Destroy()
-//{
-//	SDL_DelayTexture(Texturename);
-//  SDL_FreeSurface(SurfeToFree);
-//}
 
 
 //TODO:- Make a Winning screen!
