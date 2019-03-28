@@ -1,4 +1,7 @@
-"/Users/henrik/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/henrik/Documents/GitHub/BrickBraker
+"/Users/henrik/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/henrik/Documents/GitHub/BrickBreaker
+-- Found SDL2: /usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2.dylib;-framework Cocoa  
+-- Found SDL2_image: /usr/local/lib/libSDL2_image.dylib (found version "2.0.4") 
+-- Found SDL2_ttf: /usr/local/lib/libSDL2_ttf.dylib (found version "2.0.14") 
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/henrik/Documents/GitHub/BrickBraker/cmake-build-debug
+-- Build files have been written to: /Users/henrik/Documents/GitHub/BrickBreaker/cmake-build-debug

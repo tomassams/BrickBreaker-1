@@ -4,17 +4,17 @@
 
 #include "../header/Bricks.h"
 
-void Bricks:: InitilizeBricks()
+void Bricks:: InitializeBricks()
 {
-	int z = 50, s = 20;
+	int y = 50, x = 20;
 	for (auto &i : brickArray) {
 		for (auto &j : i) {
-			j.createBrick(z, s);
-			z += 100;
+			j.createBrick(y, x);
+			y += 100;
 		}
 
-		z = 50;
-		s += 50;
+		y = 50;
+		x += 50;
 	}
 }
 
@@ -34,12 +34,11 @@ bool Bricks:: ballBrickCollisionDetected(SDL_Rect brickRect, SDL_Rect ballRect)
 
 bool Bricks:: ballBrickCollision(SDL_Rect ballrect)
 {
-	for(int i = 0; i < brickY; i++)
-		for (int j= 0; j < brickX; j++)
-		{
-			if (ballBrickCollisionDetected(brickArray[i][j].rect, ballrect) && !brickArray[i][j].isHit())
+	for (auto &i : brickArray)
+		for (auto &j : i) {
+			if (ballBrickCollisionDetected(j.rect, ballrect) && !j.isHit())
 			{
-				brickArray[i][j].hit();
+				j.hit();
 				return true;
 			}
 		}

@@ -6,51 +6,51 @@
 
 #IncludeRegexTransform: 
 
-/Users/henrik/Documents/GitHub/BrickBraker/src/cppfiles/GameManager.cpp
+/Users/henrik/Documents/GitHub/BrickBreaker/src/cppfiles/GameManager.cpp
 ../header/GameManager.h
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/GameManager.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/GameManager.h
 
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/Ball.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/Ball.h
 iostream
 -
 SDL.h
 -
 
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/Brick.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/Brick.h
 iostream
 -
 SDL.h
 -
 
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/Bricks.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/Bricks.h
 iostream
 -
 SDL.h
 -
 Brick.h
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/Brick.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/Brick.h
 
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/GameManager.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/GameManager.h
 iostream
 -
 SDL.h
 -
 Ball.h
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/Ball.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/Ball.h
 Bricks.h
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/Bricks.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/Bricks.h
 InputManager.h
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/InputManager.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/InputManager.h
 Paddle.h
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/Paddle.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/Paddle.h
 
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/InputManager.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/InputManager.h
 map
 -
 SDL.h
 -
 
-/Users/henrik/Documents/GitHub/BrickBraker/src/header/Paddle.h
+/Users/henrik/Documents/GitHub/BrickBreaker/src/header/Paddle.h
 iostream
 -
 SDL.h

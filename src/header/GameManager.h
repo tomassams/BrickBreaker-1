@@ -26,19 +26,19 @@ private:
 	int numberOBrokeBricks = 0;
 	InputManager input;
 
-	SDL_Window *window{};
-	SDL_Renderer *renderer{};
+	SDL_Window *window;
+	SDL_Renderer *renderer;
 
-	SDL_Surface *ball{};
-	SDL_Texture *ballTexture{};
-	SDL_Rect ballRect{};
+	SDL_Surface *ball;
+	SDL_Texture *ballTexture;
+	SDL_Rect ballRect;
 
-	SDL_Surface *paddle{};
-	SDL_Texture *paddleTexture{};
-	SDL_Rect paddleRect{};
+	SDL_Surface *paddle;
+	SDL_Texture *paddleTexture;
+	SDL_Rect paddleRect;
 
-	SDL_Surface *brick{};
-	SDL_Texture *brickTexture{};
+	SDL_Surface *brick;
+	SDL_Texture *brickTexture;
 
 	Bricks _bricks;
 	Paddle _paddle;

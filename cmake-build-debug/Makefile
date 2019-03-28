@@ -48,10 +48,10 @@ RM = "/Users/henrik/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/henrik/Documents/GitHub/BrickBraker
+CMAKE_SOURCE_DIR = /Users/henrik/Documents/GitHub/BrickBreaker
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/henrik/Documents/GitHub/BrickBraker/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/henrik/Documents/GitHub/BrickBreaker/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/henrik/Documents/GitHub/BrickBraker/cmake-build-debug/CMakeFiles /Users/henrik/Documents/GitHub/BrickBraker/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/henrik/Documents/GitHub/BrickBreaker/cmake-build-debug/CMakeFiles /Users/henrik/Documents/GitHub/BrickBreaker/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/henrik/Documents/GitHub/BrickBraker/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/henrik/Documents/GitHub/BrickBreaker/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named BrickBraker
+# Target rules for targets named BrickBreaker
 
 # Build rule for target.
-BrickBraker: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 BrickBraker
-.PHONY : BrickBraker
+BrickBreaker: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 BrickBreaker
+.PHONY : BrickBreaker
 
 # fast build rule for target.
-BrickBraker/fast:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/build
-.PHONY : BrickBraker/fast
+BrickBreaker/fast:
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/build
+.PHONY : BrickBreaker/fast
 
 src/cppfiles/Ball.o: src/cppfiles/Ball.cpp.o
 
@@ -129,7 +129,7 @@ src/cppfiles/Ball.o: src/cppfiles/Ball.cpp.o
 
 # target to build an object file
 src/cppfiles/Ball.cpp.o:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/Ball.cpp.o
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/Ball.cpp.o
 .PHONY : src/cppfiles/Ball.cpp.o
 
 src/cppfiles/Ball.i: src/cppfiles/Ball.cpp.i
@@ -138,7 +138,7 @@ src/cppfiles/Ball.i: src/cppfiles/Ball.cpp.i
 
 # target to preprocess a source file
 src/cppfiles/Ball.cpp.i:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/Ball.cpp.i
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/Ball.cpp.i
 .PHONY : src/cppfiles/Ball.cpp.i
 
 src/cppfiles/Ball.s: src/cppfiles/Ball.cpp.s
@@ -147,7 +147,7 @@ src/cppfiles/Ball.s: src/cppfiles/Ball.cpp.s
 
 # target to generate assembly for a file
 src/cppfiles/Ball.cpp.s:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/Ball.cpp.s
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/Ball.cpp.s
 .PHONY : src/cppfiles/Ball.cpp.s
 
 src/cppfiles/Bricks.o: src/cppfiles/Bricks.cpp.o
@@ -156,7 +156,7 @@ src/cppfiles/Bricks.o: src/cppfiles/Bricks.cpp.o
 
 # target to build an object file
 src/cppfiles/Bricks.cpp.o:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/Bricks.cpp.o
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/Bricks.cpp.o
 .PHONY : src/cppfiles/Bricks.cpp.o
 
 src/cppfiles/Bricks.i: src/cppfiles/Bricks.cpp.i
@@ -165,7 +165,7 @@ src/cppfiles/Bricks.i: src/cppfiles/Bricks.cpp.i
 
 # target to preprocess a source file
 src/cppfiles/Bricks.cpp.i:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/Bricks.cpp.i
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/Bricks.cpp.i
 .PHONY : src/cppfiles/Bricks.cpp.i
 
 src/cppfiles/Bricks.s: src/cppfiles/Bricks.cpp.s
@@ -174,7 +174,7 @@ src/cppfiles/Bricks.s: src/cppfiles/Bricks.cpp.s
 
 # target to generate assembly for a file
 src/cppfiles/Bricks.cpp.s:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/Bricks.cpp.s
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/Bricks.cpp.s
 .PHONY : src/cppfiles/Bricks.cpp.s
 
 src/cppfiles/GameManager.o: src/cppfiles/GameManager.cpp.o
@@ -183,7 +183,7 @@ src/cppfiles/GameManager.o: src/cppfiles/GameManager.cpp.o
 
 # target to build an object file
 src/cppfiles/GameManager.cpp.o:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/GameManager.cpp.o
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/GameManager.cpp.o
 .PHONY : src/cppfiles/GameManager.cpp.o
 
 src/cppfiles/GameManager.i: src/cppfiles/GameManager.cpp.i
@@ -192,7 +192,7 @@ src/cppfiles/GameManager.i: src/cppfiles/GameManager.cpp.i
 
 # target to preprocess a source file
 src/cppfiles/GameManager.cpp.i:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/GameManager.cpp.i
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/GameManager.cpp.i
 .PHONY : src/cppfiles/GameManager.cpp.i
 
 src/cppfiles/GameManager.s: src/cppfiles/GameManager.cpp.s
@@ -201,7 +201,7 @@ src/cppfiles/GameManager.s: src/cppfiles/GameManager.cpp.s
 
 # target to generate assembly for a file
 src/cppfiles/GameManager.cpp.s:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/GameManager.cpp.s
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/GameManager.cpp.s
 .PHONY : src/cppfiles/GameManager.cpp.s
 
 src/cppfiles/InputManager.o: src/cppfiles/InputManager.cpp.o
@@ -210,7 +210,7 @@ src/cppfiles/InputManager.o: src/cppfiles/InputManager.cpp.o
 
 # target to build an object file
 src/cppfiles/InputManager.cpp.o:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/InputManager.cpp.o
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/InputManager.cpp.o
 .PHONY : src/cppfiles/InputManager.cpp.o
 
 src/cppfiles/InputManager.i: src/cppfiles/InputManager.cpp.i
@@ -219,7 +219,7 @@ src/cppfiles/InputManager.i: src/cppfiles/InputManager.cpp.i
 
 # target to preprocess a source file
 src/cppfiles/InputManager.cpp.i:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/InputManager.cpp.i
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/InputManager.cpp.i
 .PHONY : src/cppfiles/InputManager.cpp.i
 
 src/cppfiles/InputManager.s: src/cppfiles/InputManager.cpp.s
@@ -228,7 +228,7 @@ src/cppfiles/InputManager.s: src/cppfiles/InputManager.cpp.s
 
 # target to generate assembly for a file
 src/cppfiles/InputManager.cpp.s:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/InputManager.cpp.s
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/InputManager.cpp.s
 .PHONY : src/cppfiles/InputManager.cpp.s
 
 src/cppfiles/Paddle.o: src/cppfiles/Paddle.cpp.o
@@ -237,7 +237,7 @@ src/cppfiles/Paddle.o: src/cppfiles/Paddle.cpp.o
 
 # target to build an object file
 src/cppfiles/Paddle.cpp.o:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/Paddle.cpp.o
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/Paddle.cpp.o
 .PHONY : src/cppfiles/Paddle.cpp.o
 
 src/cppfiles/Paddle.i: src/cppfiles/Paddle.cpp.i
@@ -246,7 +246,7 @@ src/cppfiles/Paddle.i: src/cppfiles/Paddle.cpp.i
 
 # target to preprocess a source file
 src/cppfiles/Paddle.cpp.i:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/Paddle.cpp.i
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/Paddle.cpp.i
 .PHONY : src/cppfiles/Paddle.cpp.i
 
 src/cppfiles/Paddle.s: src/cppfiles/Paddle.cpp.s
@@ -255,7 +255,7 @@ src/cppfiles/Paddle.s: src/cppfiles/Paddle.cpp.s
 
 # target to generate assembly for a file
 src/cppfiles/Paddle.cpp.s:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/cppfiles/Paddle.cpp.s
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/cppfiles/Paddle.cpp.s
 .PHONY : src/cppfiles/Paddle.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -264,7 +264,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/main.cpp.o
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -273,7 +273,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/main.cpp.i
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -282,7 +282,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/BrickBraker.dir/build.make CMakeFiles/BrickBraker.dir/src/main.cpp.s
+	$(MAKE) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -293,7 +293,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... BrickBraker"
+	@echo "... BrickBreaker"
 	@echo "... src/cppfiles/Ball.o"
 	@echo "... src/cppfiles/Ball.i"
 	@echo "... src/cppfiles/Ball.s"

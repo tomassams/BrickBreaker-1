@@ -11,12 +11,20 @@ void GameManager:: initialize()
 		return;
 	}
 
+
 	_ball.settParam(HIGHT, WIDTH);
 	_paddle.setParams(WIDTH);
 
-	ball = SDL_LoadBMP("ball");
-	paddle = SDL_LoadBMP("paddle");
-	brick = SDL_LoadBMP("brick_red");
+	ball = SDL_LoadBMP("ball.bmp");
+	if (ball == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
+
+	paddle = SDL_LoadBMP("paddle.bmp");
+	if (paddle == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
+
+	brick = SDL_LoadBMP("brick_red.bmp");
+	if (brick == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
+
+
 
 	renderer = SDL_CreateRenderer(window, -1, 0);
 
@@ -28,7 +36,7 @@ void GameManager:: initialize()
 
 void GameManager::activateGame()
 {
-	_bricks.InitilizeBricks();
+	_bricks.InitializeBricks();
 
 	_paddle.setPaddlePositions(WIDTH, HIGHT);
 	numberOBrokeBricks = 0;
