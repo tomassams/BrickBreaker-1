@@ -7,12 +7,11 @@
 void Bricks:: InitializeBricks()
 {
 	int y = 50, x = 20;
-	for (auto &i : brickArray) {
-		for (auto &j : i) {
-			j.createBrick(y, x);
+	for (auto &row : brickArray) {
+		for (auto &item : row) {
+			item = Brick(y, x);
 			y += 100;
 		}
-
 		y = 50;
 		x += 50;
 	}
@@ -32,13 +31,13 @@ bool Bricks:: ballBrickCollisionDetected(SDL_Rect brickRect, SDL_Rect ballRect)
 	else return brickRect.y + brickRect.h >= ballRect.y;
 }
 
-bool Bricks:: ballBrickCollision(SDL_Rect ballrect)
+bool Bricks:: ballBrickCollision(SDL_Rect ballRect)
 {
-	for (auto &i : brickArray)
-		for (auto &j : i) {
-			if (ballBrickCollisionDetected(j.rect, ballrect) && !j.isHit())
+	for (auto &bricks : brickArray)
+		for (auto &brick : bricks) {
+			if (ballBrickCollisionDetected(brick.rect, ballRect) && !brick.isHit())
 			{
-				j.hit();
+				brick.hit();
 				return true;
 			}
 		}

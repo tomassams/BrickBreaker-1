@@ -13,50 +13,28 @@
   <component name="ChangeListManager">
     <list default="true" id="ca3dbcb1-d9db-4e61-a1cc-36430f79951e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/BrickBraker" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/BrickBraker.cbp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/BrickBreaker" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BrickBreaker" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/BrickBreaker.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/BrickBreaker.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/CXX.includecache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/DependInfo.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/build.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/cmake_clean.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/depend.internal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/depend.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/flags.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/link.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/progress.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/src/cppfiles/Ball.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/src/cppfiles/Bricks.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/src/cppfiles/GameManager.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/src/cppfiles/InputManager.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/src/cppfiles/Paddle.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBraker.dir/src/main.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSDL.dir/DependInfo.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSDL.dir/build.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSDL.dir/cmake_clean.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSDL.dir/depend.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSDL.dir/flags.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSDL.dir/link.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSDL.dir/progress.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ball.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/brick_red.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/paddle.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/src/cppfiles/Ball.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/src/cppfiles/Ball.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/src/cppfiles/Bricks.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/src/cppfiles/GameManager.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/src/cppfiles/GameManager.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/src/cppfiles/Paddle.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/BrickBreaker.dir/src/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ball.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/brick_red.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/paddle.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ball.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cppfiles/Ball.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cppfiles/Ball.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cppfiles/Bricks.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cppfiles/Bricks.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cppfiles/GameManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cppfiles/GameManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cppfiles/Paddle.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cppfiles/Paddle.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/Ball.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Ball.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/Brick.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Brick.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/header/Bricks.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Bricks.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/header/GameManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/GameManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/Paddle.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/Paddle.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,26 +52,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+            <state relative-caret-position="23">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cppfiles/GameManager.cpp">
+        <entry file="file://$PROJECT_DIR$/src/cppfiles/Ball.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+            <state relative-caret-position="-457">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/header/Ball.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+              <folding>
+                <element signature="e#55#74#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,8 +82,71 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/header/GameManager.h">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="16" column="19" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="19" />
+              <folding>
+                <element signature="e#69#88#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cppfiles/GameManager.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="117">
+              <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cppfiles/Paddle.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cppfiles/Bricks.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="101">
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/header/Brick.h">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="92">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/header/Bricks.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+              <folding>
+                <element signature="e#59#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/header/Paddle.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+              <folding>
+                <element signature="e#59#78#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,6 +163,8 @@
       <find>run_one_line</find>
       <find>BrickBreaker</find>
       <find>CMAKE_PREFIX_PATH</find>
+      <find>set</find>
+      <find>mPa</find>
     </findStrings>
     <replaceStrings>
       <replace>h</replace>
@@ -152,11 +198,16 @@
         <option value="$PROJECT_DIR$/Bricks.h" />
         <option value="$PROJECT_DIR$/Bricks.cpp" />
         <option value="$PROJECT_DIR$/cppfiles/Bricks.cpp" />
-        <option value="$PROJECT_DIR$/src/cppfiles/Ball.cpp" />
-        <option value="$PROJECT_DIR$/src/cppfiles/Bricks.cpp" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
-        <option value="$PROJECT_DIR$/src/header/GameManager.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/src/cppfiles/Ball.cpp" />
+        <option value="$PROJECT_DIR$/src/cppfiles/Paddle.cpp" />
+        <option value="$PROJECT_DIR$/src/header/Bricks.h" />
+        <option value="$PROJECT_DIR$/src/header/GameManager.h" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/src/header/Paddle.h" />
+        <option value="$PROJECT_DIR$/src/header/Ball.h" />
+        <option value="$PROJECT_DIR$/src/header/Brick.h" />
+        <option value="$PROJECT_DIR$/src/cppfiles/Bricks.cpp" />
         <option value="$PROJECT_DIR$/src/cppfiles/GameManager.cpp" />
         <option value="$PROJECT_DIR$/src/cppfiles/GameManager.cpp" />
       </list>
@@ -180,6 +231,28 @@
             <path>
               <item name="BrickBreaker" type="b2602c69:ProjectViewProjectNode" />
               <item name="BrickBreaker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BrickBreaker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BrickBreaker" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BrickBreaker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BrickBreaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BrickBreaker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BrickBreaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="cppfiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BrickBreaker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BrickBreaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -240,12 +313,12 @@
       <workItem from="1553773900712" duration="7385000" />
       <workItem from="1553785660423" duration="2227000" />
       <workItem from="1553793907778" duration="324000" />
-      <workItem from="1553794249652" duration="787000" />
+      <workItem from="1553794249652" duration="6493000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10723000" />
+    <option name="totallyTimeSpent" value="16429000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -261,16 +334,16 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5010225" side_tool="true" weight="0.16809729" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4989775" visible="true" weight="0.17453505" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4989775" visible="true" weight="0.17453505" />
       <window_info id="Structure" order="2" sideWeight="0.5010225" side_tool="true" weight="0.16809729" />
-      <window_info anchor="bottom" id="Version Control" order="0" weight="0.32923833" />
+      <window_info anchor="bottom" id="Version Control" order="0" weight="0.45085996" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32923833" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
       <window_info anchor="bottom" id="Messages" order="4" weight="0.32923833" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" weight="0.7432432" />
-      <window_info anchor="bottom" id="Run" order="7" visible="true" weight="0.32923833" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.32923833" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.3992629" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="CMake" order="10" weight="0.24201474" />
@@ -282,22 +355,22 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16809729" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info id="Favorites" order="0" sideWeight="0.5010225" side_tool="true" weight="0.16809729" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4989775" visible="true" weight="0.17453505" />
+      <window_info id="Structure" order="2" sideWeight="0.5010225" side_tool="true" weight="0.16809729" />
+      <window_info anchor="bottom" id="Version Control" order="0" weight="0.32923833" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32923833" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
       <window_info anchor="bottom" id="Messages" order="4" weight="0.32923833" />
       <window_info anchor="bottom" id="Message" order="5" />
-      <window_info anchor="bottom" id="Find" order="6" />
-      <window_info anchor="bottom" id="Run" order="7" visible="true" weight="0.32923833" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="6" weight="0.7432432" />
+      <window_info anchor="bottom" id="Run" order="7" weight="0.32923833" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.3992629" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="CMake" order="10" weight="0.24201474" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="bottom" id="TODO" order="12" weight="0.32923833" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -369,51 +442,10 @@
     <entry file="file://$PROJECT_DIR$/res/paddle.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/Paddle.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/Ball.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#55#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/Brick.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/Bricks.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-          <folding>
-            <element signature="e#59#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/header/InputManager.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
           <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cppfiles/Ball.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -422,36 +454,8 @@
         <state relative-caret-position="-28" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cppfiles/Paddle.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cppfiles/Bricks.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/GameManager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/Makefile">
       <provider selected="true" editor-type-id="text-editor">
@@ -463,17 +467,92 @@
         <state relative-caret-position="-1476" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cppfiles/GameManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cppfiles/Ball.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-457">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cppfiles/Paddle.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Bricks.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+          <folding>
+            <element signature="e#59#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Paddle.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+          <folding>
+            <element signature="e#59#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/GameManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="19" />
+          <folding>
+            <element signature="e#69#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Ball.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding>
+            <element signature="e#55#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/Brick.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cppfiles/Bricks.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cppfiles/GameManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
         </state>
       </provider>
     </entry>

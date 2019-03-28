@@ -5,13 +5,16 @@
 class Brick{
 
 public:
-	SDL_Rect rect;
-	bool isHit() {return isBrickHit;}
-	void hit() {isBrickHit = true;}
-	void createBrick(int y, int x) {
+	Brick(){
+		isBrickHit = false;
+	};
+	Brick(int y, int x) {
 		isBrickHit = false;
 		rect = {y, x, brickW, brickH};
-	}
+	};
+	SDL_Rect rect{};
+	bool isHit() {return isBrickHit;}
+	void hit() {isBrickHit = true;}
 
 private:
 	bool isBrickHit = false;

@@ -23,9 +23,13 @@ SDL.h
 -
 
 /Users/henrik/Documents/GitHub/BrickBreaker/src/header/Bricks.h
-iostream
--
 SDL.h
+-
+vector
+-
+algorithm
+-
+iostream
 -
 Brick.h
 /Users/henrik/Documents/GitHub/BrickBreaker/src/header/Brick.h

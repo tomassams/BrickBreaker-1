@@ -1,0 +1,7 @@
+
+.idea/workspace.xml
+cmake-build-debug/CMakeFiles/BrickBreaker.dir/depend.make
+*.internal
+*.o
+*.includecache
+*.xml

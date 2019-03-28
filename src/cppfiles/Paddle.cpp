@@ -2,16 +2,16 @@
 
 void Paddle::setPaddlePositions(int w, int h)
 {
-	paddlex = (w / 2) - 40;
-	paddley= h - 40;
+	paddleX = (w / 2) - 40;
+	paddleY= h - 40;
 }
 
 void Paddle::moveLeft()
 {
-	if (getPaddleX() > 0) paddlex -= paddleSpeed;
+	if (getPaddleX() > 0) paddleX -= paddleSpeed;
 }
 
 void Paddle::moveRight()
 {
-	if (getPaddleX() <= WIDTH - 90) paddlex += paddleSpeed;
+	if (getPaddleX() <= WIDTH - 90) paddleX += paddleSpeed;
 }

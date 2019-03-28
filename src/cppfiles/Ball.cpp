@@ -1,45 +1,40 @@
 #include "../header/Ball.h"
 
-void Ball::settParam(int h, int w)
-{
-	HIGHT = h;
-	WIDTH = w;
-}
 
 void Ball::reset()
 {
 	outOfBounds = false;
 	x = 200;
 	y = 200;
-	velx = 1;
-	vely = 1;
+	velocityX = 1;
+	velocityY = 1;
 }
 
 SDL_Rect Ball::moveBall(int paddleY, int paddleX)
 {
-	if (y+ballscaling == WIDTH || y+ballscaling == 0)
+	if (y+ballScaling == WIDTH || y+ballScaling == 0)
 	{
 		changeVelocityY();
 	}
 
 
-	if ((y + ballscaling >= paddleX
-		 && y + ballscaling <= paddleX+100
-		 && x + ballscaling >= paddleY
-		 && x + ballscaling <= paddleY+40)
-		//|| x + ballscaling == HIGHT //DEVMODE
-		|| x + ballscaling <= 0)
+	if ((y + ballScaling >= paddleX
+		 && y + ballScaling <= paddleX+100
+		 && x + ballScaling >= paddleY
+		 && x + ballScaling <= paddleY+40)
+		//|| x + ballScaling == HEIGHT //DEVMODE
+		|| x + ballScaling <= 0)
 	{
 		changeVelocityX();
 	}
 
-	if (x + ballscaling >= HIGHT)
+	if (x + ballScaling >= HEIGHT)
 	{
 		outOfBounds = true;
 	}
 
-	x += velx;
-	y += vely;
+	x += velocityX;
+	y += velocityY;
 
 	return {y, x, 40, 40};
 }

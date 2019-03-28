@@ -13,8 +13,8 @@ class GameManager{
 public:
 	void playGame();
 	bool doWeHaveAWinner() const {return winner;}
-	void initialize();
 	void quiteGame();
+	void initialize();
 
 private:
 	void activateGame();
@@ -22,27 +22,27 @@ private:
 	void userInput();
 	bool quite = false;
 	bool winner = false;
-	int WIDTH = 800, HIGHT = 600;
+	int WIDTH = 800, HEIGHT = 600;
 	int numberOBrokeBricks = 0;
 	InputManager input;
 
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 
-	SDL_Surface *ball;
+	SDL_Surface *ballSurface;
 	SDL_Texture *ballTexture;
 	SDL_Rect ballRect;
 
-	SDL_Surface *paddle;
+	SDL_Surface *paddleSurface;
 	SDL_Texture *paddleTexture;
 	SDL_Rect paddleRect;
 
-	SDL_Surface *brick;
+	SDL_Surface *brickSurface;
 	SDL_Texture *brickTexture;
 
-	Bricks _bricks;
-	Paddle _paddle;
-	Ball _ball;
+	Bricks mBricks;
+	Paddle mPaddle;
+	Ball mBall;
 };
 
 #endif

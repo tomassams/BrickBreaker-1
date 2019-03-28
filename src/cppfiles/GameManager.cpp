@@ -1,9 +1,9 @@
 #include "../header/GameManager.h"
 
-void GameManager:: initialize()
+void GameManager::initialize()
 {
 	SDL_Init(SDL_INIT_VIDEO);
-	window = SDL_CreateWindow("Brick Breaker", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HIGHT, 0);
+	window = SDL_CreateWindow("Brick Breaker", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, 0);
 
 	if (window == nullptr)
 	{
@@ -11,38 +11,37 @@ void GameManager:: initialize()
 		return;
 	}
 
+	mBall.setParams(HEIGHT, WIDTH);
+	mPaddle.setParams(WIDTH);
 
-	_ball.settParam(HIGHT, WIDTH);
-	_paddle.setParams(WIDTH);
+	ballSurface = SDL_LoadBMP("../res/ball.bmp");
+	if (ballSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
 
-	ball = SDL_LoadBMP("ball.bmp");
-	if (ball == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
+	paddleSurface = SDL_LoadBMP("../res/paddle.bmp");
+	if (paddleSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
 
-	paddle = SDL_LoadBMP("paddle.bmp");
-	if (paddle == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
-
-	brick = SDL_LoadBMP("brick_red.bmp");
-	if (brick == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
+	brickSurface = SDL_LoadBMP("../res/brick_red.bmp");
+	if (brickSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
 
 
 
 	renderer = SDL_CreateRenderer(window, -1, 0);
 
-	paddleTexture = SDL_CreateTextureFromSurface(renderer, paddle);
-	ballTexture = SDL_CreateTextureFromSurface(renderer, ball);
-	brickTexture = SDL_CreateTextureFromSurface(renderer, brick);
+	paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
+	ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
+	brickTexture = SDL_CreateTextureFromSurface(renderer, brickSurface);
 	activateGame();
 }
 
 void GameManager::activateGame()
 {
-	_bricks.InitializeBricks();
+	mBricks.InitializeBricks();
 
-	_paddle.setPaddlePositions(WIDTH, HIGHT);
+	mPaddle.setPaddlePositions(WIDTH, HEIGHT);
 	numberOBrokeBricks = 0;
 	winner = false;
 	quite = false;
-	_ball.reset();
+	mBall.reset();
 }
 
 void GameManager:: destroy()
@@ -51,9 +50,9 @@ void GameManager:: destroy()
 	SDL_DestroyTexture(ballTexture);
 	SDL_DestroyTexture(brickTexture);
 
-	SDL_FreeSurface(ball);
-	SDL_FreeSurface(paddle);
-	SDL_FreeSurface(brick);
+	SDL_FreeSurface(ballSurface);
+	SDL_FreeSurface(paddleSurface);
+	SDL_FreeSurface(brickSurface);
 
 	SDL_DestroyWindow(window);
 }
@@ -74,11 +73,11 @@ void GameManager:: userInput()
 			break;
 
 		case 1:
-			_paddle.moveLeft();
+			mPaddle.moveLeft();
 			break;
 
 		case 2:
-			_paddle.moveRight();
+			mPaddle.moveRight();
 			break;
 
 		default:
@@ -92,32 +91,33 @@ void GameManager::playGame()
 	do {
 		userInput();
 
-		ballRect = _ball.moveBall(_paddle.getPaddleY(), _paddle.getPaddleX());
-		paddleRect = _paddle.paddleRect();
+		ballRect = mBall.moveBall(mPaddle.getPaddleY(), mPaddle.getPaddleX()); //TODO: Make thread?
+		paddleRect = mPaddle.paddleRect(); //TODO: Make thread?
 
-		if (_ball.isOutOfBounds()) { quite = true; }
+		if (mBall.isOutOfBounds()) { quite = true; }
 
 		SDL_RenderCopy(renderer, paddleTexture, nullptr, &paddleRect);
 		SDL_RenderCopy(renderer, ballTexture, nullptr, &ballRect);
 
-		for (int i = 0; i < _bricks.brickY; i++)
-			for (int j = 0; j < _bricks.brickX; j++) {
-				if (!_bricks.getBrick(i, j).isHit()) {
-					SDL_Rect brickRect = _bricks.getBrick(i, j).rect;
-					SDL_RenderCopy(renderer, brickTexture, NULL, &brickRect);
-				} else {
-					SDL_Rect brickRect = _bricks.getBrick(i, j).rect;
+		//TODO: Not make a two dimensional vector but make it just one dimensional. This can then be just std::for_each
+		for (int i = 0; i < Bricks::brickY; i++)
+			for (int j = 0; j < Bricks::brickX; j++) {
+				if (mBricks.getBrick(i, j).isHit()) {
+					SDL_Rect brickRect = mBricks.getBrick(i, j).rect;
 					brickRect.x = 300000;
 					brickRect.y = 300000;
-					SDL_RenderCopy(renderer, brickTexture, NULL, &brickRect);
+					SDL_RenderCopy(renderer, brickTexture, nullptr, &brickRect);
+				} else {
+					SDL_Rect brickRect = mBricks.getBrick(i, j).rect;
+					SDL_RenderCopy(renderer, brickTexture, nullptr, &brickRect);
 				}
 			}
 
-		if (_bricks.ballBrickCollision(ballRect)) {
+		if (mBricks.ballBrickCollision(ballRect)) {
 			numberOBrokeBricks++;
-			_ball.changeVelocityX();
+			mBall.changeVelocityX();
 
-			if (numberOBrokeBricks == _bricks.numberOfBricks) {
+			if (numberOBrokeBricks == mBricks.numberOfBricks) {
 				winner = true;
 				quite = true;
 			}

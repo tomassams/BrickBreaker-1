@@ -6,19 +6,23 @@
 
 class Ball{
 public:
-	void settParam(int h, int w);
+	void setParams(int h, int w)
+	{
+		HEIGHT = h;
+		WIDTH = w;
+	}
 
 	SDL_Rect moveBall(int paddleY, int paddleX);
-	void changeVelocityX() {velx = -velx;}
-	void changeVelocityY() {vely = -vely;}
+	void changeVelocityX() {velocityX = -velocityX;}
+	void changeVelocityY() {velocityY = -velocityY;}
 	bool isOutOfBounds() const {return outOfBounds;}
 	void reset();
 
 private:
-	int x = 200, y = 200, velx = 1, vely = 1;
-	int ballscaling = 20;
-	int HIGHT, WIDTH;
+	int x = 200, y = 200, velocityX = 1, velocityY = 1;
+	int ballScaling = 20;
+	int HEIGHT, WIDTH;
 	bool outOfBounds = false;
 };
 
-#endif //BRICKBRAKER_BALL_H
+#endif

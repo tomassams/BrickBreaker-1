@@ -8,17 +8,17 @@ class Paddle
 {
 
 public:
-	SDL_Rect paddleRect() {return {paddlex, paddley, 80, 20}; }
 	void setParams(int w) {WIDTH = w;}
+	SDL_Rect paddleRect() {return {paddleX, paddleY, 80, 20}; }
 	void setPaddlePositions(int w, int h);
-	int getPaddleX() {return paddlex;}
-	int getPaddleY() {return paddley;}
+	int getPaddleX() {return paddleX;}
+	int getPaddleY() {return paddleY;}
 	void moveLeft();
 	void moveRight();
 
 private:
 	int WIDTH;
-	int paddlex = 0, paddley = 0;
+	int paddleX = 0, paddleY = 0;
 	int paddleSpeed = 2;
 };
 
