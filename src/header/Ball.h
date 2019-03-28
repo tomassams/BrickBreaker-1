@@ -8,7 +8,7 @@ class Ball{
 public:
 	void settParam(int h, int w);
 
-	SDL_Rect moveBall(int paddley, int paddlex);
+	SDL_Rect moveBall(int paddleY, int paddleX);
 	void changeVelocityX() {velx = -velx;}
 	void changeVelocityY() {vely = -vely;}
 	bool isOutOfBounds() const {return outOfBounds;}

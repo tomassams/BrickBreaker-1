@@ -3,7 +3,7 @@
 void GameManager:: initialize()
 {
 	SDL_Init(SDL_INIT_VIDEO);
-	window = SDL_CreateWindow("Brick Braker", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HIGHT, 0);
+	window = SDL_CreateWindow("Brick Breaker", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HIGHT, 0);
 
 	if (window == nullptr)
 	{
@@ -14,15 +14,15 @@ void GameManager:: initialize()
 	_ball.settParam(HIGHT, WIDTH);
 	_paddle.setParams(WIDTH);
 
-	ball = SDL_LoadBMP("../../res/ball.bmp");
-	paddle = SDL_LoadBMP("../../res/paddle.bmp");
-	brick = SDL_LoadBMP("../../res/brick_red.bmp");
+	ball = SDL_LoadBMP("ball");
+	paddle = SDL_LoadBMP("paddle");
+	brick = SDL_LoadBMP("brick_red");
 
 	renderer = SDL_CreateRenderer(window, -1, 0);
 
 	paddleTexture = SDL_CreateTextureFromSurface(renderer, paddle);
 	ballTexture = SDL_CreateTextureFromSurface(renderer, ball);
-	bricktexture = SDL_CreateTextureFromSurface(renderer, brick);
+	brickTexture = SDL_CreateTextureFromSurface(renderer, brick);
 	activateGame();
 }
 
@@ -31,7 +31,7 @@ void GameManager::activateGame()
 	_bricks.InitilizeBricks();
 
 	_paddle.setPaddlePositions(WIDTH, HIGHT);
-	numberOfBrockenBricks = 0;
+	numberOBrokeBricks = 0;
 	winner = false;
 	quite = false;
 	_ball.reset();
@@ -41,7 +41,7 @@ void GameManager:: destroy()
 {
 	SDL_DestroyTexture(paddleTexture);
 	SDL_DestroyTexture(ballTexture);
-	SDL_DestroyTexture(bricktexture);
+	SDL_DestroyTexture(brickTexture);
 
 	SDL_FreeSurface(ball);
 	SDL_FreeSurface(paddle);
@@ -84,32 +84,32 @@ void GameManager::playGame()
 	do {
 		userInput();
 
-		ballrect = _ball.moveBall(_paddle.getPaddleY(), _paddle.getPaddleX());
+		ballRect = _ball.moveBall(_paddle.getPaddleY(), _paddle.getPaddleX());
 		paddleRect = _paddle.paddleRect();
 
 		if (_ball.isOutOfBounds()) { quite = true; }
 
 		SDL_RenderCopy(renderer, paddleTexture, nullptr, &paddleRect);
-		SDL_RenderCopy(renderer, ballTexture, nullptr, &ballrect);
+		SDL_RenderCopy(renderer, ballTexture, nullptr, &ballRect);
 
 		for (int i = 0; i < _bricks.brickY; i++)
 			for (int j = 0; j < _bricks.brickX; j++) {
 				if (!_bricks.getBrick(i, j).isHit()) {
 					SDL_Rect brickRect = _bricks.getBrick(i, j).rect;
-					SDL_RenderCopy(renderer, bricktexture, NULL, &brickRect);
+					SDL_RenderCopy(renderer, brickTexture, NULL, &brickRect);
 				} else {
 					SDL_Rect brickRect = _bricks.getBrick(i, j).rect;
 					brickRect.x = 300000;
 					brickRect.y = 300000;
-					SDL_RenderCopy(renderer, bricktexture, NULL, &brickRect);
+					SDL_RenderCopy(renderer, brickTexture, NULL, &brickRect);
 				}
 			}
 
-		if (_bricks.ballBrickCollision(ballrect)) {
-			numberOfBrockenBricks++;
+		if (_bricks.ballBrickCollision(ballRect)) {
+			numberOBrokeBricks++;
 			_ball.changeVelocityX();
 
-			if (numberOfBrockenBricks == _bricks.numberOfBricks) {
+			if (numberOBrokeBricks == _bricks.numberOfBricks) {
 				winner = true;
 				quite = true;
 			}

@@ -15,15 +15,15 @@ void Ball::reset()
 	vely = 1;
 }
 
-SDL_Rect Ball::moveBall(int paddley, int paddlex)
+SDL_Rect Ball::moveBall(int paddleY, int paddleX)
 {
 	if (y+ballscaling == WIDTH || y+ballscaling == 0)
 		changeVelocityY();
 
-	if ((y + ballscaling >= paddlex
-		 && y + ballscaling <= paddlex+100
-		 && x + ballscaling >= paddley
-		 && x + ballscaling <= paddley+40)
+	if ((y + ballscaling >= paddleX
+		 && y + ballscaling <= paddleX+100
+		 && x + ballscaling >= paddleY
+		 && x + ballscaling <= paddleY+40)
 		//|| x + ballscaling == HIGHT //TODO:- DEVMODE SHOULD BE REMOVED
 		|| x + ballscaling <= 0)
 	{ changeVelocityX(); }

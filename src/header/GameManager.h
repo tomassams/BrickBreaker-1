@@ -12,9 +12,6 @@ class GameManager{
 
 public:
 	void playGame();
-	void eventHandler(SDL_Event event);
-	void Destroy();
-	void winning();
 	bool doWeHaveAWinner() const {return winner;}
 	void initialize();
 	void quiteGame();
@@ -26,26 +23,26 @@ private:
 	bool quite = false;
 	bool winner = false;
 	int WIDTH = 800, HIGHT = 600;
-	int numberOfBrockenBricks = 0;
+	int numberOBrokeBricks = 0;
 	InputManager input;
 
-	SDL_Window *window;
-	SDL_Renderer *renderer;
+	SDL_Window *window{};
+	SDL_Renderer *renderer{};
 
-	SDL_Surface *ball;
-	SDL_Texture *ballTexture;
-	SDL_Rect ballrect;
+	SDL_Surface *ball{};
+	SDL_Texture *ballTexture{};
+	SDL_Rect ballRect{};
 
-	SDL_Surface *paddle;
-	SDL_Texture *paddleTexture;
-	SDL_Rect paddleRect;
+	SDL_Surface *paddle{};
+	SDL_Texture *paddleTexture{};
+	SDL_Rect paddleRect{};
 
-	SDL_Surface *brick;
-	SDL_Texture *bricktexture;
+	SDL_Surface *brick{};
+	SDL_Texture *brickTexture{};
 
 	Bricks _bricks;
 	Paddle _paddle;
 	Ball _ball;
 };
 
-#endif //BRICKBRAKER_GAMEMANAGER_H
+#endif
