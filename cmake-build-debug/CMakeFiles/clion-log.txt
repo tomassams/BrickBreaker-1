@@ -1,26 +1,21 @@
-C:\Users\ts\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\school\bb2\BrickBreaker
--- The C compiler identification is GNU 5.1.0
--- The CXX compiler identification is GNU 5.1.0
--- Check for working C compiler: C:/TDM-GCC-64/bin/gcc.exe
--- Check for working C compiler: C:/TDM-GCC-64/bin/gcc.exe -- works
+"/Users/henrik/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/henrik/Documents/GitHub/BrickBreaker
+-- The C compiler identification is AppleClang 10.0.1.10010046
+-- The CXX compiler identification is AppleClang 10.0.1.10010046
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -- works
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Detecting C compile features
 -- Detecting C compile features - done
--- Check for working CXX compiler: C:/TDM-GCC-64/bin/g++.exe
--- Check for working CXX compiler: C:/TDM-GCC-64/bin/g++.exe -- works
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -- works
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Looking for pthread.h
--- Looking for pthread.h - found
--- Looking for pthread_create
--- Looking for pthread_create - found
--- Found Threads: TRUE  
--- Found SDL2: mingw32;-mwindows;C:/TDM-GCC-64/lib/libSDL2main.a;C:/TDM-GCC-64/lib/libSDL2.dll.a  
--- Found SDL2_image: C:/TDM-GCC-64/lib/libSDL2_image.dll.a (found version "2.0.4") 
--- Found SDL2_ttf: C:/TDM-GCC-64/lib/libSDL2_ttf.dll.a (found version "2.0.15") 
+-- Found SDL2: /usr/local/lib/libSDL2main.a;/usr/local/lib/libSDL2.dylib;-framework Cocoa  
+-- Found SDL2_image: /usr/local/lib/libSDL2_image.dylib (found version "2.0.4") 
+-- Found SDL2_ttf: /usr/local/lib/libSDL2_ttf.dylib (found version "2.0.14") 
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/school/bb2/BrickBreaker/cmake-build-debug
+-- Build files have been written to: /Users/henrik/Documents/GitHub/BrickBreaker/cmake-build-debug
