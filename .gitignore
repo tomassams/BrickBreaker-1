@@ -1,7 +1,3 @@
-
-# Created by https://www.gitignore.io/api/c++
-# Edit at https://www.gitignore.io/?templates=c++
-
 ### C++ ###
 # Prerequisites
 *.d
@@ -37,6 +33,4 @@
 *.app
 
 # Folder
-/cmake-build-debug/**
-
-# End of https://www.gitignore.io/api/c++
+/cmake-build-debug/
