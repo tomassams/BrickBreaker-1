@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SDL.h>
+
 #include "Ball.h"
 #include "Bricks.h"
 #include "InputManager.h"
@@ -17,13 +18,16 @@ public:
 	void initialize();
 
 private:
-	void activateGame();
-	void destroy();
-	void userInput();
 	bool quite = false;
 	bool winner = false;
 	int WIDTH = 800, HEIGHT = 600;
-	int numberOBrokeBricks = 0;
+	int numberOfBrokeBricks = 0;
+
+	void activateGame();
+	void destroy();
+	void userInput();
+	void updateBrickPositions();
+
 	InputManager input;
 
 	SDL_Window *window;
@@ -44,7 +48,7 @@ private:
 	Paddle mPaddle;
 	Ball mBall;
 
-	void updateBrickPositions();
+
 };
 
 #endif

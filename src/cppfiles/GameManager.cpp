@@ -11,6 +11,8 @@ void GameManager::initialize()
 		return;
 	}
 
+	renderer = SDL_CreateRenderer(window, -1, 0);
+
 	mBall.setParams(HEIGHT, WIDTH);
 	mPaddle.setParams(WIDTH);
 
@@ -23,10 +25,6 @@ void GameManager::initialize()
 	brickSurface = SDL_LoadBMP("../res/brick_red.bmp");
 	if (brickSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
 
-
-
-	renderer = SDL_CreateRenderer(window, -1, 0);
-
 	paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
 	ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
 	brickTexture = SDL_CreateTextureFromSurface(renderer, brickSurface);
@@ -38,7 +36,7 @@ void GameManager::activateGame()
 	mBricks.InitializeBricks();
 
 	mPaddle.setPaddlePositions(WIDTH, HEIGHT);
-	numberOBrokeBricks = 0;
+	numberOfBrokeBricks = 0;
 	winner = false;
 	quite = false;
 	mBall.reset();
@@ -123,11 +121,13 @@ void GameManager::playGame()
 
 		updateBrickPositions();
 
-		if (mBricks.ballBrickCollision(ballRect)) {
-			numberOBrokeBricks++;
+		if (mBricks.ballBrickCollision(ballRect))
+		{
+			numberOfBrokeBricks++;
 			mBall.changeVelocityX();
 
-			if (numberOBrokeBricks == mBricks.numberOfBricks) {
+			if (numberOfBrokeBricks == mBricks.numberOfBricks)
+			{
 				winner = true;
 				quite = true;
 			}
