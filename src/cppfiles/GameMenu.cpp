@@ -8,19 +8,25 @@ int GameMenu::displayMenu()
 	SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
 
-	screen = SDL_CreateWindow("SDL_ttf in SDL2",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
+	screen = SDL_CreateWindow("SDL_ttf in SDL2",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, 0);
 	renderer = SDL_CreateRenderer(screen, -1, 0);
-	font = TTF_OpenFont("../res/arial/films.Dynasty.ttf", 25);
+
+
+	font = TTF_OpenFont("../res/arial/films.Dynasty.ttf", 100);
+
+	int width, height;
+	SDL_GetWindowSize(screen, &width, &height);
 
 	SDL_Color color = { 255, 255, 255 };
-	surface = TTF_RenderText_Solid(font,"Welcome to Gigi Labs", color);
+	surface = TTF_RenderText_Solid(font,"Brick Breaker", color);
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-	int texW = 0;
-	int texH = 0;
+	int texW = 0, texH = 0;
 	SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
-	SDL_Rect rect = { 0, 0, texW, texH };
+	SDL_Rect rect = { width/2 - surface->w/2, surface->h-height/6, texW, texH };
 
+
+	int menuItemSelected = 0;
 	while (!quit)
 	{
 		SDL_WaitEvent(&event);
@@ -29,6 +35,7 @@ int GameMenu::displayMenu()
 		{
 			case SDL_QUIT:
 				quit = true;
+				menuItemSelected = 1;
 				break;
 		}
 
@@ -37,7 +44,7 @@ int GameMenu::displayMenu()
 	}
 
 	destroy();
-	return 0;
+	return menuItemSelected;
 }
 
 void GameMenu::destroy()
