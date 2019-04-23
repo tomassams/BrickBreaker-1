@@ -13,11 +13,11 @@ public:
 	static const int brickY = 3, brickX = 7;
 	int numberOfBricks = brickY*brickX;
 	void InitializeBricks();
-	bool ballBrickCollisionDetected(SDL_Rect brickRect, SDL_Rect ballRect);
+	static bool ballBrickCollisionDetected(SDL_Rect brickRect, SDL_Rect ballRect);
 	bool ballBrickCollision(SDL_Rect ballRect);
-	Brick getBrick(int y, int x) {return brickArray[y][x];}
+	Brick getBrick(int y, int x);
 
 private:
-	Brick brickArray[brickY][brickX]; //TODO: Make into vector
+	std::vector<Brick> brickVector[brickY * brickX];
 };
 #endif

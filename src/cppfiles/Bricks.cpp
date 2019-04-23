@@ -1,15 +1,15 @@
-//
-// Created by Henrik Anthony Odden Sandberg on 2019-03-28.
-//
-
 #include "../header/Bricks.h"
 
 void Bricks:: InitializeBricks()
 {
+	brickVector->clear();
+
 	int y = 50, x = 20;
-	for (auto &row : brickArray) {
-		for (auto &item : row) {
-			item = Brick(y, x);
+	for (int i = 0; i < brickY; i++)
+	{
+		for (int j = 0; j < brickX; j++)
+		{
+			brickVector->push_back(Brick(y, x));
 			y += 100;
 		}
 		y = 50;
@@ -33,13 +33,23 @@ bool Bricks:: ballBrickCollisionDetected(SDL_Rect brickRect, SDL_Rect ballRect)
 
 bool Bricks:: ballBrickCollision(SDL_Rect ballRect)
 {
-	for (auto &bricks : brickArray)
-		for (auto &brick : bricks) {
-			if (ballBrickCollisionDetected(brick.rect, ballRect) && !brick.isHit())
-			{
-				brick.hit();
-				return true;
-			}
+	bool returnBool = false;
+
+	std::for_each(brickVector->begin(), brickVector->end(), [ballRect, &returnBool](Brick &brick) {
+		if (ballBrickCollisionDetected(brick.rect, ballRect) && !brick.isHit())
+		{
+			brick.hit();
+			returnBool = true;
 		}
-	return false;
+	});
+
+	return returnBool;
+}
+
+Brick Bricks::getBrick(int y, int x)
+{
+	if (y == 0) return brickVector-> at(x);
+
+	int position = (x == 0) ? brickX * y : x + brickX * y;
+	return brickVector-> at(position);
 }
