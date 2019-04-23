@@ -85,9 +85,31 @@ void GameManager:: userInput()
 	}
 }
 
+void GameManager:: updateBrickPositions(){
+	for (int i = 0; i < Bricks::brickY; i++)
+	{
+		for (int j = 0; j < Bricks::brickX; j++)
+		{
+			if (mBricks.getBrick(i, j).isHit())
+			{
+				SDL_Rect brickRect = mBricks.getBrick(i, j).rect;
+				brickRect.x = 300000;
+				brickRect.y = 300000;
+				SDL_RenderCopy(renderer, brickTexture, nullptr, &brickRect);
+			}
+			else
+			{
+				SDL_Rect brickRect = mBricks.getBrick(i, j).rect;
+				SDL_RenderCopy(renderer, brickTexture, nullptr, &brickRect);
+			}
+		}
+	}
+}
+
 void GameManager::playGame()
 {
 	activateGame();
+
 	do {
 		userInput();
 
@@ -99,19 +121,7 @@ void GameManager::playGame()
 		SDL_RenderCopy(renderer, paddleTexture, nullptr, &paddleRect);
 		SDL_RenderCopy(renderer, ballTexture, nullptr, &ballRect);
 
-		//TODO: Not make a two dimensional vector but make it just one dimensional. This can then be just std::for_each
-		for (int i = 0; i < Bricks::brickY; i++)
-			for (int j = 0; j < Bricks::brickX; j++) {
-				if (mBricks.getBrick(i, j).isHit()) {
-					SDL_Rect brickRect = mBricks.getBrick(i, j).rect;
-					brickRect.x = 300000;
-					brickRect.y = 300000;
-					SDL_RenderCopy(renderer, brickTexture, nullptr, &brickRect);
-				} else {
-					SDL_Rect brickRect = mBricks.getBrick(i, j).rect;
-					SDL_RenderCopy(renderer, brickTexture, nullptr, &brickRect);
-				}
-			}
+		updateBrickPositions();
 
 		if (mBricks.ballBrickCollision(ballRect)) {
 			numberOBrokeBricks++;

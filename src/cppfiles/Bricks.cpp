@@ -5,6 +5,7 @@ void Bricks:: InitializeBricks()
 	brickVector->clear();
 
 	int y = 50, x = 20;
+
 	for (int i = 0; i < brickY; i++)
 	{
 		for (int j = 0; j < brickX; j++)
@@ -48,8 +49,8 @@ bool Bricks:: ballBrickCollision(SDL_Rect ballRect)
 
 Brick Bricks::getBrick(int y, int x)
 {
-	if (y == 0) return brickVector-> at(x);
+	if (y == 0) return brickVector->at(x);
 
 	int position = (x == 0) ? brickX * y : x + brickX * y;
-	return brickVector-> at(position);
+	return brickVector->at(position);
 }

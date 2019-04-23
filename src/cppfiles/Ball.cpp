@@ -19,10 +19,9 @@ SDL_Rect Ball::moveBall(int paddleY, int paddleX)
 
 
 	if ((y + ballScaling >= paddleX
-		 && y + ballScaling <= paddleX+100
+		 && y + ballScaling <= paddleX + 100
 		 && x + ballScaling >= paddleY
-		 && x + ballScaling <= paddleY+40)
-		//|| x + ballScaling == HEIGHT //DEVMODE
+		 && x + ballScaling <= paddleY + 40)
 		|| x + ballScaling <= 0)
 	{
 		changeVelocityX();

@@ -43,6 +43,8 @@ private:
 	Bricks mBricks;
 	Paddle mPaddle;
 	Ball mBall;
+
+	void updateBrickPositions();
 };
 
 #endif
