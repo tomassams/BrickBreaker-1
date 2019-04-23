@@ -13,7 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ca3dbcb1-d9db-4e61-a1cc-36430f79951e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/cppfiles/GameMenu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cppfiles/GameMenu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cppfiles/InputManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cppfiles/InputManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/header/GameMenu.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/header/GameMenu.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+            <state relative-caret-position="294">
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -46,8 +47,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cppfiles/GameManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="-1089">
               <caret column="34" selection-start-column="34" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cppfiles/InputManager.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="20" column="43" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -67,7 +77,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/header/GameManager.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="91">
               <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
@@ -76,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/header/GameMenu.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+            <state relative-caret-position="416">
+              <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
               <folding>
                 <element signature="e#65#84#0" expanded="true" />
               </folding>
@@ -85,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cppfiles/GameMenu.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="37" column="36" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
+            <state relative-caret-position="239">
+              <caret line="100" column="39" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -110,9 +120,11 @@
       <find>mPa</find>
       <find>c:</find>
       <find>[</find>
+      <find>NUMMENU</find>
     </findStrings>
     <replaceStrings>
       <replace>h</replace>
+      <replace>options</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -150,7 +162,6 @@
         <option value="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/header/Brick.h" />
-        <option value="$PROJECT_DIR$/src/cppfiles/InputManager.cpp" />
         <option value="$PROJECT_DIR$/src/cppfiles/Bricks.cpp" />
         <option value="$PROJECT_DIR$/src/header/Bricks.h" />
         <option value="$PROJECT_DIR$/src/cppfiles/Ball.cpp" />
@@ -158,9 +169,10 @@
         <option value="$PROJECT_DIR$/src/header/Paddle.h" />
         <option value="$PROJECT_DIR$/src/cppfiles/GameManager.cpp" />
         <option value="$PROJECT_DIR$/src/cppfiles/GameManager.cpp" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/src/cppfiles/InputManager.cpp" />
         <option value="$PROJECT_DIR$/src/header/GameMenu.h" />
         <option value="$PROJECT_DIR$/src/cppfiles/GameMenu.cpp" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
       </list>
     </option>
   </component>
@@ -266,12 +278,12 @@
       <workItem from="1554206480106" duration="1315000" />
       <workItem from="1556014217612" duration="6210000" />
       <workItem from="1556022121974" duration="1487000" />
-      <workItem from="1556024114656" duration="9467000" />
+      <workItem from="1556024114656" duration="15455000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39944000" />
+    <option name="totallyTimeSpent" value="45932000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -472,13 +484,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cppfiles/InputManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cppfiles/Paddle.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -496,24 +501,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/header/GameManager.h">
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="294">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cppfiles/GameManager.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="-1089">
           <caret column="34" selection-start-column="34" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/header/GameManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cppfiles/InputManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="20" column="43" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/SDL2/SDL_render.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="809" selection-start-line="809" selection-end-line="809" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/header/GameMenu.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        <state relative-caret-position="416">
+          <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
           <folding>
             <element signature="e#65#84#0" expanded="true" />
           </folding>
@@ -522,18 +551,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cppfiles/GameMenu.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="37" column="36" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="239">
+          <caret line="100" column="39" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
         </state>
       </provider>
     </entry>
