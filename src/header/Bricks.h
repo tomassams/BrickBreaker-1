@@ -14,7 +14,7 @@ public:
 	void InitializeBricks();
 	static bool ballBrickCollisionDetected(SDL_Rect brickRect, SDL_Rect ballRect);
 	bool ballBrickCollision(SDL_Rect ballRect);
-	Brick getBrick(int y, int x);
+	auto getBricks() { return brickVector;}
 private:
 	std::vector<Brick> brickVector;
 };

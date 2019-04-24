@@ -47,11 +47,3 @@ bool Bricks:: ballBrickCollision(SDL_Rect ballRect)
 
 	return returnBool;
 }
-
-Brick Bricks:: getBrick(int y, int x)
-{
-	if (y == 0) return brickVector.at(x);
-
-	int position = (x == 0) ? brickX * y : x + brickX * y;
-	return brickVector.at(position);
-}

@@ -43,11 +43,9 @@ void Renderer::initialize() {
 void Renderer::destroy() {
     SDL_DestroyTexture(paddleTexture);
     SDL_DestroyTexture(ballTexture);
-    SDL_DestroyTexture(brickTexture);
 
     SDL_FreeSurface(ballSurface);
     SDL_FreeSurface(paddleSurface);
-    SDL_FreeSurface(brickSurface);
 
 	std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [](auto surface){
 		SDL_FreeSurface(surface);
@@ -71,7 +69,8 @@ void Renderer:: drawBall(SDL_Rect rect) {
 void Renderer:: drawBrick(int health, SDL_Rect rect) {
 	SDL_RenderCopy(renderer,
 			brickTextureVector.at((health > 0) ? health-1 : 0),
-			nullptr, &rect);
+			nullptr, &rect
+	);
 }
 
 SDL_Renderer* Renderer:: getRenderer() {
@@ -79,24 +78,17 @@ SDL_Renderer* Renderer:: getRenderer() {
 }
 
 void Renderer:: drawBricks(Bricks &bricks) {
-    for (int i = 0; i < Bricks::brickY; i++)
-    {
-        for (int j = 0; j < Bricks::brickX; j++)
-        {
-            if (bricks.getBrick(i, j).isHit())
-            {
-                SDL_Rect brickRect = bricks.getBrick(i, j).rect;
-                brickRect.x = 300000;
-                brickRect.y = 300000;
-				int health = bricks.getBrick(i, j).getHealth();
-				drawBrick(health, brickRect);
-            }
-            else
-            {
-				SDL_Rect brickRect = bricks.getBrick(i, j).rect;
-				int health = bricks.getBrick(i, j).getHealth();
-				drawBrick(health, brickRect);
-            }
-        }
-    }
+	auto rickVector = bricks.getBricks();
+	std::for_each(rickVector.begin(), rickVector.end(), [this](auto brick){
+			SDL_Rect brickRect = brick.rect;
+
+			if (brick.isHit())
+			{
+				brickRect.x = 300000;
+				brickRect.y = 300000;
+			}
+
+			int health = brick.getHealth();
+			drawBrick(health, brickRect);
+	});
 }

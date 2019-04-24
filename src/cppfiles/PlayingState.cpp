@@ -17,10 +17,6 @@ PlayingState::~PlayingState() = default;
 
 void PlayingState::update() {
 
-    if (bricks.ballBrickCollision(ballPosition)) {
-        ball.changeVelocityX();
-    }
-
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
     ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
 
@@ -31,10 +27,7 @@ void PlayingState::update() {
         numBrokenBricks++;
         ball.changeVelocityX();
 
-        if (numBrokenBricks == bricks.numberOfBricks)
-        {
-            active = false;
-        }
+        //if (numBrokenBricks == bricks.numberOfBricks){ active = false;} //TODO: Finish state is now grater than just the number of bricks
     }
 
 }
@@ -70,7 +63,6 @@ void PlayingState::handleEvent() {
 bool PlayingState::isActive() {
     return active;
 }
-
 
 std::unique_ptr<GameState> PlayingState::nextState() {
     // TODO: handle transition to next state (e.g. pause or exit/menu)
