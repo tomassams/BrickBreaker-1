@@ -10,6 +10,9 @@ PlayingState::PlayingState() {
 
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
     ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
+
+    numBrokenBricks = 0;
+    //mBall.reset(); // from old activateGame(), not sure if necessary
 }
 PlayingState::~PlayingState() = default;
 
@@ -21,6 +24,19 @@ void PlayingState::update() {
 
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
     ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
+
+//    if (ball.isOutOfBounds()) { active = false; }
+
+    if (bricks.ballBrickCollision(ballPosition))
+    {
+        numBrokenBricks++;
+        ball.changeVelocityX();
+
+        if (numBrokenBricks== bricks.numberOfBricks)
+        {
+            active = false;
+        }
+    }
 
 }
 
