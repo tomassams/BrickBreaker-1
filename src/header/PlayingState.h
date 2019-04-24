@@ -29,7 +29,7 @@ private:
     SDL_Rect paddlePosition;
     SDL_Rect ballPosition;
 
-    int numBrokenBricks;
+    int numBrokenBricks = 0;
 
     std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY];
 

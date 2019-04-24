@@ -21,7 +21,7 @@ void GameManager::play() {
 		std::unique_ptr<GameState> nextState = currentState->nextState();
 		if(nextState || !currentState->isActive()) {
 			running = false;
-//			std::swap(currentState, nextState);
+//			std::swap(currentState, nextState); // TODO
 		}
 	}
 

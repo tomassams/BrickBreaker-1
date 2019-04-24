@@ -11,7 +11,6 @@ PlayingState::PlayingState() {
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
     ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
 
-    numBrokenBricks = 0;
     //mBall.reset(); // from old activateGame(), not sure if necessary
 }
 PlayingState::~PlayingState() = default;
@@ -32,7 +31,7 @@ void PlayingState::update() {
         numBrokenBricks++;
         ball.changeVelocityX();
 
-        if (numBrokenBricks== bricks.numberOfBricks)
+        if (numBrokenBricks == bricks.numberOfBricks)
         {
             active = false;
         }
