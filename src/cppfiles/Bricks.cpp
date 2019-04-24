@@ -36,7 +36,8 @@ bool Bricks:: ballBrickCollision(SDL_Rect ballRect)
 {
 	bool returnBool = false;
 
-	std::for_each(brickVector->begin(), brickVector->end(), [ballRect, &returnBool](Brick &brick) {
+	std::for_each(brickVector->begin(), brickVector->end(), [ballRect, &returnBool](Brick &brick)
+	{
 		if (ballBrickCollisionDetected(brick.rect, ballRect) && !brick.isHit())
 		{
 			brick.hit();
