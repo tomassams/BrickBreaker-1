@@ -20,7 +20,7 @@ public:
 
 private:
 	int vertical = 300, horizontal = 200, velocityX = 1, velocityY = 1;
-	int ballScaling = 10;
+	int ballScaling = 5;
 	int HEIGHT, WIDTH;
 	bool outOfBounds = false;
 	bool paddleCollision(int paddlePositionX, int paddlePositionY);
