@@ -2,7 +2,7 @@
 
 void Bricks:: InitializeBricks()
 {
-	brickVector->clear();
+	brickVector.clear();
 
 	int horizontalSpacing = 10;
 
@@ -11,7 +11,7 @@ void Bricks:: InitializeBricks()
 		int verticalSpacing = 10;
 		for (int j = 0; j < brickX; j++)
 		{
-			brickVector->push_back( Brick(verticalSpacing, horizontalSpacing, brickY-i));
+			brickVector.emplace_back(verticalSpacing, horizontalSpacing, brickY-i);
 			verticalSpacing += 88;
 		}
 		horizontalSpacing += 40;
@@ -36,7 +36,7 @@ bool Bricks:: ballBrickCollision(SDL_Rect ballRect)
 {
 	bool returnBool = false;
 
-	std::for_each(brickVector->begin(), brickVector->end(), [ballRect, &returnBool](Brick &brick)
+	std::for_each(brickVector.begin(), brickVector.end(), [ballRect, &returnBool](Brick &brick)
 	{
 		if (ballBrickCollisionDetected(brick.rect, ballRect) && !brick.isHit())
 		{
@@ -48,10 +48,10 @@ bool Bricks:: ballBrickCollision(SDL_Rect ballRect)
 	return returnBool;
 }
 
-Brick Bricks::getBrick(int y, int x)
+Brick Bricks:: getBrick(int y, int x)
 {
-	if (y == 0) return brickVector->at(x);
+	if (y == 0) return brickVector.at(x);
 
 	int position = (x == 0) ? brickX * y : x + brickX * y;
-	return brickVector->at(position);
+	return brickVector.at(position);
 }

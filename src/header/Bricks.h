@@ -16,6 +16,6 @@ public:
 	bool ballBrickCollision(SDL_Rect ballRect);
 	Brick getBrick(int y, int x);
 private:
-	std::vector<Brick> brickVector[brickY * brickX];
+	std::vector<Brick> brickVector;
 };
 #endif

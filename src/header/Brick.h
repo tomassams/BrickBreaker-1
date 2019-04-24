@@ -5,26 +5,19 @@
 class Brick {
 
 public:
-	Brick(){
-		isBrickHit = false;
-		life = 1;
-	};
-
-	Brick(int verticalSpacing, int horizontalSpacing, int life) {
-		this->life = life;
-		isBrickHit = false;
-		rect = { verticalSpacing, horizontalSpacing, brickWidth, brickHeight };
-	};
+	Brick();
+	Brick(int verticalSpacing, int horizontalSpacing, int life);
 
 	SDL_Rect rect{};
-	void resetBrick() {isBrickHit = false;}
+	void hit();
 	bool isHit() { return isBrickHit; }
-	void hit() { if (--life == 0) isBrickHit = true;}
-	int getHealth() { return life;}
+	int getHealth() { return currentHealth;}
+	void resetBrick();
 
 private:
 	bool isBrickHit = false;
 	int brickWidth = 80, brickHeight = 35;
-	int life;
+	int currentHealth;
+	int maxHealth;
 };
 #endif
