@@ -1,5 +1,5 @@
-#ifndef BRICKBRAKER_BRICKS_H
-#define BRICKBRAKER_BRICKS_H
+#ifndef BRICKBREAKER_BRICKS_H
+#define BRICKBREAKER_BRICKS_H
 
 #include <SDL.h>
 #include <vector>

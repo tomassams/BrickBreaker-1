@@ -13,7 +13,7 @@
 
 class PlayingState : public GameState {
 public:
-    PlayingState();
+    PlayingState(Renderer &renderer);
     ~PlayingState();
     void update() override;
     void display(Renderer &renderer) override;
@@ -21,6 +21,7 @@ public:
     std::unique_ptr<GameState> nextState() override;
 private:
     InputManager inputManager;
+    Renderer renderer;
 
     Bricks bricks;
     Paddle paddle;

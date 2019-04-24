@@ -1,13 +1,13 @@
-#ifndef BRICKBRAKER_INPUTMANAGER_H
-#define BRICKBRAKER_INPUTMANAGER_H
+#ifndef BRICKBREAKER_INPUTMANAGER_H
+#define BRICKBREAKER_INPUTMANAGER_H
 
 #include <map>
 #include <SDL.h>
+#include "InputAction.h"
 
 class InputManager{
 public:
-	int update();
-	int handle();
+	InputAction handle();
 private:
 	SDL_Event event;
 	void readEvent();

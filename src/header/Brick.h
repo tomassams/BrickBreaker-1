@@ -1,7 +1,9 @@
-#ifndef BRICKBRAKER_BRICK_H
-#define BRICKBRAKER_BRICK_H
+#ifndef BRICKBREAKER_BRICK_H
+#define BRICKBREAKER_BRICK_H
+
 #include <iostream>
 #include <SDL.h>
+
 class Brick {
 
 public:

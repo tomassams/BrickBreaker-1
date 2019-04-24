@@ -1,7 +1,16 @@
 #include <SDL.h>
 #include "../header/PlayingState.h"
 
-PlayingState::PlayingState() {
+PlayingState::PlayingState(Renderer &r) {
+    renderer = r;
+
+    paddle = Paddle();
+    ball = Ball();
+    bricks = Bricks();
+
+    renderer.initializeGame();
+
+    SDL_Log("playingState constructed");
     paddle.setParams(800);
     paddle.setPaddlePositions(800, 600);
     ball.setParams(600, 800);
@@ -16,6 +25,8 @@ PlayingState::PlayingState() {
 PlayingState::~PlayingState() = default;
 
 void PlayingState::update() {
+
+    SDL_Log("playingstate update");
 
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
     ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
@@ -32,18 +43,25 @@ void PlayingState::update() {
 
 }
 
-void PlayingState::display(Renderer &renderer) {
+void PlayingState::display(Renderer &rr) {
+    SDL_Log("playingstate display1");
     SDL_RenderClear(renderer.getRenderer());
+    SDL_Log("playingstate display1");
 
     // TODO: loop through a SDL_
-    renderer.drawBricks(bricks);
+    renderer.drawBricks(bricks); // causes crash
+    SDL_Log("playingstate display--1");
     renderer.drawPaddle(paddlePosition);
+    SDL_Log("playingstate display--2");
     renderer.drawBall(ballPosition);
+    SDL_Log("playingstate display--3");
 
     SDL_RenderPresent(renderer.getRenderer());
+    SDL_Log("playingstate display2");
 }
 
 void PlayingState::handleEvent() {
+    SDL_Log("playingstate eventhandle");
     switch(inputManager.handle()) {
         case 0:
             active = false;
@@ -65,6 +83,7 @@ bool PlayingState::isActive() {
 }
 
 std::unique_ptr<GameState> PlayingState::nextState() {
+    SDL_Log("playingstate nextstate return");
     // TODO: handle transition to next state (e.g. pause or exit/menu)
-    return std::unique_ptr<GameState>();
+    return nullptr;
 }

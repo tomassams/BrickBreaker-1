@@ -1,5 +1,5 @@
-#ifndef BRICKBRAKER_BALL_H
-#define BRICKBRAKER_BALL_H
+#ifndef BRICKBREAKER_BALL_H
+#define BRICKBREAKER_BALL_H
 
 #include <iostream>
 #include <SDL.h>

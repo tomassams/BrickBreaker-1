@@ -1,0 +1,12 @@
+//
+// Created by ts on 4/24/2019.
+//
+
+#ifndef BRICKBREAKER_INPUTACTION_H
+#define BRICKBREAKER_INPUTACTION_H
+
+enum InputAction {
+    QUIT_GAME, MOVE_LEFT, MOVE_RIGHT, NOTHING
+};
+
+#endif //BRICKBREAKER_INPUTACTION_H
