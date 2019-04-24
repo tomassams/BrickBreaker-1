@@ -1,8 +1,8 @@
 #include "header/GameManager.h"
 #include "header/GameMenu.h"
 
-GameManager GameManager;
-GameMenu menu;
+//GameManager GameManager;
+//GameMenu menu;
 //GameManager GameManager;
 
 int main(int argc, char * argv[]) {

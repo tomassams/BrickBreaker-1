@@ -35,9 +35,6 @@ private:
 	int WIDTH = 800, HEIGHT = 600;
 	int numberOfBrokeBricks = 0;
 
-	void activateGame();
-	void destroy();
-	void userInput();
 	void updateBrickPositions();
 
 	InputManager input;
