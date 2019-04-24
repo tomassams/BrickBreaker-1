@@ -27,6 +27,8 @@ private:
 
     SDL_Surface *brickSurface;
     SDL_Texture *brickTexture;
+
+	void swapBrickImage(int brickHealth);
 };
 
 

@@ -22,15 +22,12 @@ void Renderer::initialize() {
     if (paddleSurface == nullptr)
     	std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
 
-    brickSurface = IMG_Load("../res/images/rectGreen.png");
-    if (brickSurface == nullptr)
-    	std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
+
 
     renderer = SDL_CreateRenderer(window, -1, 0);
 
     paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
     ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
-    brickTexture = SDL_CreateTextureFromSurface(renderer, brickSurface);
 }
 
 void Renderer::destroy() {
@@ -43,23 +40,23 @@ void Renderer::destroy() {
     SDL_DestroyWindow(window);
 }
 
-void Renderer::drawPaddle(SDL_Rect rect) {
+void Renderer:: drawPaddle(SDL_Rect rect) {
     SDL_RenderCopy(renderer, paddleTexture, nullptr, &rect);
 }
 
-void Renderer::drawBall(SDL_Rect rect) {
+void Renderer:: drawBall(SDL_Rect rect) {
     SDL_RenderCopy(renderer, ballTexture, nullptr, &rect);
 }
 
-void Renderer::drawBrick(SDL_Rect rect) {
+void Renderer:: drawBrick(SDL_Rect rect) {
     SDL_RenderCopy(renderer, brickTexture, nullptr, &rect);
 }
 
-SDL_Renderer* Renderer::getRenderer() {
+SDL_Renderer* Renderer:: getRenderer() {
     return renderer;
 }
 
-void Renderer::drawBricks(Bricks &bricks) {
+void Renderer:: drawBricks(Bricks &bricks) {
     for (int i = 0; i < Bricks::brickY; i++)
     {
         for (int j = 0; j < Bricks::brickX; j++)
@@ -73,9 +70,37 @@ void Renderer::drawBricks(Bricks &bricks) {
             }
             else
             {
-                SDL_Rect brickRect = bricks.getBrick(i, j).rect;
+            	Brick brick = bricks.getBrick(i, j);
+                SDL_Rect brickRect = brick.rect;
+				swapBrickImage(brick.getHealth());
                 SDL_RenderCopy(renderer, brickTexture, nullptr, &brickRect);
             }
         }
     }
+}
+
+void Renderer:: swapBrickImage(int brickHealth)
+{
+	SDL_FreeSurface(brickSurface);
+	switch (brickHealth)
+	{
+		case 1:
+			brickSurface = IMG_Load("../res/images/rectGreen.png");
+			break;
+		case 2:
+			brickSurface = IMG_Load("../res/images/rectBlue.png");
+			break;
+		case 3:
+			brickSurface = IMG_Load("../res/images/rectYellow.png");
+			break;
+		case 4:
+			brickSurface = IMG_Load("../res/images/rectRed.png");
+			break;
+		default:
+			brickSurface = IMG_Load("../res/images/rectPurp.png");
+	}
+	if (brickSurface == nullptr)
+		std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
+
+	brickTexture = SDL_CreateTextureFromSurface(renderer, brickSurface);
 }
