@@ -1,4 +1,6 @@
 #include "../header/GameManager.h"
+#include "../header/GameState.h"
+#include "../header/PlayingState.h"
 
 void GameManager::initialize()
 {
@@ -138,4 +140,39 @@ void GameManager::playGame()
 		SDL_Delay(2);
 
 	} while (!quite);
+}
+
+void GameManager::init() {
+
+}
+
+void GameManager::play() {
+
+	bool running = true;
+	std::unique_ptr<GameState> currentState(new PlayingState());
+
+	while(running) {
+		SDL_Event event;
+
+		while(SDL_PollEvent(&event)) {
+			if(event.type == SDL_QUIT) {
+				running = false;
+			}
+			else {
+				currentState->handleEvent(event);
+			}
+		}
+
+		currentState->update();
+		currentState->display();
+
+		SDL_Delay(2);
+	}
+
+	// quit (TODO: handle swap states - pause / main menu)
+	gameEnded = true;
+}
+
+void GameManager::quit() {
+
 }

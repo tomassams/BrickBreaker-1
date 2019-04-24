@@ -16,6 +16,11 @@ public:
 	void quiteGame();
 	void initialize();
 
+	void init();
+	void play();
+	void quit();
+	bool gameEnded = false;
+
 private:
 	void activateGame();
 	void destroy();
