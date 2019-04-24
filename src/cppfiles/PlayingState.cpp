@@ -33,7 +33,7 @@ void PlayingState::update() {
 
         if (numBrokenBricks == bricks.numberOfBricks)
         {
-            active = false;
+            // active = false;
         }
     }
 
