@@ -42,10 +42,12 @@ void Renderer::initialize() {
 
 void Renderer::destroy() {
     SDL_DestroyTexture(paddleTexture);
-    SDL_FreeSurface(paddleSurface);
-
     SDL_DestroyTexture(ballTexture);
+    SDL_DestroyTexture(brickTexture);
+
     SDL_FreeSurface(ballSurface);
+    SDL_FreeSurface(paddleSurface);
+    SDL_FreeSurface(brickSurface);
 
 	std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [](auto surface){
 		SDL_FreeSurface(surface);

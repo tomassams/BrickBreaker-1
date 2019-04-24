@@ -29,6 +29,8 @@ private:
     SDL_Rect paddlePosition;
     SDL_Rect ballPosition;
 
+    int numBrokenBricks = 0;
+
     std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY];
 
     bool active = true; // temp
