@@ -1,4 +1,6 @@
 #include "../header/GameManager.h"
+#include "../header/GameState.h"
+#include "../header/PlayingState.h"
 
 void GameManager::initialize()
 {
@@ -24,6 +26,8 @@ void GameManager::initialize()
 
 	brickSurface = SDL_LoadBMP("../res/brick_red.bmp");
 	if (brickSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
+
+	renderer = SDL_CreateRenderer(window, -1, 0);
 
 	paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
 	ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
@@ -138,4 +142,34 @@ void GameManager::playGame()
 		SDL_Delay(2);
 
 	} while (!quite);
+}
+
+void GameManager::init() {
+	stateRenderer.initialize();
+}
+
+void GameManager::play() {
+	bool running = true;
+	std::unique_ptr<GameState> currentState(new PlayingState());
+
+	while(running) {
+
+		currentState->handleEvent();
+		currentState->update();
+		currentState->display(stateRenderer);
+
+		SDL_Delay(2);
+
+		std::unique_ptr<GameState> nextState = currentState->nextState();
+		if(nextState || !currentState->isActive()) {
+			running = false;
+//			std::swap(currentState, nextState);
+		}
+	}
+
+	gameEnded = true; // quit (TODO: handle swap states - pause / main menu)
+}
+
+void GameManager::quit() {
+	stateRenderer.destroy();
 }

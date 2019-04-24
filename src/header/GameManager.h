@@ -8,6 +8,7 @@
 #include "Bricks.h"
 #include "InputManager.h"
 #include "Paddle.h"
+#include "Renderer.h"
 
 class GameManager{
 
@@ -17,7 +18,18 @@ public:
 	void quiteGame();
 	void initialize();
 
+	void init();
+	void play();
+	void quit();
+	bool gameEnded = false;
+
 private:
+    Renderer stateRenderer;
+
+	void activateGame();
+	void destroy();
+	void userInput();
+
 	bool quite = false;
 	bool winner = false;
 	int WIDTH = 800, HEIGHT = 600;

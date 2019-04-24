@@ -7,7 +7,7 @@
 class InputManager{
 public:
 	int update();
-
+	int handle();
 private:
 	SDL_Event event;
 	void readEvent();
