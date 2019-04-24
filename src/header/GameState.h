@@ -11,8 +11,6 @@
 
 class GameState {
 public:
-    //GameState();
-    //~GameState();
     virtual void update() = 0;
     virtual void display(Renderer &renderer) = 0;
     virtual void handleEvent() = 0;
