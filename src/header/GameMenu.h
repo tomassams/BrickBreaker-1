@@ -32,7 +32,7 @@ private:
 	SDL_Rect rectPosition[options];
 
 	bool isMouseOnItem(int i);
-	void present();
+	void renderAndPresent();
 	void updateMenuContent(int position, int newColor);
 	void destroy();
 };

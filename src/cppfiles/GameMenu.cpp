@@ -1,6 +1,6 @@
 #include "../header/GameMenu.h"
 
-int GameMenu::displayMenu()
+int GameMenu:: displayMenu()
 {
 	//TODO: Remove all non specific for menu
 	bool quit = false;
@@ -27,7 +27,6 @@ int GameMenu::displayMenu()
 
 	do {
 		SDL_WaitEvent(&event);
-
 		switch (event.type)
 		{
 			case SDL_QUIT:
@@ -65,14 +64,14 @@ int GameMenu::displayMenu()
 			case SDL_KEYDOWN:
 				if (event.key.keysym.sym == SDLK_ESCAPE){ break; }
 		}
-		present();
+		renderAndPresent();
 	} while (!quit);
 
 	destroy();
 	return 0;
 }
 
-bool GameMenu::isMouseOnItem (int position)
+bool GameMenu:: isMouseOnItem(int position)
 {
 	return x >= rectPosition[position].x
 		   && x <= rectPosition[position].x + rectPosition[position].w
@@ -80,7 +79,7 @@ bool GameMenu::isMouseOnItem (int position)
 		   && y <= rectPosition[position].y + rectPosition[position].h;
 }
 
-void GameMenu::present()
+void GameMenu:: renderAndPresent()
 {
 	SDL_RenderCopy(renderer, titleTexture, nullptr, &titleRect);
 	SDL_RenderCopy(renderer, menuTexture[0], nullptr, &rectPosition[0]);
@@ -88,7 +87,7 @@ void GameMenu::present()
 	SDL_RenderPresent(renderer);
 }
 
-void GameMenu::updateMenuContent(int position, int newColor)
+void GameMenu:: updateMenuContent(int position, int newColor)
 {
 
 	menu[position] = TTF_RenderText_Solid(smallFont, labels[position], color[newColor]);
@@ -98,8 +97,8 @@ void GameMenu::updateMenuContent(int position, int newColor)
 	// This should be scalable if we one day want to add a High score screen as well.
 	const int extra = (position == 0) ? 0 : 1;
 
-	// This is the only difference between the two menu items when it comes to position on the screen,
-	// one of the items need to add and the other needs to subtract.
+	// This is the only difference between the two menu items when it comes to position on the screen is that
+	// one of the items need to add and the other needs to subtract clip rect height.
 	const int clipRectHeight = menu[position]->clip_rect.h;
 	const int positioningHeight = (position == 0) ? height/2 - clipRectHeight : height/2 + clipRectHeight;
 
@@ -118,7 +117,7 @@ void GameMenu::updateMenuContent(int position, int newColor)
 	};
 }
 
-void GameMenu::destroy()
+void GameMenu:: destroy()
 {
 	TTF_CloseFont(largeFont);
 	TTF_CloseFont(smallFont);
