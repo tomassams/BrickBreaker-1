@@ -10,7 +10,7 @@
 
 class Renderer {
 public:
-    void initialize(SDL_Rect rect);
+    void initialize();
     void destroy();
     void draw();
     void drawPaddle(SDL_Rect rect);

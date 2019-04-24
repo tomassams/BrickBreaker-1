@@ -5,7 +5,7 @@
 #include <iostream>
 #include "../header/Renderer.h"
 
-void Renderer::initialize(SDL_Rect rect) {
+void Renderer::initialize() {
 
     SDL_Init(SDL_INIT_VIDEO);
     window = SDL_CreateWindow("Brick Breaker", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, 0);
@@ -26,10 +26,6 @@ void Renderer::initialize(SDL_Rect rect) {
 
     paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
     ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
-
-    SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, paddleTexture, nullptr, &rect);
-    SDL_RenderPresent(renderer);
 }
 
 void Renderer::destroy() {

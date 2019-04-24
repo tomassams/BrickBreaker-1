@@ -9,9 +9,11 @@
 PlayingState::PlayingState() {
     paddle.setParams(800);
     paddle.setPaddlePositions(800, 600);
-    SDL_Rect r = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
 
-    renderer.initialize(r);
+    paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
+    ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
+
+    renderer.initialize();
 }
 
 PlayingState::~PlayingState() {
@@ -19,26 +21,26 @@ PlayingState::~PlayingState() {
 }
 
 void PlayingState::update() {
-    // ball.update();
+
+    paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
+    ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
+
     // handleCollisions();
 }
 
 void PlayingState::display() {
-
-    SDL_Rect p = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
-    SDL_Rect b = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
-
     SDL_RenderClear(renderer.getRenderer());
-    renderer.drawPaddle(p);
-    renderer.drawBall(b);
-    SDL_RenderPresent(renderer.getRenderer());
-    // drawBall()
+
+    renderer.drawPaddle(paddlePosition);
+    renderer.drawBall(ballPosition);
     // drawBricks()
+
+    SDL_RenderPresent(renderer.getRenderer());
 }
 
 void PlayingState::handleEvent(const SDL_Event &event) {
     switch(inputManager.handle(event)) {
-        case 0: return; // TODO: destroy / swap state
+        case 0: return; // TODO: destroy / swap state with nextState()
         case 1: paddle.moveLeft();
             break;
         case 2: paddle.moveRight();
@@ -48,5 +50,6 @@ void PlayingState::handleEvent(const SDL_Event &event) {
 }
 
 std::unique_ptr<GameState> PlayingState::nextState() {
+    // TODO: handle transition to next state (e.g. pause or exit/menu)
     return std::unique_ptr<GameState>();
 }

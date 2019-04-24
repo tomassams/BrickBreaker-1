@@ -15,7 +15,7 @@ private:
 	bool isKeyPressed(SDL_Keycode key) { return keymap[key]; }
 	std::map<int, bool> keymap;
 	bool KeyStillDown() {return event.key.repeat != 0;}
-	bool KeyStillDown(const SDL_Event &event) {return event.key.repeat != 0;}
+	bool KeyStillDown(const SDL_Event &e) {return e.key.repeat != 0;}
 };
 
 

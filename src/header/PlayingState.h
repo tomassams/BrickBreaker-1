@@ -27,6 +27,9 @@ private:
 
     Paddle paddle;
     Ball ball;
+
+    SDL_Rect paddlePosition;
+    SDL_Rect ballPosition;
 };
 
 
