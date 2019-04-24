@@ -11,6 +11,7 @@
 #include "InputManager.h"
 #include "Paddle.h"
 #include "Renderer.h"
+#include "Ball.h"
 
 class PlayingState : public GameState {
 public:
@@ -22,8 +23,10 @@ public:
     std::unique_ptr<GameState> nextState() override;
 private:
     InputManager inputManager;
-    Paddle paddle;
     Renderer renderer;
+
+    Paddle paddle;
+    Ball ball;
 };
 
 

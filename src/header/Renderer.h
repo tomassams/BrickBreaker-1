@@ -14,10 +14,16 @@ public:
     void destroy();
     void draw();
     void drawPaddle(SDL_Rect rect);
+    void drawBall(SDL_Rect rect);
+    SDL_Renderer* getRenderer();
 private:
     int WIDTH = 800, HEIGHT = 600;
     SDL_Window *window;
     SDL_Renderer *renderer;
+
+    SDL_Surface *ballSurface;
+    SDL_Texture *ballTexture;
+    SDL_Rect ballRect;
 
     SDL_Surface *paddleSurface;
     SDL_Texture *paddleTexture;

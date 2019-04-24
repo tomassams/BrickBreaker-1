@@ -2,6 +2,7 @@
 // Created by ts on 4/24/2019.
 //
 
+#include <SDL.h>
 #include "../header/PlayingState.h"
 
 
@@ -24,9 +25,13 @@ void PlayingState::update() {
 
 void PlayingState::display() {
 
-    SDL_Rect r = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
-    renderer.drawPaddle(r);
+    SDL_Rect p = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
+    SDL_Rect b = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
 
+    SDL_RenderClear(renderer.getRenderer());
+    renderer.drawPaddle(p);
+    renderer.drawBall(b);
+    SDL_RenderPresent(renderer.getRenderer());
     // drawBall()
     // drawBricks()
 }
