@@ -6,15 +6,13 @@
 
 class InputManager{
 public:
-	int update();
 	int handle();
 private:
+	std::map<int, bool> keymap;
 	SDL_Event event;
 	void readEvent();
 	bool isKeyPressed(SDL_Keycode key) { return keymap[key]; }
-	std::map<int, bool> keymap;
 	bool KeyStillDown() {return event.key.repeat != 0;}
 };
-
 
 #endif

@@ -71,7 +71,6 @@ bool PlayingState::isActive() {
     return active;
 }
 
-
 std::unique_ptr<GameState> PlayingState::nextState() {
     // TODO: handle transition to next state (e.g. pause or exit/menu)
     return std::unique_ptr<GameState>();
