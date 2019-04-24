@@ -1,7 +1,3 @@
-//
-// Created by ts on 4/24/2019.
-//
-
 #ifndef BRICKBREAKER_GAMESTATE_H
 #define BRICKBREAKER_GAMESTATE_H
 
@@ -19,4 +15,4 @@ public:
     virtual bool isActive() = 0; // temp
 };
 
-#endif //BRICKBREAKER_GAMESTATE_H
+#endif

@@ -1,14 +1,9 @@
-//
-// Created by ts on 4/24/2019.
-//
-
 #include <SDL.h>
 #include "../header/PlayingState.h"
 
 PlayingState::PlayingState() {
     paddle.setParams(800);
     paddle.setPaddlePositions(800, 600);
-
     ball.setParams(600, 800);
 
     bricks.InitializeBricks();

@@ -23,6 +23,7 @@ private:
 	int ballScaling = 20;
 	int HEIGHT, WIDTH;
 	bool outOfBounds = false;
+	bool paddleCollision(int paddleY, int paddleX);
 };
 
 #endif

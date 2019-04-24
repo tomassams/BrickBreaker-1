@@ -1,7 +1,3 @@
-//
-// Created by ts on 4/24/2019.
-//
-
 #ifndef BRICKBREAKER_PLAYINGSTATE_H
 #define BRICKBREAKER_PLAYINGSTATE_H
 

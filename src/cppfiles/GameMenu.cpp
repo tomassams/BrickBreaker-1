@@ -13,7 +13,7 @@ int GameMenu:: displayMenu()
 	largeFont = TTF_OpenFont("../res/arial/films.Dynasty.ttf", 100);
 	smallFont = TTF_OpenFont("../res/arial/films.Dynasty.ttf", 50);
 
-	//SDL_GetWindowSize(screen, &width, &height);
+	//SDL_GetWindowSize(screen, &width, &height); //TODO: This function updated width & height should be in loop
 
 	// CREATE TITLE TEXT
 	titleSurface = TTF_RenderText_Solid(largeFont,"Brick Breaker", color[0]);
