@@ -4,17 +4,17 @@ void Bricks:: InitializeBricks()
 {
 	brickVector->clear();
 
-	int y = 50, x = 20;
+	int horizontalSpacing = 10;
 
 	for (int i = 0; i < brickY; i++)
 	{
+		int verticalSpacing = 10;
 		for (int j = 0; j < brickX; j++)
 		{
-			brickVector->push_back(Brick(y, x));
-			y += 100;
+			brickVector->push_back( Brick(verticalSpacing, horizontalSpacing, brickY-i));
+			verticalSpacing += 88;
 		}
-		y = 50;
-		x += 50;
+		horizontalSpacing += 40;
 	}
 }
 

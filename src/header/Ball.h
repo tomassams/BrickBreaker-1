@@ -19,7 +19,7 @@ public:
 	void reset();
 
 private:
-	int x = 200, y = 200, velocityX = 1, velocityY = 1;
+	int vertical = 300, horizontal = 200, velocityX = 1, velocityY = 1;
 	int ballScaling = 10;
 	int HEIGHT, WIDTH;
 	bool outOfBounds = false;

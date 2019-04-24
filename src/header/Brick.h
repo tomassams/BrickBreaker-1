@@ -7,20 +7,23 @@ class Brick {
 public:
 	Brick(){
 		isBrickHit = false;
+		life = 1;
 	};
 
-	Brick(int y, int x) {
+	Brick(int verticalSpacing, int horizontalSpacing, int life) {
+		this->life = life;
 		isBrickHit = false;
-		rect = {y, x, brickW, brickH};
+		rect = { verticalSpacing, horizontalSpacing, brickWidth, brickHeight };
 	};
-	SDL_Rect rect{};
 
-	void resetBrick() { isBrickHit = false; }
-	bool isHit() { return isBrickHit; }
-	void hit() { isBrickHit = true; }
+	SDL_Rect rect{};
+	void resetBrick();
+	bool isHit();
+	void hit();
 
 private:
 	bool isBrickHit = false;
-	int brickW = 80, brickH = 35;
+	int brickWidth = 80, brickHeight = 35;
+	int life;
 };
 #endif
