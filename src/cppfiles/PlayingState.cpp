@@ -1,7 +1,9 @@
 #include <SDL.h>
 #include "../header/PlayingState.h"
 
-PlayingState::PlayingState() {
+PlayingState::PlayingState(Renderer &renderer) {
+    renderer.initializeGame();
+
     paddle.setParams(800);
     paddle.setPaddlePositions(800, 600);
     ball.setParams(600, 800);

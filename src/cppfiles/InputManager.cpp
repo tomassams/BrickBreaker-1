@@ -25,6 +25,12 @@ InputAction InputManager::handle() {
 	else if (isKeyPressed(SDLK_RIGHT) || isKeyPressed(SDLK_d))
 		return RIGHT_ARROW;
 
+	else if(event.type == SDL_MOUSEMOTION)
+		return MOUSE_MOVEMENT;
+
+	else if(event.type == SDL_MOUSEBUTTONDOWN)
+		return MOUSE_CLICK;
+
 	else
 		return NOTHING;
 }

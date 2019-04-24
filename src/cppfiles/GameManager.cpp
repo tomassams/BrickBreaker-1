@@ -1,6 +1,7 @@
 #include "../header/GameManager.h"
 #include "../header/GameState.h"
 #include "../header/PlayingState.h"
+#include "../header/MainMenuState.h"
 
 void GameManager::init() {
 	stateRenderer.initialize();
@@ -9,7 +10,8 @@ void GameManager::init() {
 void GameManager::play() {
 
 	bool running = true;
-	std::unique_ptr<GameState> currentState(new PlayingState());
+//    std::unique_ptr<GameState> currentState(new PlayingState(stateRenderer));
+    std::unique_ptr<GameState> currentState(new MainMenuState(stateRenderer));
 
 	while(running) {
 
@@ -19,7 +21,9 @@ void GameManager::play() {
 
 		SDL_Delay(2);
 
+
 		std::unique_ptr<GameState> nextState = currentState->nextState();
+//		std::unique_ptr<GameState> nextState(new PlayingState(stateRenderer));
 		if(nextState || !currentState->isActive()) {
 			running = false;
 //			std::swap(currentState, nextState); // TODO

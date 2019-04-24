@@ -9,14 +9,17 @@
 class Renderer {
 public:
     void initialize();
+
+    void initializeMainMenu();
+    void initializeGame();
+
     void destroy();
+
     void drawPaddle(SDL_Rect rect);
     void drawBall(SDL_Rect rect);
     void drawBrick(SDL_Rect rect);
     void drawBricks(Bricks &bricks);
 
-    void showMainMenu();
-    void destroyMainMnu();
     SDL_Renderer* getRenderer();
 private:
     int WIDTH = 800, HEIGHT = 600;

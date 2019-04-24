@@ -13,7 +13,7 @@
 
 class PlayingState : public GameState {
 public:
-    PlayingState();
+    PlayingState(Renderer &renderer);
     ~PlayingState();
     void update() override;
     void display(Renderer &renderer) override;
