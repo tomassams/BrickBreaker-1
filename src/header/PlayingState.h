@@ -27,21 +27,16 @@ private:
     InputManager inputManager;
 
     Bricks bricks;
-    Brick brick;
     Paddle paddle;
     Ball ball;
 
     SDL_Rect paddlePosition;
     SDL_Rect ballPosition;
 
+    std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY];
+
     bool active = true; // temp
     bool isActive(); // temp
-
-//    SDL_Event event;
-//    void readEvent();
-//    bool isKeyPressed(SDL_Keycode key) { return keymap[key]; }
-//    std::map<int, bool> keymap;
-//    bool KeyStillDown() {return event.key.repeat != 0;}
 };
 
 

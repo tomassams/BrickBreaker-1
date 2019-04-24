@@ -10,18 +10,31 @@ PlayingState::PlayingState() {
     paddle.setParams(800);
     paddle.setPaddlePositions(800, 600);
 
+    ball.setParams(600, 800);
+
+    bricks.InitializeBricks();
+
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
     ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
 }
 PlayingState::~PlayingState() = default;
 
 void PlayingState::update() {
+
+    if (bricks.ballBrickCollision(ballPosition)) {
+        ball.changeVelocityX();
+    }
+
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
     ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
+
 }
 
 void PlayingState::display(Renderer &renderer) {
     SDL_RenderClear(renderer.getRenderer());
+
+    // TODO: loop through a SDL_
+    renderer.drawBricks(bricks);
 
     renderer.drawPaddle(paddlePosition);
     renderer.drawBall(ballPosition);
@@ -45,6 +58,7 @@ void PlayingState::handleEvent() {
     }
 }
 
+// temp
 bool PlayingState::isActive() {
     return active;
 }

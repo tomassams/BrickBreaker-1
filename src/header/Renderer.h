@@ -6,6 +6,7 @@
 #define BRICKBREAKER_RENDERER_H
 
 #include <SDL.h>
+#include "Bricks.h"
 
 
 class Renderer {
@@ -14,6 +15,8 @@ public:
     void destroy();
     void drawPaddle(SDL_Rect rect);
     void drawBall(SDL_Rect rect);
+    void drawBrick(SDL_Rect rect);
+    void drawBricks(Bricks &bricks);
     SDL_Renderer* getRenderer();
 private:
     int WIDTH = 800, HEIGHT = 600;

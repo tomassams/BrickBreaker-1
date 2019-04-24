@@ -50,6 +50,31 @@ void Renderer::drawBall(SDL_Rect rect) {
     SDL_RenderCopy(renderer, ballTexture, nullptr, &rect);
 }
 
+void Renderer::drawBrick(SDL_Rect rect) {
+    SDL_RenderCopy(renderer, brickTexture, nullptr, &rect);
+}
+
 SDL_Renderer* Renderer::getRenderer() {
     return renderer;
+}
+
+void Renderer::drawBricks(Bricks &bricks) {
+    for (int i = 0; i < bricks.brickY; i++)
+    {
+        for (int j = 0; j < bricks.brickX; j++)
+        {
+            if (bricks.getBrick(i, j).isHit())
+            {
+                SDL_Rect brickRect = bricks.getBrick(i, j).rect;
+                brickRect.x = 300000;
+                brickRect.y = 300000;
+                SDL_RenderCopy(renderer, brickTexture, nullptr, &brickRect);
+            }
+            else
+            {
+                SDL_Rect brickRect = bricks.getBrick(i, j).rect;
+                SDL_RenderCopy(renderer, brickTexture, nullptr, &brickRect);
+            }
+        }
+    }
 }
