@@ -22,10 +22,14 @@ void Renderer::initialize() {
     paddleSurface = SDL_LoadBMP("../res/paddle.bmp");
     if (paddleSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
 
+    brickSurface = SDL_LoadBMP("../res/brick_red.bmp");
+    if (brickSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
+
     renderer = SDL_CreateRenderer(window, -1, 0);
 
     paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
     ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
+    brickTexture = SDL_CreateTextureFromSurface(renderer, brickSurface);
 }
 
 void Renderer::destroy() {
@@ -46,6 +50,6 @@ void Renderer::drawBall(SDL_Rect rect) {
     SDL_RenderCopy(renderer, ballTexture, nullptr, &rect);
 }
 
-SDL_Renderer *Renderer::getRenderer() {
+SDL_Renderer* Renderer::getRenderer() {
     return renderer;
 }

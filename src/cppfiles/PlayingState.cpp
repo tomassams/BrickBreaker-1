@@ -29,16 +29,26 @@ void PlayingState::display(Renderer &renderer) {
     SDL_RenderPresent(renderer.getRenderer());
 }
 
-void PlayingState::handleEvent(const SDL_Event &event) {
-    switch(inputManager.handle(event)) {
-        case 0: return; // TODO: destroy / swap state with nextState()
-        case 1: paddle.moveLeft();
+void PlayingState::handleEvent() {
+    switch(inputManager.handle()) {
+        case 0:
+            active = false;
             break;
-        case 2: paddle.moveRight();
+        case 1:
+            paddle.moveLeft();
             break;
-        default: return;
+        case 2:
+            paddle.moveRight();
+            break;
+        default:
+            return;
     }
 }
+
+bool PlayingState::isActive() {
+    return active;
+}
+
 
 std::unique_ptr<GameState> PlayingState::nextState() {
     // TODO: handle transition to next state (e.g. pause or exit/menu)

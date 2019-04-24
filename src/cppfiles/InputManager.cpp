@@ -32,10 +32,11 @@ int InputManager:: update()
 		return 100;
 }
 
-int InputManager::handle(const SDL_Event &e) {
-	readEvent(e);
+int InputManager::handle() {
+	SDL_PollEvent(&event);
+	readEvent();
 
-	if (e.type == SDL_QUIT || isKeyPressed(SDLK_ESCAPE) ||isKeyPressed(SDL_QUIT))
+	if (event.type == SDL_QUIT || isKeyPressed(SDLK_ESCAPE) ||isKeyPressed(SDL_QUIT))
 		return 0;
 
 	else if ((isKeyPressed(SDLK_LEFT) || isKeyPressed(SDLK_a)))
@@ -44,21 +45,6 @@ int InputManager::handle(const SDL_Event &e) {
 	else if (isKeyPressed(SDLK_RIGHT) || isKeyPressed(SDLK_d))
 		return 2;
 
-	else if (isKeyPressed(SDLK_SPACE))
-		return 3;
-
 	else
 		return 100;
-}
-
-void InputManager::readEvent(const SDL_Event &e) {
-	if (e.type == SDL_KEYDOWN)
-	{
-		if (KeyStillDown(e)) return;
-
-		keymap[e.key.keysym.sym] = true;
-	}
-
-	if (e.type == SDL_KEYUP)
-		keymap[e.key.keysym.sym] = false;
 }

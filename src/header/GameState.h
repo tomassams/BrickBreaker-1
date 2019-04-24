@@ -15,8 +15,10 @@ public:
     //~GameState();
     virtual void update() = 0;
     virtual void display(Renderer &renderer) = 0;
-    virtual void handleEvent(const SDL_Event &event) = 0;
+    virtual void handleEvent() = 0;
     virtual std::unique_ptr<GameState> nextState() = 0;
+
+    virtual bool isActive() = 0; // temp
 };
 
 #endif //BRICKBREAKER_GAMESTATE_H

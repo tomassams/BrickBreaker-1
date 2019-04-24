@@ -25,8 +25,6 @@ void GameManager::initialize()
 	brickSurface = SDL_LoadBMP("../res/brick_red.bmp");
 	if (brickSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
 
-
-
 	renderer = SDL_CreateRenderer(window, -1, 0);
 
 	paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
@@ -151,21 +149,18 @@ void GameManager::play() {
 	std::unique_ptr<GameState> currentState(new PlayingState());
 
 	while(running) {
-		SDL_Event event;
 
-		while(SDL_PollEvent(&event)) {
-			if(event.type == SDL_QUIT) {
-				running = false;
-			}
-			else {
-				currentState->handleEvent(event);
-			}
-		}
-
+		currentState->handleEvent();
 		currentState->update();
 		currentState->display(stateRenderer);
 
 		SDL_Delay(2);
+
+		std::unique_ptr<GameState> nextState = currentState->nextState();
+		if(nextState || !currentState->isActive()) {
+			running = false;
+//			std::swap(currentState, nextState);
+		}
 	}
 
 	gameEnded = true; // quit (TODO: handle swap states - pause / main menu)

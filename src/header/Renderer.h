@@ -22,11 +22,12 @@ private:
 
     SDL_Surface *ballSurface;
     SDL_Texture *ballTexture;
-    SDL_Rect ballRect;
 
     SDL_Surface *paddleSurface;
     SDL_Texture *paddleTexture;
-    SDL_Rect paddleRect;
+
+    SDL_Surface *brickSurface;
+    SDL_Texture *brickTexture;
 };
 
 
