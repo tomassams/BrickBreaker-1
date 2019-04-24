@@ -1,25 +1,30 @@
 #include <iostream>
+#include <SDL_image.h>
 #include "../header/Renderer.h"
 
 void Renderer::initialize() {
 
     SDL_Init(SDL_INIT_VIDEO);
+
+    if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
+    	std::cout << "Could not initialize SDL Images: " << SDL_GetError() << std::endl;
+
     window = SDL_CreateWindow("Brick Breaker", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, 0);
 
     if (window == nullptr)
-    {
-        std::cout << "Could not create window" << SDL_GetError() << std::endl;
-        return;
-    }
+    	std::cout << "Could not create window" << SDL_GetError() << std::endl;
 
-    ballSurface = SDL_LoadBMP("../res/ball.bmp");
-    if (ballSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
+    ballSurface = IMG_Load("../res/images/ballBlue.png");
+    if (ballSurface == nullptr)
+    	std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
 
-    paddleSurface = SDL_LoadBMP("../res/paddle.bmp");
-    if (paddleSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
+    paddleSurface = IMG_Load("../res/images/paddleRed.png");
+    if (paddleSurface == nullptr)
+    	std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
 
-    brickSurface = SDL_LoadBMP("../res/brick_red.bmp");
-    if (brickSurface == nullptr){ std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl; }
+    brickSurface = IMG_Load("../res/images/rectGreen.png");
+    if (brickSurface == nullptr)
+    	std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
 
     renderer = SDL_CreateRenderer(window, -1, 0);
 
@@ -55,9 +60,9 @@ SDL_Renderer* Renderer::getRenderer() {
 }
 
 void Renderer::drawBricks(Bricks &bricks) {
-    for (int i = 0; i < bricks.brickY; i++)
+    for (int i = 0; i < Bricks::brickY; i++)
     {
-        for (int j = 0; j < bricks.brickX; j++)
+        for (int j = 0; j < Bricks::brickX; j++)
         {
             if (bricks.getBrick(i, j).isHit())
             {

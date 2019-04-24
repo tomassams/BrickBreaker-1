@@ -2,7 +2,7 @@
 #define BRICKBRAKER_BRICK_H
 #include <iostream>
 #include <SDL.h>
-class Brick{
+class Brick {
 
 public:
 	Brick(){
@@ -16,8 +16,8 @@ public:
 	SDL_Rect rect{};
 
 	void resetBrick() { isBrickHit = false; }
-	bool isHit() {return isBrickHit;}
-	void hit() {isBrickHit = true;}
+	bool isHit() { return isBrickHit; }
+	void hit() { isBrickHit = true; }
 
 private:
 	bool isBrickHit = false;

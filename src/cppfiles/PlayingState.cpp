@@ -29,7 +29,6 @@ void PlayingState::display(Renderer &renderer) {
 
     // TODO: loop through a SDL_
     renderer.drawBricks(bricks);
-
     renderer.drawPaddle(paddlePosition);
     renderer.drawBall(ballPosition);
 

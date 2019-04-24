@@ -12,7 +12,7 @@ public:
 		WIDTH = w;
 	}
 
-	SDL_Rect moveBall(int paddleY, int paddleX);
+	SDL_Rect moveBall(int paddlePositionX, int paddlePositionY);
 	void changeVelocityX() {velocityX = -velocityX;}
 	void changeVelocityY() {velocityY = -velocityY;}
 	bool isOutOfBounds() const {return outOfBounds;}
@@ -20,10 +20,10 @@ public:
 
 private:
 	int x = 200, y = 200, velocityX = 1, velocityY = 1;
-	int ballScaling = 20;
+	int ballScaling = 10;
 	int HEIGHT, WIDTH;
 	bool outOfBounds = false;
-	bool paddleCollision(int paddleY, int paddleX);
+	bool paddleCollision(int paddlePositionX, int paddlePositionY);
 };
 
 #endif

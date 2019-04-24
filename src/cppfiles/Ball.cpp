@@ -9,34 +9,27 @@ void Ball::reset()
 	velocityY = 1;
 }
 
-SDL_Rect Ball::moveBall(int paddleY, int paddleX)
+SDL_Rect Ball:: moveBall(int paddlePositionX, int paddlePositionY)
 {
 	if (y + ballScaling == WIDTH || y + ballScaling == 0)
-	{
 		changeVelocityY();
-	}
 
-	if ( paddleCollision(paddleY, paddleX) || x + ballScaling <= 0)
-	{
+	if ( paddleCollision(paddlePositionX, paddlePositionY) || x + ballScaling <= 0)
 		changeVelocityX();
-	}
 
 	if (x + ballScaling >= HEIGHT)
-	{
 		outOfBounds = true;
-	}
 
 	x += velocityX;
 	y += velocityY;
 
-	return {y, x, 40, 40};
+	return {y, x, 15, 15};
 }
 
-//TODO: Probably here paddle bug happens
-bool Ball:: paddleCollision(int paddleY, int paddleX)
+bool Ball:: paddleCollision(int paddlePositionX, int paddlePositionY)
 {
-	return y + ballScaling >= paddleX
-		&& y + ballScaling <= paddleX + 100
-	 	&& x + ballScaling >= paddleY
-	 	&& x + ballScaling <= paddleY + 40;
+	return y + ballScaling >= paddlePositionY
+		&& y + ballScaling <= paddlePositionY + 80 //TODO: Tweak value to remove paddle bug
+	 	&& x + ballScaling >= paddlePositionX
+	 	&& x + ballScaling <= paddlePositionX + 20; //TODO: Tweak value to remove paddle bug
 }
