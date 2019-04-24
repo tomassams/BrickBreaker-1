@@ -17,9 +17,10 @@ public:
 	};
 
 	SDL_Rect rect{};
-	void resetBrick();
-	bool isHit();
-	void hit();
+	void resetBrick() {isBrickHit = false;}
+	bool isHit() { return isBrickHit; }
+	void hit() { if (--life == 0) isBrickHit = true;}
+	int getHealth() { return life;}
 
 private:
 	bool isBrickHit = false;
