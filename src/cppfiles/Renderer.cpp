@@ -32,6 +32,9 @@ void Renderer::destroy() {
     SDL_DestroyTexture(paddleTexture);
     SDL_FreeSurface(paddleSurface);
 
+    SDL_DestroyTexture(ballTexture);
+    SDL_FreeSurface(ballSurface);
+
     SDL_DestroyWindow(window);
 }
 
@@ -41,10 +44,6 @@ void Renderer::drawPaddle(SDL_Rect rect) {
 
 void Renderer::drawBall(SDL_Rect rect) {
     SDL_RenderCopy(renderer, ballTexture, nullptr, &rect);
-}
-
-void Renderer::draw() {
-
 }
 
 SDL_Renderer *Renderer::getRenderer() {

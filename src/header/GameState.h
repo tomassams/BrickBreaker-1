@@ -7,13 +7,14 @@
 
 #include <SDL.h>
 #include <memory>
+#include "Renderer.h"
 
 class GameState {
 public:
     //GameState();
     //~GameState();
     virtual void update() = 0;
-    virtual void display() = 0;
+    virtual void display(Renderer &renderer) = 0;
     virtual void handleEvent(const SDL_Event &event) = 0;
     virtual std::unique_ptr<GameState> nextState() = 0;
 };

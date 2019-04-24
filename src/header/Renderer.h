@@ -12,7 +12,6 @@ class Renderer {
 public:
     void initialize();
     void destroy();
-    void draw();
     void drawPaddle(SDL_Rect rect);
     void drawBall(SDL_Rect rect);
     SDL_Renderer* getRenderer();

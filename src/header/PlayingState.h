@@ -18,12 +18,11 @@ public:
     PlayingState();
     ~PlayingState();
     void update() override;
-    void display() override;
+    void display(Renderer &renderer) override;
     void handleEvent(const SDL_Event &event) override;
     std::unique_ptr<GameState> nextState() override;
 private:
     InputManager inputManager;
-    Renderer renderer;
 
     Paddle paddle;
     Ball ball;

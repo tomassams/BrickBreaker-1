@@ -143,11 +143,10 @@ void GameManager::playGame()
 }
 
 void GameManager::init() {
-
+	stateRenderer.initialize();
 }
 
 void GameManager::play() {
-
 	bool running = true;
 	std::unique_ptr<GameState> currentState(new PlayingState());
 
@@ -164,15 +163,14 @@ void GameManager::play() {
 		}
 
 		currentState->update();
-		currentState->display();
+		currentState->display(stateRenderer);
 
 		SDL_Delay(2);
 	}
 
-	// quit (TODO: handle swap states - pause / main menu)
-	gameEnded = true;
+	gameEnded = true; // quit (TODO: handle swap states - pause / main menu)
 }
 
 void GameManager::quit() {
-
+	stateRenderer.destroy();
 }

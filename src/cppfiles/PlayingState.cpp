@@ -12,28 +12,19 @@ PlayingState::PlayingState() {
 
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
     ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
-
-    renderer.initialize();
 }
-
-PlayingState::~PlayingState() {
-    renderer.destroy();
-}
+PlayingState::~PlayingState() = default;
 
 void PlayingState::update() {
-
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
     ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
-
-    // handleCollisions();
 }
 
-void PlayingState::display() {
+void PlayingState::display(Renderer &renderer) {
     SDL_RenderClear(renderer.getRenderer());
 
     renderer.drawPaddle(paddlePosition);
     renderer.drawBall(ballPosition);
-    // drawBricks()
 
     SDL_RenderPresent(renderer.getRenderer());
 }

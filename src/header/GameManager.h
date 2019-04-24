@@ -7,6 +7,7 @@
 #include "Bricks.h"
 #include "InputManager.h"
 #include "Paddle.h"
+#include "Renderer.h"
 
 class GameManager{
 
@@ -22,6 +23,8 @@ public:
 	bool gameEnded = false;
 
 private:
+    Renderer stateRenderer;
+
 	void activateGame();
 	void destroy();
 	void userInput();
