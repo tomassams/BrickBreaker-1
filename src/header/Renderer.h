@@ -2,6 +2,7 @@
 #define BRICKBREAKER_RENDERER_H
 
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include "Bricks.h"
 
 
@@ -13,6 +14,9 @@ public:
     void drawBall(SDL_Rect rect);
     void drawBrick(SDL_Rect rect);
     void drawBricks(Bricks &bricks);
+
+    void showMainMenu();
+    void destroyMainMnu();
     SDL_Renderer* getRenderer();
 private:
     int WIDTH = 800, HEIGHT = 600;

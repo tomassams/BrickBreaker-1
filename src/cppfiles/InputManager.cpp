@@ -12,19 +12,19 @@ void InputManager:: readEvent()
 		keymap[event.key.keysym.sym] = false;
 }
 
-int InputManager::handle() {
+InputAction InputManager::handle() {
 	SDL_PollEvent(&event);
 	readEvent();
 
 	if (event.type == SDL_QUIT || isKeyPressed(SDLK_ESCAPE) ||isKeyPressed(SDL_QUIT))
-		return 0;
+		return QUIT_PROGRAM;
 
 	else if ((isKeyPressed(SDLK_LEFT) || isKeyPressed(SDLK_a)))
-		return 1;
+		return LEFT_ARROW;
 
 	else if (isKeyPressed(SDLK_RIGHT) || isKeyPressed(SDLK_d))
-		return 2;
+		return RIGHT_ARROW;
 
 	else
-		return 100;
+		return NOTHING;
 }

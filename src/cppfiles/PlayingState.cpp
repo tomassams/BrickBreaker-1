@@ -52,13 +52,13 @@ void PlayingState::display(Renderer &renderer) {
 
 void PlayingState::handleEvent() {
     switch(inputManager.handle()) {
-        case 0:
+        case QUIT_PROGRAM:
             active = false;
             break;
-        case 1:
+        case LEFT_ARROW:
             paddle.moveLeft();
             break;
-        case 2:
+        case RIGHT_ARROW:
             paddle.moveRight();
             break;
         default:

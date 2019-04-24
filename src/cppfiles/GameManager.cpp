@@ -7,6 +7,7 @@ void GameManager::init() {
 }
 
 void GameManager::play() {
+
 	bool running = true;
 	std::unique_ptr<GameState> currentState(new PlayingState());
 

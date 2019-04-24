@@ -3,10 +3,11 @@
 
 #include <map>
 #include <SDL.h>
+#include "InputAction.h"
 
 class InputManager{
 public:
-	int handle();
+	InputAction handle();
 private:
 	std::map<int, bool> keymap;
 	SDL_Event event;

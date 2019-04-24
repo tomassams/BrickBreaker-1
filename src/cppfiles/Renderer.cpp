@@ -81,3 +81,41 @@ void Renderer::drawBricks(Bricks &bricks) {
         }
     }
 }
+
+void Renderer::showMainMenu() {
+    static const int options = 2;
+    const char* labels[options] = {"Play Game","Exit"};
+    int width = 800, height = 600, x, y;
+    bool selected[options] = {false, false};
+    int titleWidth = 0, titleHeight = 0;
+    int menuItems[4] = {0,0,0,0};
+
+    TTF_Init();
+    TTF_Font* largeFont = TTF_OpenFont("../res/arial/films.Dynasty.ttf", 100);
+    TTF_Font* smallFont = TTF_OpenFont("../res/arial/films.Dynasty.ttf", 50);
+
+    SDL_Color color[2] = {{255,255,255}, {141, 182, 0}};
+    SDL_Surface *titleSurface;
+    SDL_Texture *titleTexture;
+    SDL_Rect titleRect;
+
+    SDL_Surface* menu[options];
+    SDL_Texture* menuTexture[options];
+    SDL_Rect rectPosition[options];
+
+
+    //SDL_GetWindowSize(screen, &width, &height); //TODO: This function updated width & height should be in loop
+
+    // CREATE TITLE TEXT
+    titleSurface = TTF_RenderText_Solid(largeFont,"Brick Breaker", color[0]);
+    titleTexture = SDL_CreateTextureFromSurface(renderer, titleSurface);
+    SDL_QueryTexture(titleTexture, nullptr, nullptr, &titleWidth, &titleHeight);
+    titleRect = { width/2 - titleSurface->w/2, titleSurface->h - height/6, titleWidth, titleHeight };
+
+}
+
+void Renderer::destroyMainMnu() {
+//    SDL_DestroyRenderer(renderer);
+//    SDL_DestroyWindow(screen);
+//    SDL_Quit();
+}
