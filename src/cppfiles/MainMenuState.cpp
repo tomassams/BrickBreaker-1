@@ -6,11 +6,10 @@
 #include "../header/PlayingState.h"
 
 MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
-    SDL_Log("MainMenuState() constructor called");
-
-    r.get()->initializeMainMenu();
+    SDL_Log("MainMenuState() constructor called"); // TODO: remove after debug
 
     sRenderer = r;
+    sRenderer->initializeMainMenu();
 
     renderer = sRenderer->getRenderer();
 
@@ -32,7 +31,7 @@ MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
 }
 
 MainMenuState::~MainMenuState() {
-    SDL_Log("MainMenuState destructor called");
+    SDL_Log("MainMenuState destructor called"); // TODO: remove after debug
 };
 
 void MainMenuState::update() {
@@ -94,11 +93,11 @@ void MainMenuState::handleEvent() {
 std::unique_ptr<GameState> MainMenuState::nextState() {
 
     if(selectedItem == 1) {
-        SDL_Log("selectedItem is 1! returning a PlayingState");
+        SDL_Log("selectedItem is 1! returning a PlayingState"); // TODO: remove after debug
         std::unique_ptr<GameState> nextState(new PlayingState(sRenderer));
         return nextState;
     } else if(selectedItem == 0) {
-        SDL_Log("selectedItem is 0! Setting active to false");
+        SDL_Log("selectedItem is 0! Setting active to false"); // TODO: remove after debug
         active = false;
     }
 

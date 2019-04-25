@@ -10,7 +10,7 @@ void GameManager::init() {
 void GameManager::play() {
 
 	bool running = true;
-	SDL_Log("Making currentState...");
+	SDL_Log("Making currentState..."); // TODO: remove after debug
 	std::unique_ptr<GameState> currentState(new MainMenuState(stateRenderer));
 
 	while(currentState->isActive()) {
@@ -19,7 +19,6 @@ void GameManager::play() {
 		currentState->display();
 
 		SDL_Delay(2);
-
 
 		std::unique_ptr<GameState> nextState = currentState->nextState();
 		if(nextState) {

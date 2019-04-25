@@ -20,10 +20,9 @@ public:
     void handleEvent() override;
     std::unique_ptr<GameState> nextState() override;
     bool isActive() override;
-
-    int showMenu();
-    int selectedItem = -1;
 private:
+    int selectedItem = -1;
+
     std::shared_ptr<Renderer> sRenderer = nullptr;
     InputManager inputManager;
     bool active = true;

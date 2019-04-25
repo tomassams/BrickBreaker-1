@@ -4,7 +4,7 @@
 
 PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 
-    SDL_Log("PlayingState() constructor called!");
+    SDL_Log("PlayingState() constructor called!"); // TODO: remove after debug
 
     renderer = r;
 
@@ -26,7 +26,7 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
     //mBall.reset(); // from old activateGame(), not sure if necessary
 }
 PlayingState::~PlayingState() {
-    SDL_Log("PlayingState() destructor called!");
+    SDL_Log("PlayingState() destructor called!"); // TODO: remove after debug
 };
 
 void PlayingState::update() {
