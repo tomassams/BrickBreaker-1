@@ -10,6 +10,7 @@
 #include "InputManager.h"
 #include "Paddle.h"
 #include "Renderer.h"
+#include "GameState.h"
 
 class GameManager{
 

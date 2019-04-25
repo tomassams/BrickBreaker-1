@@ -34,17 +34,6 @@ MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
 
 MainMenuState::~MainMenuState() {
     SDL_Log("MainMenuState destructor called");
-//
-//    TTF_CloseFont(largeFont);
-//    TTF_CloseFont(smallFont);
-//    SDL_FreeSurface(titleSurface);
-//    SDL_DestroyTexture(titleTexture);
-//    for (int i = 0; i < options; i++) {
-//        SDL_FreeSurface(menu[i]);
-//        SDL_DestroyTexture(menuTexture[i]);
-//    }
-//    TTF_Quit();
-
 };
 
 void MainMenuState::update() {
@@ -112,7 +101,6 @@ std::unique_ptr<GameState> MainMenuState::nextState() {
     } else if(selectedItem == 0) {
         SDL_Log("selectedItem is 0! Setting active to false");
         active = false;
-        //this->MainMenuState::~MainMenuState();
     }
 
     return nullptr;

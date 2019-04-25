@@ -70,6 +70,7 @@ void Renderer::destroy() {
 	});
 
     SDL_DestroyWindow(window);
+    SDL_Quit();
 }
 
 void Renderer:: drawPaddle(SDL_Rect rect) {

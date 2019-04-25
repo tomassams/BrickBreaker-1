@@ -19,8 +19,8 @@ void GameManager::play() {
 
 		SDL_Delay(2);
 
-		if(currentState->nextState()) {
-			std::unique_ptr<GameState> nextState = currentState->nextState();
+		std::unique_ptr<GameState> nextState = currentState->nextState();
+		if(nextState) {
 			std::swap(currentState, nextState);
 		}
 	}
@@ -30,5 +30,4 @@ void GameManager::play() {
 
 void GameManager::quit() {
 	stateRenderer->destroy();
-    SDL_Quit();
 }

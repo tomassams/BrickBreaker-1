@@ -4,6 +4,8 @@
 
 PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 
+    SDL_Log("PlayingState() constructor called!");
+
     renderer = r;
 
     paddle = Paddle();
@@ -23,7 +25,9 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 
     //mBall.reset(); // from old activateGame(), not sure if necessary
 }
-PlayingState::~PlayingState() = default;
+PlayingState::~PlayingState() {
+    SDL_Log("PlayingState() destructor called!");
+};
 
 void PlayingState::update() {
 
@@ -75,11 +79,11 @@ bool PlayingState::isActive() {
 }
 
 std::unique_ptr<GameState> PlayingState::nextState() {
-    if(!active) {
-        SDL_Log("Triggering new state!");
-        std::unique_ptr<GameState> nextState(new MainMenuState(renderer));
-        return nextState;
-    }
+//    if(!active) {
+//        SDL_Log("Triggering new state!");
+//        std::unique_ptr<GameState> nextState(new MainMenuState(renderer));
+//        return nextState;
+//    }
     // TODO: handle transition to next state (e.g. pause or exit/menu)
     return nullptr;
 }
