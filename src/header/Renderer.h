@@ -55,11 +55,19 @@ private:
     SDL_Surface *paddleSurface;
     SDL_Texture *paddleTexture;
 
-	SDL_Surface *hartSurface;
-	SDL_Texture *hartTexture;
+	SDL_Surface *heartSurface;
+	SDL_Texture *heartTexture;
 
 	SDL_Surface *titleSurface;
 	SDL_Texture *titleTexture;
+
+	SDL_Surface* gameStatusTxtSurface;
+	SDL_Texture* gameStatusTxtTexture;
+	SDL_Rect gameStatusTxtPosition;
+
+	SDL_Surface* scoreTxtSurface;
+	SDL_Texture* scoreTxtTexture;
+	SDL_Rect scoreTxtPosition;
 
 	int titleWidth = 0;
 	int titleHeight = 0;
@@ -68,11 +76,22 @@ private:
 
 	SDL_Rect titlePosition;
 
-	SDL_Surface* menuItemOne;
-	SDL_Texture* menuItemOneTexture;
+	SDL_Surface* menuItemOneWhite;
+	SDL_Surface* menuItemOneGreen;
 
-	SDL_Surface* menuItemTwo;
-	SDL_Texture* menuItemTwoTexture;
+	SDL_Surface* menuItemTwoWhite;
+	SDL_Surface* menuItemTwoGreen;
+
+	SDL_Texture* menuItemOneWhiteTexture;
+	SDL_Texture* menuItemOneGreenTexture;
+	SDL_Texture* menuItemTwoWhiteTexture;
+	SDL_Texture* menuItemTwoGreenTexture;
+
+	SDL_Surface* menuItemOneText;
+	SDL_Texture* menuItemOneTextTexture;
+
+	SDL_Surface* menuItemTwoText;
+	SDL_Texture* menuItemTwoTextTexture;
 
 	SDL_Rect firstOptionPosition;
 	SDL_Rect secondOptionPosition;

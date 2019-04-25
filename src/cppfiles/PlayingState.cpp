@@ -53,8 +53,8 @@ void PlayingState:: display()
 
     renderer->drawBricks(bricks);
     renderer->drawPaddle(paddlePosition);
-	renderer->drawBall(ballPosition);
-	renderer->drawStatusBar(lives, collisionManager.brickCollisions()*100, status); // *100 for a more "impressive" score than single brick hits
+    renderer->drawBall(ballPosition);
+    renderer->drawStatusBar(lives, collisionManager.brickCollisions()*100, status); // *100 for a more "impressive" score than single brick hits
 
     SDL_RenderPresent(renderer->getRenderer());
 }

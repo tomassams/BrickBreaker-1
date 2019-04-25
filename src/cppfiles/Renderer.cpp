@@ -22,35 +22,44 @@ void Renderer::initialize()
 
 void Renderer::initializeMainMenu()
 {
-    // initialize the game title
+
+    menuItemOneWhite = TTF_RenderText_Solid(FONT_SMALL, "New Game", COLOR_WHITE);
+    menuItemOneGreen = TTF_RenderText_Solid(FONT_SMALL, "New Game", COLOR_GREEN);
+
+    menuItemTwoWhite = TTF_RenderText_Solid(FONT_SMALL, "Exit", COLOR_WHITE);
+    menuItemTwoGreen = TTF_RenderText_Solid(FONT_SMALL, "Exit", COLOR_GREEN);
+
+    menuItemOneWhiteTexture = SDL_CreateTextureFromSurface(renderer, menuItemOneWhite);
+    menuItemOneGreenTexture = SDL_CreateTextureFromSurface(renderer, menuItemOneGreen);
+    menuItemTwoGreenTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwoGreen);
+    menuItemTwoWhiteTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwoWhite);
+
     titleSurface = TTF_RenderText_Solid(FONT_LARGE, "BRICKBREAKER", COLOR_WHITE);
     titleTexture = SDL_CreateTextureFromSurface(renderer, titleSurface);
 
-    // fetch the title texture width and height and make the rect
     SDL_QueryTexture(titleTexture, nullptr, nullptr, &titleWidth, &titleHeight);
     titlePosition = { WIDTH / 2 - titleSurface->w / 2, titleSurface->h - HEIGHT / 6, titleWidth, titleHeight };
 
-    // initialize our two menu items
-    menuItemOne = TTF_RenderText_Solid(FONT_SMALL, "New Game", COLOR_WHITE);
-    menuItemOneTexture = SDL_CreateTextureFromSurface(renderer, menuItemOne);
+    menuItemOneText = TTF_RenderText_Solid(FONT_SMALL, "New Game", COLOR_WHITE);
+    menuItemOneTextTexture = SDL_CreateTextureFromSurface(renderer, menuItemOneText);
 
-    menuItemTwo = TTF_RenderText_Solid(FONT_SMALL, "Exit", COLOR_GREEN);
-    menuItemTwoTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwo);
+    menuItemTwoText = TTF_RenderText_Solid(FONT_SMALL, "Exit", COLOR_GREEN);
+    menuItemTwoTextTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwoText);
 
-    int menuItemHeight = menuItemOne->clip_rect.h;
+    int menuItemHeight = menuItemOneText->clip_rect.h;
     int positioningHeight = HEIGHT / 3;
 
-    SDL_QueryTexture ( menuItemOneTexture, nullptr, nullptr, &menuItems[0], &menuItems[0 + 1] );
-    SDL_QueryTexture ( menuItemTwoTexture, nullptr, nullptr, &menuItems[1], &menuItems[1 + 1] );
+    SDL_QueryTexture ( menuItemOneTextTexture, nullptr, nullptr, &menuItems[0], &menuItems[0 + 1] );
+    SDL_QueryTexture ( menuItemTwoTextTexture, nullptr, nullptr, &menuItems[1], &menuItems[1 + 1] );
 
     firstOptionPosition = {
-            WIDTH / 2 - menuItemOne->clip_rect.w / 2,
+            WIDTH / 2 - menuItemOneText->clip_rect.w / 2,
             positioningHeight,
             menuItems[0],
             menuItems[0 + 1]
     };
     secondOptionPosition = {
-            WIDTH / 2 - menuItemTwo->clip_rect.w / 2,
+            WIDTH / 2 - menuItemTwoText->clip_rect.w / 2,
             positioningHeight + menuItemHeight*2,
             menuItems[1],
             menuItems[0 + 1]
@@ -60,20 +69,14 @@ void Renderer::initializeMainMenu()
 
 void Renderer::drawMenuItems(int highlightedItem)
 {
-
     if(highlightedItem == 0)
     {
-        menuItemOne = TTF_RenderText_Solid(FONT_SMALL, "New Game", COLOR_GREEN);
-        menuItemTwo = TTF_RenderText_Solid(FONT_SMALL, "Exit", COLOR_WHITE);
+        SDL_RenderCopy(renderer, menuItemOneGreenTexture, nullptr, &firstOptionPosition);
+        SDL_RenderCopy(renderer, menuItemTwoWhiteTexture, nullptr, &secondOptionPosition);
     } else {
-        menuItemOne = TTF_RenderText_Solid(FONT_SMALL, "New Game", COLOR_WHITE);
-        menuItemTwo = TTF_RenderText_Solid(FONT_SMALL, "Exit", COLOR_GREEN);
+        SDL_RenderCopy(renderer, menuItemOneWhiteTexture, nullptr, &firstOptionPosition);
+        SDL_RenderCopy(renderer, menuItemTwoGreenTexture, nullptr, &secondOptionPosition);
     }
-	menuItemOneTexture = SDL_CreateTextureFromSurface(renderer, menuItemOne);
-	menuItemTwoTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwo);
-
-    SDL_RenderCopy(renderer, menuItemOneTexture, nullptr, &firstOptionPosition);
-    SDL_RenderCopy(renderer, menuItemTwoTexture, nullptr, &secondOptionPosition);
 }
 
 void Renderer::drawMenuTitle()
@@ -85,9 +88,9 @@ void Renderer::initializeGame()
 {
     ballSurface = IMG_Load("../res/images/ballBlue.png");
     paddleSurface = IMG_Load("../res/images/paddleRed.png");
-	hartSurface = IMG_Load("../res/images/health.png");
+	heartSurface = IMG_Load("../res/images/health.png");
 
-    if (paddleSurface == nullptr || ballSurface == nullptr || hartSurface == nullptr)
+    if (paddleSurface == nullptr || ballSurface == nullptr || heartSurface == nullptr)
 	{
 		std::cout << "SDL_Image Error: " << SDL_GetError() << std::endl;
 		return;
@@ -111,7 +114,7 @@ void Renderer::initializeGame()
 
     paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
     ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
-	hartTexture = SDL_CreateTextureFromSurface(renderer, hartSurface);
+	heartTexture = SDL_CreateTextureFromSurface(renderer, heartSurface);
 }
 
 void Renderer:: drawBricks(Bricks &bricks)
@@ -159,16 +162,12 @@ void Renderer:: drawStatusBar(int health, int score, Status status)
     for (int i = 0; i < health; i++)
     {
         SDL_Rect rect = {WIDTH - (40 + (35 * i)) , 10, 22, 20};
-        SDL_RenderCopy(renderer, hartTexture, nullptr, &rect);
+        SDL_RenderCopy(renderer, heartTexture, nullptr, &rect);
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
         SDL_RenderDrawLine(renderer, 0, 43, WIDTH, 43);
         SDL_RenderDrawLine(renderer, 0, 44, WIDTH, 44);
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     }
-
-    SDL_Surface* scoreTxtSurface = TTF_RenderText_Solid(FONT_SCORE, std::to_string(score).c_str(), COLOR_GREEN);
-    SDL_Texture* scoreTxtTexture = SDL_CreateTextureFromSurface(renderer, scoreTxtSurface);
-    SDL_Rect scoreTxtPosition = { 10, 10, scoreTxtSurface->clip_rect.w, scoreTxtSurface->clip_rect.h, };
 
     std::string statusText;
     switch(status) {
@@ -192,41 +191,58 @@ void Renderer:: drawStatusBar(int health, int score, Status status)
             break;
     }
 
-    SDL_Surface* gameStatusTxtSurface = TTF_RenderText_Solid(FONT_SCORE, statusText.c_str(), COLOR_GREEN);
-    SDL_Texture* gameStatusTxtTexture = SDL_CreateTextureFromSurface(renderer, gameStatusTxtSurface);
+    scoreTxtSurface = TTF_RenderText_Solid(FONT_SCORE, std::to_string(score).c_str(), COLOR_GREEN);
+    scoreTxtTexture = SDL_CreateTextureFromSurface(renderer, scoreTxtSurface);
+    scoreTxtPosition = { 10, 10, scoreTxtSurface->clip_rect.w, scoreTxtSurface->clip_rect.h, };
+
+    gameStatusTxtSurface = TTF_RenderText_Solid(FONT_SCORE, statusText.c_str(), COLOR_GREEN);
+    gameStatusTxtTexture = SDL_CreateTextureFromSurface(renderer, gameStatusTxtSurface);
     SDL_Rect gameStatusTxtPosition = { WIDTH / 2 - (gameStatusTxtSurface->clip_rect.w / 2) , 10, gameStatusTxtSurface->clip_rect.w, gameStatusTxtSurface->clip_rect.h, };
 
     SDL_RenderCopy(renderer, scoreTxtTexture, nullptr, &scoreTxtPosition);
     SDL_RenderCopy(renderer, gameStatusTxtTexture, nullptr, &gameStatusTxtPosition);
+
+    SDL_DestroyTexture(scoreTxtTexture);
+    SDL_DestroyTexture(gameStatusTxtTexture);
+    SDL_FreeSurface(scoreTxtSurface);
+    SDL_FreeSurface(gameStatusTxtSurface);
 }
 
 void Renderer:: destroyGame()
 {
     SDL_DestroyTexture(paddleTexture);
     SDL_DestroyTexture(ballTexture);
+    SDL_DestroyTexture(heartTexture);
+
+    std::for_each(brickTextureVector.begin(), brickTextureVector.end(), [](SDL_Texture* texture){
+        SDL_DestroyTexture(texture);
+    });
 
 	SDL_FreeSurface(ballSurface);
 	SDL_FreeSurface(paddleSurface);
-	SDL_FreeSurface(hartSurface);
-
-	brickSurfaceVector.clear();
-	brickTextureVector.clear();
+	SDL_FreeSurface(heartSurface);
 
     std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [](SDL_Surface* surface){
         SDL_FreeSurface(surface);
     });
 
-    std::for_each(brickTextureVector.begin(), brickTextureVector.end(), [](SDL_Texture* texture){
-        SDL_DestroyTexture(texture);
-    });
+    brickSurfaceVector.clear();
+    brickTextureVector.clear();
 }
 
 void Renderer:: destroyMainMenu()
 {
-	SDL_FreeSurface(menuItemOne);
-	SDL_FreeSurface(menuItemTwo);
-	SDL_DestroyTexture(menuItemOneTexture);
-	SDL_DestroyTexture(menuItemTwoTexture);
+	SDL_DestroyTexture(titleTexture);
+    SDL_DestroyTexture(menuItemOneWhiteTexture);
+    SDL_DestroyTexture(menuItemOneGreenTexture);
+    SDL_DestroyTexture(menuItemTwoWhiteTexture);
+    SDL_DestroyTexture(menuItemTwoGreenTexture);
+
+    SDL_FreeSurface(titleSurface);
+    SDL_FreeSurface(menuItemOneWhite);
+    SDL_FreeSurface(menuItemOneGreen);
+    SDL_FreeSurface(menuItemTwoWhite);
+    SDL_FreeSurface(menuItemTwoGreen);
 }
 
 void Renderer:: destroy()
