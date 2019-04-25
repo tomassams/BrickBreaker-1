@@ -163,14 +163,12 @@ void Renderer:: drawBall(SDL_Rect rect)
 
 void Renderer:: drawBrick(int health, SDL_Rect rect)
 {
-    SDL_Log("got here");
 	SDL_RenderCopy(
 			renderer,
 			brickTextureVector.at((health <= 0) ? 0 : health-1),
 			nullptr,
 			&rect
 	);
-    SDL_Log("never got here");
 }
 
 void Renderer:: drawTopLine(int health)

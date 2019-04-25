@@ -38,7 +38,7 @@ void PlayingState:: update()
     {
         if (--health == 0)
 		{
-			active = false;
+			paused = true;
 			display();
 		}
 		else
