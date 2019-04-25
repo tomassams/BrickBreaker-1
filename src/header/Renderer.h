@@ -39,7 +39,8 @@ private:
     SDL_Surface *paddleSurface;
     SDL_Texture *paddleTexture;
 
-	TTF_Font *largeFont, *smallFont ;
+	TTF_Font *FONT_LARGE;
+	TTF_Font *FONT_SMALL;
 
 	SDL_Color COLOR_WHITE = { 255, 255, 255 };
 	SDL_Color COLOR_GREEN = { 141, 182, 0 };
@@ -47,18 +48,13 @@ private:
 
 	SDL_Surface *titleSurface;
 	SDL_Texture *titleTexture;
+
 	int titleWidth = 0;
 	int titleHeight = 0;
 
-	static const int options = 2;
-	const char* labels[options] = {"Play Game","Exit"};
-	int width = 800, height = 600, x, y;
-
-	bool selected[options] = {true, false};
-
 	int menuItems[4] = {0,0,0,0};
 
-	SDL_Rect titleRect;
+	SDL_Rect titlePosition;
 
 	SDL_Surface* menuItemOne;
 	SDL_Texture* menuItemOneTexture;
@@ -66,12 +62,9 @@ private:
 	SDL_Surface* menuItemTwo;
 	SDL_Texture* menuItemTwoTexture;
 
-	SDL_Surface* menu[options];
-	SDL_Texture* menuTexture[options];
-
-	SDL_Rect rectPositionOne;
-	SDL_Rect rectPositionTwo;
-
+	SDL_Rect firstOptionPosition;
+	SDL_Rect secondOptionPosition;
 
 };
+
 #endif
