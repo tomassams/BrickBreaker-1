@@ -2,7 +2,6 @@
 
 Brick:: Brick()
 {
-	SDL_Log("Brick empty constructor called");
 	isBrickHit = false;
 	currentHealth = 1;
 	maxHealth = 1;
@@ -10,7 +9,6 @@ Brick:: Brick()
 
 Brick:: Brick( int verticalSpacing, int horizontalSpacing, int life )
 {
-	SDL_Log("Brick NOT empty constructor called");
 	currentHealth = life;
 	maxHealth = life;
 	isBrickHit = false;

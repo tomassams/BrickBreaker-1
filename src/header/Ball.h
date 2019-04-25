@@ -14,7 +14,7 @@ public:
 		SDL_Log("Ball constructor");
 	}
 	SDL_Rect moveBall();
-	SDL_Rect getCurrentPosition() const {return ballRect;}
+	const SDL_Rect * getCurrentPosition() const {return &ballRect;}
 
 	void setParams(int h, int w);
 	void changeHorizontalVelocity() { horizontalVelocity = -horizontalVelocity; }

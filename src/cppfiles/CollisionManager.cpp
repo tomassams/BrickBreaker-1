@@ -7,7 +7,7 @@ void CollisionManager:: collision(Ball* ball, SDL_Rect paddleRect, std::vector<B
 	bool shouldChangeVerticalVelocity = false;
 	bool shouldChangeHorizontalVelocity = false;
 
-	std::thread handlePaddleCollision( [this, paddleRect, &ball, &shouldChangeHorizontalVelocity, &shouldChangeVerticalVelocity]()
+	std::thread handlePaddleCollision( [this, paddleRect, ball, &shouldChangeHorizontalVelocity, &shouldChangeVerticalVelocity]()
 	{
 	   if ( paddleCollision(ball->getHorizontalSize(), ball->getVerticalSize(), paddleRect) || ball->getVerticalSize() <= 50)
 	   {
@@ -55,12 +55,12 @@ bool CollisionManager:: paddleCollisionAtEnd(int horizontal, int x, int w )
 	return (onLeftSide || onRightSide);
 }
 
-bool CollisionManager:: ballBrickCollision( SDL_Rect ballRect, std::vector<Brick>* bricks )
+bool CollisionManager:: ballBrickCollision(const SDL_Rect* ballRect, std::vector<Brick>* bricks )
 {
 	bool changeVelocity = false;
 	std::for_each(bricks->begin(), bricks->end(), [this, ballRect, &changeVelocity] ( Brick &brick )
 	{
-		if (SDL_IntersectRect(&ballRect, &brick.rect, &interSectRect) && !brick.isHit())
+		if ( SDL_IntersectRect(ballRect, &brick.rect, &interSectRect) && !brick.isHit() )
 		{
 			brick.hit();
 			brickCollisionCounter++;
