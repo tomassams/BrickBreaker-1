@@ -7,7 +7,7 @@ Open the project in CLion (Works on both Mac and Windows) and hit the run button
 ## Our process
 We started out with some basic code for the game since one of us made the basic structure for the game as his work-assignment. The game is now much more advanced and also a lot more enjoyable. In the beginning of the week we sat down and wrote all the features and improvements we wanted to add to the project. Then we split the work load among us. We used Github heavily to ensure a god flow of code and sharing of progress. 
 
-We sat together everyday during the exam period period (from the morning of 23. to the evening of 25.april) working tirelessly on the code. Our Github will reflect this work quite well. We made a sharable link to our project if you want to take a look please visit https://cantinur.github.io/BrickBreaker/
+We sat together everyday during the exam period period (from the morning of 23. to the evening of 25.april) working tirelessly on the code. Our Github will reflect this work quite well. We made a sharable link to our project if you want to take a look please visit [https://cantinur.github.io/BrickBreaker/]
 
 ## Chooses we made
 We decided quite early that we needed to split up different arias of the code in order to easier handle different aspects of the program. For one, we just needed to make one SDL Window so to handle that and to handle only one renderer we made classes. The advantage we got was to give the classes specific arias to handle. This ensured  a cleaner codebase and something that would be more scalable if we wanted to expand our program in the future.  
@@ -17,13 +17,13 @@ We did the same with all the game logic elements. We have a collision class that
 ### Use of virtual 
 We made game state in to virtual class in order to have more than one state. Both the menu and game is an instance of game state. This makes it also possible for us to extend this game in the future with more than one state. 
 
-###Heavy use of standard library 
+### Heavy use of standard library 
 One of the features of our game is the use of the standard library. We use `std::vectors` in stead of arrays and other collections, and we use `std::for_each` where it was the better choice. Our thread management was by using `std::thread` and even out random number is accessed trough `std::random_device`,  `std:: default_random_engine` and the`std::uniform_int_distribution`. The quality of the functions from the standard library is in all likelihood better than other third party libraries we might end up using. 
 
-###Smart pointers
+### Smart pointers
 We use smart pointers in the form of a shared pointer. This is used for the renderer. This ensures that all calls can be to the same pointer. We also use a unique pointer…. -> HJELP!!!
 
-##What we like about our project
+## What we like about our project
 This was a fun experience for us. Creating a game was a lot of fun and made us think differently to a lot of problems. We think we have made a solid game and shown in the proses a relatively good understanding for CPP. The code is concise and quite readable. 
 
 ## Minimum requirements
@@ -41,7 +41,7 @@ This was a fun experience for us. Creating a game was a lot of fun and made us t
 - [x] We added health to the user. This is represented with harts in the upper right side on the screen.
 - [x] We use `std::thread` in order to run the collision checks in parallel. There was however to necessary with any locks.
 
-##What we wish to improve
+## What we wish to improve
 The paddle has every now and then minor bugs. This causes the ball to act unpredictable and sometimes makes the user loos. This is not fun for any player and we wish we could eradicate this bug.
 
 It would be a lot of fun to add more than one level to the game. Our wish would then be to create levels form input files and the draw different game boards with increased complexity. 
