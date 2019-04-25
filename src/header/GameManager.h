@@ -16,6 +16,9 @@
 class GameManager{
 
 public:
+	GameManager() {
+		SDL_Log("GameManager() constructor called");
+	}
 	void init();
 	void play();
 	void quit();

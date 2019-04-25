@@ -2,6 +2,7 @@
 #include <SDL_image.h>
 #include <sstream>
 #include "../header/Renderer.h"
+#include "../header/Status.h"
 
 Renderer::Renderer()
 {
@@ -181,11 +182,11 @@ void Renderer:: drawBrick(int health, SDL_Rect rect)
 	);
 }
 
-void Renderer:: drawStatusBar(int health, int score, bool paused)
+void Renderer:: drawStatusBar(int health, int score, Status status)
 {
 	for (int i = 0; i < health; i++)
 	{
-		SDL_Rect rect = {WIDTH - (40 + (35 * i)) , 10, 30, 28};
+		SDL_Rect rect = {WIDTH - (40 + (35 * i)) , 10, 22, 20};
 		SDL_RenderCopy(renderer, hartTexture, nullptr, &rect);
 		SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
 		SDL_RenderDrawLine(renderer, 0, 43, WIDTH, 43);
@@ -197,9 +198,20 @@ void Renderer:: drawStatusBar(int health, int score, bool paused)
     SDL_Texture* scoreTxtTexture = SDL_CreateTextureFromSurface(renderer, scoreTxtSurface);
     SDL_Rect scoreTxtPosition = { 10, 10, scoreTxtSurface->clip_rect.w, scoreTxtSurface->clip_rect.h, };
 
-    std::string statusText = "GAME ACTIVE";
-    if(paused) {
-        statusText = "GAME PAUSED";
+    std::string statusText;
+    switch(status) {
+        case INITIALIZED:
+            statusText = "PRESS SPACE TO PLAY";
+            break;
+        case PAUSED:
+            statusText = "GAME PAUSED - SPACE TO RESUME";
+            break;
+        case PLAYING:
+            statusText = "GAME ACTIVE - SPACE TO PAUSE";
+            break;
+        default:
+            statusText = "";
+            break;
     }
 
     SDL_Surface* gameStatusTxtSurface = TTF_RenderText_Solid(FONT_SCORE, statusText.c_str(), COLOR_GREEN);

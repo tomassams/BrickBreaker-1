@@ -10,6 +10,7 @@
 #include "../header/PlayingState.h"
 
 MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
+    SDL_Log("MainMenuState() constructor called");
     renderer = std::move(r);
     renderer->initializeMainMenu();
 }

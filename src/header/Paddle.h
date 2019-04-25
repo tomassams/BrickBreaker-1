@@ -8,6 +8,9 @@ class Paddle
 {
 
 public:
+	Paddle() {
+		SDL_Log("Paddle() constructor called");
+	}
 	void setParams(int w) {WIDTH = w;}
 	SDL_Rect paddleRect() {return { paddleX, paddleY, 80, 20 }; }
 	void setPaddlePositions(int w, int h);
