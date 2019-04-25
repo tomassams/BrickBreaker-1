@@ -13,7 +13,7 @@
 
 class MainMenuState : public GameState {
 public:
-    MainMenuState(std::shared_ptr<Renderer> renderer);
+    MainMenuState(std::shared_ptr<Renderer> r);
     ~MainMenuState();
     void update() override;
     void display() override;
@@ -25,7 +25,7 @@ public:
     int selectedItem;
 private:
 //    Renderer sRenderer;
-    std::shared_ptr<Renderer> sRenderer = std::make_shared<Renderer>();
+    std::shared_ptr<Renderer> sRenderer = nullptr;
     InputManager inputManager;
     bool active = true;
 

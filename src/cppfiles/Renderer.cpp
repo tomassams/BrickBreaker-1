@@ -3,10 +3,11 @@
 #include "../header/Renderer.h"
 
 Renderer::Renderer() {
-    SDL_Log("Renderer created");
+    SDL_Log("Renderer() constructor called");
 }
 
 void Renderer::initialize() {
+    SDL_Log("Renderer initialize() method called");
 
     SDL_Init(SDL_INIT_VIDEO);
 

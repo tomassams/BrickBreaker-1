@@ -4,7 +4,7 @@
 
 PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 
-    std::swap(renderer, r);
+    renderer = r;
 
     paddle = Paddle();
     ball = Ball();
@@ -78,7 +78,6 @@ std::unique_ptr<GameState> PlayingState::nextState() {
     if(!active) {
         SDL_Log("Triggering new state!");
         std::unique_ptr<GameState> nextState(new MainMenuState(renderer));
-
         return nextState;
     }
     // TODO: handle transition to next state (e.g. pause or exit/menu)
