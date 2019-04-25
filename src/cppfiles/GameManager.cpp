@@ -12,10 +12,11 @@ void GameManager::play() {
 	bool running = true;
 	//std::unique_ptr<GameState> currentState(new PlayingState(stateRenderer));
 
+	SDL_Log("Making currentState...");
 	std::unique_ptr<GameState> currentState(new MainMenuState(stateRenderer));
 
-	do {
 
+	do {
 		currentState->handleEvent();
 		currentState->update();
 		currentState->display();
@@ -32,6 +33,6 @@ void GameManager::play() {
 }
 
 void GameManager::quit() {
-	stateRenderer->destroy();
+	//stateRenderer->destroy();
     SDL_Quit();
 }

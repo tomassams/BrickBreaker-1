@@ -4,7 +4,7 @@
 
 PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 
-    std::swap(renderer, r);
+    renderer = r;
 
     paddle = Paddle();
     ball = Ball();

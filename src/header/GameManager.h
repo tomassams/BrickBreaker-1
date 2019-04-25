@@ -20,7 +20,7 @@ public:
 	void quit();
 	bool gameEnded = false;
 private:
-    std::shared_ptr<Renderer> stateRenderer = std::make_unique<Renderer>();
+    std::shared_ptr<Renderer> stateRenderer = std::make_shared<Renderer>(Renderer());
 };
 
 #endif

@@ -6,10 +6,11 @@
 #include "../header/PlayingState.h"
 
 MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
+    SDL_Log("MainMenuState() constructor called");
 
-    r->initializeMainMenu();
+    r.get()->initializeMainMenu();
 
-    std::swap(sRenderer, r);
+    sRenderer = r;
 
     renderer = sRenderer->getRenderer();
 
@@ -107,7 +108,6 @@ std::unique_ptr<GameState> MainMenuState::nextState() {
 
     if(selectedItem == 1) {
         std::unique_ptr<GameState> nextState(new PlayingState(sRenderer));
-
         return nextState;
     } else if(selectedItem == -1) {
         this->MainMenuState::~MainMenuState();
