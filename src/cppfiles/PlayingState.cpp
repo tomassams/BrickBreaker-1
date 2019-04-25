@@ -38,7 +38,7 @@ void PlayingState:: update()
     {
         if (--health == 0)
 		{
-			paused = true;
+			exitToMenu = true;
 			display();
 		}
 		else
