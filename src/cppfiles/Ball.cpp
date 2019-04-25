@@ -10,13 +10,15 @@ void Ball::setParams(int h, int w)
 
 void Ball::setBallStartPosition()
 {
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<int> dis(10, WIDTH-10);
+	std::random_device r;
+	std::default_random_engine engine(r());
+	std::uniform_int_distribution uniformDist(10, WIDTH-10);
 
+	const int i = uniformDist(engine);
+	std::cout << i << std::endl;
 	outOfBounds = false;
 	vertical = HEIGHT-250;
-	horizontal = dis(gen);
+	horizontal = i;
 	horizontalVelocity = 1;
 	verticalVelocity = 1;
 
