@@ -16,7 +16,7 @@ public:
 
 	SDL_Rect moveBall();
 
-	const SDL_Rect * getCurrentPosition() const { return &ballRect; }
+	const SDL_Rect* getCurrentPosition() const { return &ballRect; }
 
 	void changeHorizontalVelocity() { horizontalVelocity = -horizontalVelocity; }
 	void changeVerticalVelocity() { verticalVelocity = -verticalVelocity; }

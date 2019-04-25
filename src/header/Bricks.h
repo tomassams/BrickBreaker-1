@@ -9,7 +9,7 @@
 
 class Bricks{
 public:
-	void InitializeBricks(int topspacing);
+	void InitializeBricks(int topSpacing);
 	std::vector<Brick>* getBricks() { return &brickVector; };
 	static const int brickRows = 5;
 	static const int brickColumns = 9;
