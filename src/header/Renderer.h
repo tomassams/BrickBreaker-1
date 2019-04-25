@@ -20,7 +20,7 @@ public:
     void drawBall(SDL_Rect rect);
     void drawBrick(int health, SDL_Rect rect);
     void drawBricks(Bricks &bricks);
-	void drawTopLine(int health);
+	void drawStatusBar(int health, int score);
 
     void drawMenuItems(int highlightedItem);
     void drawMenuTitle();
@@ -45,6 +45,7 @@ private:
 
 	TTF_Font *FONT_LARGE;
 	TTF_Font *FONT_SMALL;
+	TTF_Font *FONT_SCORE;
 
 	SDL_Color COLOR_WHITE = { 255, 255, 255 };
 	SDL_Color COLOR_GREEN = { 141, 182, 0 };

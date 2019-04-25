@@ -18,6 +18,10 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
     ball.setParams(600, 800);
     bricks.InitializeBricks(topOfGameScreen);
 
+    update();
+
+    paused = true;
+
 }
 
 PlayingState::~PlayingState() {
@@ -55,7 +59,7 @@ void PlayingState:: display()
     renderer->drawBricks(bricks);
     renderer->drawPaddle(paddlePosition);
 	renderer->drawBall(ballPosition);
-	renderer->drawTopLine(health);
+	renderer->drawStatusBar(health, 198443);
 
     SDL_RenderPresent(renderer->getRenderer());
 }
