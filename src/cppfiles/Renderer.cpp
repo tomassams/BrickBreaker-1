@@ -163,12 +163,14 @@ void Renderer:: drawBall(SDL_Rect rect)
 
 void Renderer:: drawBrick(int health, SDL_Rect rect)
 {
+    SDL_Log("got here");
 	SDL_RenderCopy(
 			renderer,
 			brickTextureVector.at(health),
 			nullptr,
 			&rect
 	);
+    SDL_Log("never got here");
 }
 
 void Renderer:: drawTopLine(int health)
@@ -192,7 +194,9 @@ SDL_Renderer* Renderer:: getRenderer()
 
 void Renderer:: drawBricks(Bricks &bricks)
 {
-	auto brickVector = bricks.getBricks();
+
+
+    auto brickVector = bricks.getBricks();
 	std::for_each(brickVector->begin(), brickVector->end(), [this](Brick brick)
 	{
 			SDL_Rect brickRect = brick.rect;

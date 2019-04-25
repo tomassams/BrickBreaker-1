@@ -17,6 +17,7 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
     paddle.setPaddlePositions(800, 600);
     ball.setParams(600, 800);
     bricks.InitializeBricks(topOfGameScreen);
+
 }
 
 PlayingState::~PlayingState() {
@@ -35,7 +36,7 @@ void PlayingState:: update()
 
     if (ball.isOutOfBounds())
     {
-		if (--health == 0)
+        if (--health == 0)
 		{
 			active = false;
 			display();
@@ -52,7 +53,7 @@ void PlayingState:: display()
     SDL_RenderClear(renderer->getRenderer());
 
     renderer->drawBricks(bricks);
-	renderer->drawPaddle(paddlePosition);
+    renderer->drawPaddle(paddlePosition);
 	renderer->drawBall(ballPosition);
 	renderer->drawTopLine(health);
 

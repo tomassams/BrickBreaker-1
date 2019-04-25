@@ -9,6 +9,7 @@ void GameManager::init() {
 void GameManager::play() {
 
 	std::unique_ptr<GameState> currentState(new MainMenuState(stateRenderer));
+	SDL_Log("Creating first currentState()");
 
 	while(currentState->isActive()) {
 
@@ -20,12 +21,14 @@ void GameManager::play() {
 
 		std::unique_ptr<GameState> nextState = currentState->nextState();
 		if(nextState) {
+			SDL_Log("NextState is present, swapping after a short delay");
 			SDL_Delay(150);
 			std::swap(currentState, nextState);
 		}
 
 	}
 
+	SDL_Log("GAME ENDED!");
 	gameEnded = true;
 
 }
