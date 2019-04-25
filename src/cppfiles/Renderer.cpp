@@ -25,7 +25,81 @@ void Renderer::initialize() {
 
 void Renderer::initializeMainMenu() {
 
+    TTF_Init();
+    largeFont = TTF_OpenFont("../res/arial/films.Dynasty.ttf", 100);
+    smallFont = TTF_OpenFont("../res/arial/films.Dynasty.ttf", 50);
+
+    titleSurface = TTF_RenderText_Solid(largeFont,"Brick Breaker", COLOR_WHITE);
+    titleTexture = SDL_CreateTextureFromSurface(renderer, titleSurface);
+
+    // fetch title width & height
+    SDL_QueryTexture(titleTexture, nullptr, nullptr, &titleWidth, &titleHeight);
+
+    titleRect = { width/2 - titleSurface->w/2, titleSurface->h - height/6, titleWidth, titleHeight };
+
+    menuItemOne = TTF_RenderText_Solid(smallFont, "New Game", COLOR_WHITE);
+    menuItemOneTexture = SDL_CreateTextureFromSurface(renderer, menuItemOne);
+
+    menuItemTwo = TTF_RenderText_Solid(smallFont, "Exit", COLOR_GREEN);
+    menuItemTwoTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwo);
+
+    const int clipRectHeight1 = menuItemOne->clip_rect.h;
+    const int clipRectHeight2 = menuItemTwo->clip_rect.h;
+    const int positioningHeight1 = height / 2;
+    const int positioningHeight2 = height / 2 + clipRectHeight2;
+
+    SDL_QueryTexture (
+            menuItemOneTexture,
+            nullptr, nullptr,
+            &menuItems[0],
+            &menuItems[0 + 1]
+    );
+
+    SDL_QueryTexture (
+            menuItemTwoTexture,
+            nullptr, nullptr,
+            &menuItems[1],
+            &menuItems[1 + 1]
+    );
+
+    rectPositionOne = {
+            width/2 - menuItemOne->clip_rect.w / 2,
+            positioningHeight1,
+            menuItems[0],
+            menuItems[0 + 1]
+    };
+
+    rectPositionTwo = {
+            width/2 - menuItemTwo->clip_rect.w / 2,
+            positioningHeight2,
+            menuItems[1],
+            menuItems[1 + 1]
+    };
+
 }
+
+void Renderer::drawMenuItems(int highlightedItem) {
+
+    // TODO, possibly cleanup..
+    if(highlightedItem == 0) {
+        menuItemOne = TTF_RenderText_Solid(smallFont, "New Game", COLOR_GREEN);
+        menuItemOneTexture = SDL_CreateTextureFromSurface(renderer, menuItemOne);
+        menuItemTwo = TTF_RenderText_Solid(smallFont, "Exit", COLOR_WHITE);
+        menuItemTwoTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwo);
+    } else{
+        menuItemOne = TTF_RenderText_Solid(smallFont, "New Game", COLOR_WHITE);
+        menuItemOneTexture = SDL_CreateTextureFromSurface(renderer, menuItemOne);
+        menuItemTwo = TTF_RenderText_Solid(smallFont, "Exit", COLOR_GREEN);
+        menuItemTwoTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwo);
+    }
+
+    SDL_RenderCopy(renderer, menuItemOneTexture, nullptr, &rectPositionOne);
+    SDL_RenderCopy(renderer, menuItemTwoTexture, nullptr, &rectPositionTwo);
+}
+
+void Renderer::drawMenuTitle() {
+    SDL_RenderCopy(renderer, titleTexture, nullptr, &titleRect);
+};
 
 void Renderer::initializeGame() {
 
@@ -54,21 +128,27 @@ void Renderer::initializeGame() {
 
 }
 
-void Renderer::destroy() {
+void Renderer::destroyGame() {
+    SDL_Log("destroyGame() called from Renderer");
     SDL_DestroyTexture(paddleTexture);
     SDL_DestroyTexture(ballTexture);
 
     SDL_FreeSurface(ballSurface);
     SDL_FreeSurface(paddleSurface);
 
-	std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [](auto surface){
-		SDL_FreeSurface(surface);
-	});
+    std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [](auto surface){
+        SDL_FreeSurface(surface);
+    });
 
-	std::for_each(brickTextureVector.begin(), brickTextureVector.end(), [](auto texture){
-		SDL_DestroyTexture(texture);
-	});
+    std::for_each(brickTextureVector.begin(), brickTextureVector.end(), [](auto texture){
+        SDL_DestroyTexture(texture);
+    });
+}
+void Renderer::destroyMainMenu() {
+    SDL_Log("destroyMainMenu() called from Renderer");
+}
 
+void Renderer::destroy() {
     SDL_DestroyWindow(window);
     SDL_Quit();
 }

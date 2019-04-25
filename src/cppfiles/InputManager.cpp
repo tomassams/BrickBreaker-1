@@ -25,6 +25,18 @@ InputAction InputManager::handle() {
 	else if (isKeyPressed(SDLK_RIGHT) || isKeyPressed(SDLK_d))
 		return MOVE_RIGHT;
 
+	else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
+		return TOGGLE_PAUSE;
+
+	else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_DOWN)
+		return MOVE_DOWN;
+
+	else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_UP)
+		return MOVE_UP;
+
+	else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_RETURN)
+		return ENTER;
+
 	else
 		return NOTHING;
 }

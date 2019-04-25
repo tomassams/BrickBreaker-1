@@ -35,6 +35,8 @@ private:
     std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY]; // TODO
 
     bool active = true; // temp
+    bool paused = false;
+    bool exitToMenu = false;
     bool isActive() override; // temp
 };
 
