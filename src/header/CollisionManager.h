@@ -11,6 +11,9 @@
 class CollisionManager
 {
 public:
+	CollisionManager() {
+		SDL_Log("CollisionManager() constructor called");
+	}
 	void collision(Ball* ball, SDL_Rect paddleRect, std::vector<Brick>* bricks );
 	int brickCollisions() { return brickCollisionCounter; }
 

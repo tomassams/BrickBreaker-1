@@ -4,10 +4,11 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include "Bricks.h"
+#include "Status.h"
 
 class Renderer {
 public:
-    Renderer();
+	Renderer();
     void initialize();
 	void initializeMainMenu();
     void initializeGame();
@@ -20,7 +21,7 @@ public:
     void drawBall(SDL_Rect rect);
     void drawBrick(int health, SDL_Rect rect);
     void drawBricks(Bricks &bricks);
-	void drawStatusBar(int health, int score, bool paused);
+	void drawStatusBar(int health, int score, Status status);
 
     void drawMenuItems(int highlightedItem);
     void drawMenuTitle();

@@ -7,6 +7,9 @@
 
 class InputManager{
 public:
+	InputManager() {
+		SDL_Log("InputManager() constructor called");
+	}
 	InputAction handle();
 private:
 	std::map<int, bool> keymap;

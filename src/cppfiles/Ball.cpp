@@ -28,7 +28,7 @@ SDL_Rect Ball:: moveBall()
 	vertical += horizontalVelocity;
 	horizontal += verticalVelocity;
 
-	if (horizontal + ballScaling == WIDTH || horizontal + ballScaling == 0)
+	if (horizontal + ballScaling == WIDTH || horizontal  == 0)
 	{
 		changeVerticalVelocity();
 	}

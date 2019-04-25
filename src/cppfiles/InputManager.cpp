@@ -32,7 +32,13 @@ InputAction InputManager::handle()
 	else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_DOWN)
 		return MOVE_DOWN;
 
+	else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_s)
+		return MOVE_DOWN;
+
 	else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_UP)
+		return MOVE_UP;
+
+	else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_w)
 		return MOVE_UP;
 
 	else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_RETURN)

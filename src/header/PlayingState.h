@@ -30,13 +30,15 @@ private:
 	int health = 5;
 	bool active = true;
 
+	Status status;
+
 	CollisionManager collisionManager;
     InputManager inputManager;
     std::shared_ptr<Renderer> renderer;
 
-    Bricks bricks;
-    Paddle paddle;
-    Ball ball;
+    Bricks bricks = Bricks();
+    Paddle paddle = Paddle();
+    Ball ball = Ball();
 
     SDL_Rect paddlePosition{};
     SDL_Rect ballPosition{};

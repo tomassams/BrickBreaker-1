@@ -6,10 +6,6 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
     exitToMenu = false;
     renderer = std::move(r);
 
-    paddle = Paddle();
-    ball = Ball();
-    bricks = Bricks();
-
     renderer->initializeGame();
 
     int topOfGameScreen = 800/100*6;
@@ -18,17 +14,17 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
     ball.setParams(600, 800);
     bricks.InitializeBricks(topOfGameScreen);
 
+    // run update to render everything once
+    status = PLAYING;
     update();
-
-    paused = true;
-
+    status = INITIALIZED;
 }
 
 PlayingState::~PlayingState() = default;;
 
 void PlayingState:: update()
 {
-    if(paused) {
+    if(status != PLAYING) {
         return;
     }
 
@@ -56,13 +52,9 @@ void PlayingState:: display()
     renderer->drawBricks(bricks);
     renderer->drawPaddle(paddlePosition);
 	renderer->drawBall(ballPosition);
-	renderer->drawStatusBar(health, collisionManager.brickCollisions()*100, paused);
+	renderer->drawStatusBar(health, collisionManager.brickCollisions()*100, status);
 
     SDL_RenderPresent(renderer->getRenderer());
-
-    if(paused) {
-        return;
-    }
 
 }
 
@@ -74,21 +66,26 @@ void PlayingState::handleEvent()
             exitToMenu = !exitToMenu;
             break;
         case MOVE_LEFT:
-            if(!paused)
+            if(status == PLAYING)
             paddle.moveLeft();
             break;
         case MOVE_RIGHT:
-            if(!paused)
+            if(status == PLAYING)
             paddle.moveRight();
             break;
         case TOGGLE_PAUSE:
-            paused = !paused;
+            if(status != PLAYING) {
+                SDL_Log("TOGGLE_PAUSE");
+                status = PLAYING;
+            } else {
+                status = PAUSED;
+            }
+            break;
         default:
             return;
     }
 }
 
-// temp
 bool PlayingState::isActive()
 {
     return active;

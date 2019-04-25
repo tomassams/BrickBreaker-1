@@ -10,6 +10,9 @@
 
 class Ball{
 public:
+	Ball() {
+		SDL_Log("Ball constructor");
+	}
 	SDL_Rect moveBall();
 	SDL_Rect getCurrentPosition() const {return ballRect;}
 
@@ -27,7 +30,7 @@ private:
 	int HEIGHT, WIDTH;
 	int vertical, horizontal;
 	int horizontalVelocity, verticalVelocity;
-	int ballScaling = 13;
+	const int ballScaling = 13;
 	bool outOfBounds = false;
 };
 #endif
