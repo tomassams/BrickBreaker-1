@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include "../header/PlayingState.h"
+#include "../header/MainMenuState.h"
 
 PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 
@@ -74,6 +75,12 @@ bool PlayingState::isActive() {
 }
 
 std::unique_ptr<GameState> PlayingState::nextState() {
+    if(!active) {
+        SDL_Log("Triggering new state!");
+        std::unique_ptr<GameState> nextState(new MainMenuState(renderer));
+
+        return nextState;
+    }
     // TODO: handle transition to next state (e.g. pause or exit/menu)
     return nullptr;
 }
