@@ -14,17 +14,13 @@
 #include "GameState.h"
 
 class GameManager{
-
 public:
-	GameManager() {
-		SDL_Log("GameManager() constructor called");
-	}
 	void init();
 	void play();
 	void quit();
 	bool gameEnded = false;
 private:
-    std::shared_ptr<Renderer> stateRenderer = std::make_shared<Renderer>(Renderer());
+    std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>(Renderer());
 };
 
 #endif

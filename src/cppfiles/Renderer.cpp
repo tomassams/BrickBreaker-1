@@ -4,11 +4,6 @@
 #include "../header/Renderer.h"
 #include "../header/Status.h"
 
-Renderer::Renderer()
-{
-    SDL_Log("Renderer() constructor called");
-}
-
 void Renderer::initialize() {
     SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();

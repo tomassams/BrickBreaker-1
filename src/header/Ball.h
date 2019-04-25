@@ -8,26 +8,26 @@
 #include <SDL.h>
 #include "Brick.h"
 
-class Ball{
+class Ball {
 public:
-	Ball() {
-		SDL_Log("Ball constructor");
-	}
-	SDL_Rect moveBall();
-	const SDL_Rect * getCurrentPosition() const {return &ballRect;}
+    void initialize(int h, int w);
+    void setStartingPosition();
 
-	void setParams(int h, int w);
+	SDL_Rect moveBall();
+
+	const SDL_Rect * getCurrentPosition() const { return &ballRect; }
+
 	void changeHorizontalVelocity() { horizontalVelocity = -horizontalVelocity; }
 	void changeVerticalVelocity() { verticalVelocity = -verticalVelocity; }
+
 	bool isOutOfBounds() const { return outOfBounds; }
-	void setBallStartPosition();
 
 	int getVerticalSize() const { return vertical + ballScaling; }
 	int getHorizontalSize() const { return horizontal + ballScaling; }
-
 private:
 	SDL_Rect ballRect;
-	int HEIGHT, WIDTH;
+	int height;
+	int width;
 	int vertical, horizontal;
 	int horizontalVelocity, verticalVelocity;
 	const int ballScaling = 13;

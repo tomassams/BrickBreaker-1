@@ -1,17 +1,17 @@
 #include "../header/Bricks.h"
 
-void Bricks:: InitializeBricks(int top)
+void Bricks:: InitializeBricks(int topspacing)
 {
 	brickVector.clear();
 
-	int horizontalSpacing = top;
+	int horizontalSpacing = topspacing;
 
-	for (int i = 0; i < brickY; i++)
+	for (int i = 0; i < brickRows; i++)
 	{
 		int verticalSpacing = 10;
-		for (int j = 0; j < brickX; j++)
+		for (int j = 0; j < brickColumns; j++)
 		{
-			brickVector.emplace_back(verticalSpacing, horizontalSpacing, brickY-i);
+			brickVector.emplace_back(verticalSpacing, horizontalSpacing, brickRows - i);
 			verticalSpacing += 88;
 		}
 		horizontalSpacing += 40;

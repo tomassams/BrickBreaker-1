@@ -2,13 +2,15 @@
 #include "../header/GameState.h"
 #include "../header/PlayingState.h"
 #include "../header/MainMenuState.h"
-void GameManager::init() {
-	stateRenderer->initialize();
+
+void GameManager::init()
+{
+	renderer->initialize();
 }
 
-void GameManager::play() {
-
-	std::unique_ptr<GameState> currentState(new MainMenuState(stateRenderer));
+void GameManager::play()
+{
+	std::unique_ptr<GameState> currentState(new MainMenuState(renderer));
 
 	while(currentState->isActive()) {
 
@@ -25,11 +27,12 @@ void GameManager::play() {
 		}
 
 	}
-	gameEnded = true;
 
+	gameEnded = true;
 }
 
-void GameManager::quit() {
-	stateRenderer->destroy();
+void GameManager::quit()
+{
+	renderer->destroy();
 }
 

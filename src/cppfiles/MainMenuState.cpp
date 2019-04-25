@@ -9,15 +9,14 @@
 #include "../header/MainMenuState.h"
 #include "../header/PlayingState.h"
 
-MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
+MainMenuState::MainMenuState(std::shared_ptr<Renderer> r)
+{
     renderer = std::move(r);
     renderer->initializeMainMenu();
 }
 
-MainMenuState::~MainMenuState() = default;
-
 void MainMenuState::update() {
-    // update selected here
+    // update is handled by handleEvent() mostly
 }
 
 void MainMenuState::display() {
@@ -48,22 +47,19 @@ void MainMenuState::handleEvent() {
     }
 }
 
-std::unique_ptr<GameState> MainMenuState::nextState() {
-
-    if(selectedItem == 0) {
+std::unique_ptr<GameState> MainMenuState::nextState()
+{
+    if(selectedItem == 0)
+    {
         std::unique_ptr<GameState> nextState(new PlayingState(renderer));
         renderer->destroyMainMenu();
         return nextState;
     }
 
-    else if(selectedItem == 1) {
+    else if(selectedItem == 1)
+    {
         active = false;
-        return nullptr;
     }
 
     return nullptr;
-}
-
-bool MainMenuState::isActive() {
-    return active;
 }

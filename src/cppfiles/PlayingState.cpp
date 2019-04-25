@@ -3,14 +3,16 @@
 
 PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
     exitToMenu = false;
-    renderer = std::move(r);
 
+    renderer = std::move(r);
     renderer->initializeGame();
 
-    int topOfGameScreen = 800/100*6;
-    paddle.setParams(800);
-    paddle.setPaddlePositions(800, 600);
-    ball.setParams(600, 800);
+    paddle.setParams(renderer->getWindowWidth());
+    paddle.setPaddlePositions(renderer->getWindowWidth(), renderer->getWindowHeight());
+    ball.initialize(600, 800);
+
+    // we leave room at the top for a statusbar
+    int topOfGameScreen = renderer->getWindowWidth() / 100 * 6;
     bricks.InitializeBricks(topOfGameScreen);
 
     // run update to render everything once
@@ -23,7 +25,7 @@ PlayingState::~PlayingState() = default;;
 
 void PlayingState:: update()
 {
-    if(collisionManager.brickCollisions() == 145) {
+    if(collisionManager.brickCollisions() == 135) {
         status = GAME_WON;
         return;
     }
@@ -44,7 +46,7 @@ void PlayingState:: update()
 			exitToMenu = true;
 			display();
 		} else {
-			ball.setBallStartPosition();
+			ball.setStartingPosition();
 		}
 	}
 }
@@ -91,11 +93,6 @@ void PlayingState::handleEvent()
         default:
             return;
     }
-}
-
-bool PlayingState::isActive()
-{
-    return active;
 }
 
 std::unique_ptr<GameState> PlayingState::nextState() {

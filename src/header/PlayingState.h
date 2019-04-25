@@ -30,6 +30,9 @@ private:
 	int health = 5;
 	bool active = true;
 
+	bool isActive() { return active; };
+	bool exitToMenu = false;
+
 	Status status;
 
 	CollisionManager collisionManager;
@@ -43,10 +46,6 @@ private:
     SDL_Rect paddlePosition{};
     SDL_Rect ballPosition{};
 
-	bool isActive();
-    std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY];
-
-    bool paused = false;
-    bool exitToMenu = false;
+	std::vector<SDL_Rect> brickPositions[Bricks::brickColumns * Bricks::brickRows];
 };
 #endif

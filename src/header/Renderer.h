@@ -8,7 +8,6 @@
 
 class Renderer {
 public:
-	Renderer();
     void initialize();
 	void initializeMainMenu();
     void initializeGame();
@@ -26,9 +25,13 @@ public:
     void drawMenuItems(int highlightedItem);
     void drawMenuTitle();
 
+    int getWindowHeight() { return HEIGHT; }
+    int getWindowWidth() { return WIDTH; }
+
     SDL_Renderer* getRenderer();
 private:
-    int WIDTH = 800, HEIGHT = 600;
+    int WIDTH = 800;
+    int HEIGHT = 600;
 	std::vector<SDL_Surface*> brickSurfaceVector;
 	std::vector<SDL_Texture*> brickTextureVector;
 

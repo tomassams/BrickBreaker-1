@@ -4,7 +4,9 @@ void InputManager:: readEvent()
 {
 	if (event.type == SDL_KEYDOWN)
 	{
-		if (KeyStillDown()) return;
+		if (KeyStillDown())
+			return;
+
 		keymap[event.key.keysym.sym] = true;
 	}
 

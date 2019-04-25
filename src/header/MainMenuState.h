@@ -14,12 +14,11 @@
 class MainMenuState : public GameState {
 public:
     MainMenuState(std::shared_ptr<Renderer> r);
-    ~MainMenuState();
     void update() override;
     void display() override;
     void handleEvent() override;
     std::unique_ptr<GameState> nextState() override;
-    bool isActive() override;
+    bool isActive() { return active; };
 private:
     InputManager inputManager;
     int selectedItem = -1;

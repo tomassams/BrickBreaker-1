@@ -11,12 +11,8 @@
 class CollisionManager
 {
 public:
-	CollisionManager() {
-		SDL_Log("CollisionManager() constructor called");
-	}
 	void collision(Ball* ball, SDL_Rect paddleRect, std::vector<Brick>* bricks );
-	int brickCollisions() { return brickCollisionCounter; }
-
+	int brickCollisions() { return brickCollisionCounter; };
 private:
 	SDL_Rect interSectRect = {0,0,0,0};
 	int brickCollisionCounter = 0;
@@ -24,4 +20,5 @@ private:
 	static bool paddleCollisionAtEnd(int horizontal, int x, int w );
 	bool ballBrickCollision(const SDL_Rect* ballRect, std::vector<Brick>* bricks );
 };
+
 #endif
