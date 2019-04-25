@@ -16,7 +16,9 @@ public:
 	void changeVerticalVelocity() { verticalVelocity = -verticalVelocity; }
 	bool isOutOfBounds() const { return outOfBounds; }
 	void setBallStartPosition();
-	void collision( SDL_Rect paddleRect, std::vector<Brick>* bricks );
+	SDL_Rect getCurrentPosition() const {return ballRect;}
+	int getVerticalSize() const { return vertical + ballScaling; }
+	int getHorizontalSize() const { return horizontal + ballScaling; }
 
 private:
 	SDL_Rect ballRect;
@@ -25,9 +27,5 @@ private:
 	int horizontalVelocity, verticalVelocity;
 	int ballScaling = 13;
 	bool outOfBounds = false;
-	bool ballBrickCollisionDetected( SDL_Rect brickRect );
-	bool ballBrickCollision(std::vector<Brick>* bricks);
-	bool paddleCollision( SDL_Rect paddleRect );
-	bool paddleCollisionAtEnd( int x, int w );
 };
 #endif

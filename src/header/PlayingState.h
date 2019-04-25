@@ -15,6 +15,7 @@
 #include "Ball.h"
 #include "Bricks.h"
 #include "Brick.h"
+#include "../cppfiles/CollisionManager.h"
 
 class PlayingState : public GameState
 {
@@ -26,10 +27,10 @@ public:
     void handleEvent() override;
     std::unique_ptr<GameState> nextState() override;
 private:
-	int numBrokenBricks = 0;
 	int health = 5;
 	bool active = true;
 
+	CollisionManager collisionManager;
     InputManager inputManager;
     std::shared_ptr<Renderer> renderer;
 

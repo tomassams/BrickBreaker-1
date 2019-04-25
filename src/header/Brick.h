@@ -8,7 +8,7 @@ class Brick {
 
 public:
 	Brick();
-	Brick(int verticalSpacing, int horizontalSpacing, int life);
+	Brick( int verticalSpacing, int horizontalSpacing, int life );
 
 	SDL_Rect rect{};
 	void hit();

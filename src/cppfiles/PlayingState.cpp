@@ -31,7 +31,7 @@ void PlayingState:: update()
 
 	paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 26 };
 
-	ball.collision(paddlePosition, bricks.getBricks());
+	collisionManager.collision(&ball, paddlePosition, bricks.getBricks());
 	ballPosition = ball.moveBall();
 
     if (ball.isOutOfBounds())

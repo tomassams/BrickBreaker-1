@@ -4,7 +4,7 @@ project(BrickBreaker)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${BrickBreaker_SOURCE_DIR}/cmake")
 
-add_executable(BrickBreaker src/main.cpp src/cppfiles/Ball.cpp src/header/Ball.h src/main.cpp src/cppfiles/GameManager.cpp src/header/GameManager.h src/cppfiles/Bricks.cpp src/header/Bricks.h src/header/Brick.h src/cppfiles/InputManager.cpp src/header/InputManager.h src/cppfiles/Paddle.cpp src/header/Paddle.h src/header/GameState.h src/cppfiles/PlayingState.cpp src/header/PlayingState.h src/cppfiles/Renderer.cpp src/header/Renderer.h src/cppfiles/Brick.cpp src/cppfiles/MainMenuState.cpp src/header/MainMenuState.h src/header/InputAction.h)
+add_executable(BrickBreaker src/main.cpp src/cppfiles/Ball.cpp src/header/Ball.h src/main.cpp src/cppfiles/GameManager.cpp src/header/GameManager.h src/cppfiles/Bricks.cpp src/header/Bricks.h src/header/Brick.h src/cppfiles/InputManager.cpp src/header/InputManager.h src/cppfiles/Paddle.cpp src/header/Paddle.h src/header/GameState.h src/cppfiles/PlayingState.cpp src/header/PlayingState.h src/cppfiles/Renderer.cpp src/header/Renderer.h src/cppfiles/Brick.cpp src/cppfiles/MainMenuState.cpp src/header/MainMenuState.h src/header/InputAction.h src/cppfiles/CollisionManager.cpp src/cppfiles/CollisionManager.h)
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
