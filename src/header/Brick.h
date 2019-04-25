@@ -18,7 +18,7 @@ public:
 
 private:
 	bool isBrickHit = false;
-	int brickWidth = 80, brickHeight = 35;
+	int brickWidth = 80, brickHeight = 34;
 	int currentHealth;
 	int maxHealth;
 };

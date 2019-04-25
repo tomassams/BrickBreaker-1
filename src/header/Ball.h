@@ -2,6 +2,7 @@
 #define BRICKBREAKER_BALL_H
 
 #include <iostream>
+#include <random>
 #include <SDL.h>
 
 class Ball{
@@ -10,20 +11,26 @@ public:
 	{
 		HEIGHT = h;
 		WIDTH = w;
+		setBallStartPosition();
 	}
 
-	SDL_Rect moveBall(int paddlePositionX, int paddlePositionY);
-	void changeVelocityX() {velocityX = -velocityX;}
-	void changeVelocityY() {velocityY = -velocityY;}
+	SDL_Rect moveBall(SDL_Rect paddleRect);
+	void changeVerticalVelocity() {velocityX = -velocityX;}
+	void changeHorizontalVelocity() {velocityY = -velocityY;}
 	bool isOutOfBounds() const {return outOfBounds;}
-	void reset();
+	void setBallStartPosition();
 
 private:
-	int vertical = 300, horizontal = 200, velocityX = 1, velocityY = 1;
-	int ballScaling = 5;
 	int HEIGHT, WIDTH;
+	int vertical, horizontal, velocityX, velocityY;
+	int ballScaling = 13;
 	bool outOfBounds = false;
-	bool paddleCollision(int paddlePositionX, int paddlePositionY);
+	bool paddleCollision(SDL_Rect paddleRect);
+	bool paddleCollisionAtEnd(int x, int y, int h);
+	bool hitPaddleSurface(int x, int h);
+	void collision(SDL_Rect paddleRect);
+	void (Ball::*func)(SDL_Rect);
+
 };
 
 #endif

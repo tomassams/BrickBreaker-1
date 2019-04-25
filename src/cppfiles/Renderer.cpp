@@ -29,31 +29,36 @@ void Renderer::initializeMainMenu() {
 void Renderer::initializeGame() {
 
     ballSurface = IMG_Load("../res/images/ballBlue.png");
-    if (ballSurface == nullptr)
-        std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
-
     paddleSurface = IMG_Load("../res/images/paddleRed.png");
-    if (paddleSurface == nullptr)
-        std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
 
-    brickSurfaceVector.clear();
+    if (paddleSurface == nullptr || ballSurface == nullptr)
+	{
+		std::cout << "SDL_Image Error: " << SDL_GetError() << std::endl;
+		return;
+	}
+
+	brickSurfaceVector.push_back(IMG_Load("../res/images/rectPurple.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectGreen.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectBlue.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectYellow.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectRed.png"));
-    brickSurfaceVector.push_back(IMG_Load("../res/images/rectPurp.png"));
 
-    brickTextureVector.clear();
     std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [this](auto surface){
-        brickTextureVector.push_back(SDL_CreateTextureFromSurface(renderer, surface));
+		if (surface == nullptr)
+		{
+			std::cout << "SDL_Image Error: " << SDL_GetError() << std::endl;
+			return;
+		}
+		brickTextureVector.push_back(SDL_CreateTextureFromSurface(renderer, surface));
     });
 
     paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
     ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
-
 }
 
-void Renderer::destroy() {
+void Renderer:: destroy() {
+	brickSurfaceVector.clear();
+	brickTextureVector.clear();
     SDL_DestroyTexture(paddleTexture);
     SDL_DestroyTexture(ballTexture);
 
@@ -82,7 +87,7 @@ void Renderer:: drawBall(SDL_Rect rect) {
 void Renderer:: drawBrick(int health, SDL_Rect rect) {
 	SDL_RenderCopy(
 			renderer,
-			brickTextureVector.at((health > 0) ? health-1 : 0),
+			brickTextureVector.at(health),
 			nullptr,
 			&rect
 	);
@@ -93,14 +98,14 @@ SDL_Renderer* Renderer:: getRenderer() {
 }
 
 void Renderer:: drawBricks(Bricks &bricks) {
-	auto rickVector = bricks.getBricks();
-	std::for_each(rickVector.begin(), rickVector.end(), [this](Brick brick){
+	auto brickVector = bricks.getBricks();
+	std::for_each(brickVector.begin(), brickVector.end(), [this](Brick brick){
 			SDL_Rect brickRect = brick.rect;
 
 			if (brick.isHit())
 			{
-				brickRect.x = 300000;
-				brickRect.y = 300000;
+				brickRect.h = 0;
+				brickRect.w = 0;
 			}
 
 			int health = brick.getHealth();

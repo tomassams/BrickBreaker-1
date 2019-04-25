@@ -4,6 +4,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <memory>
+#include <thread>
 
 #include "Ball.h"
 #include "Bricks.h"

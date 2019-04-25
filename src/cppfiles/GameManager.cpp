@@ -14,7 +14,7 @@ void GameManager::play() {
 
 	std::unique_ptr<GameState> currentState(new MainMenuState(stateRenderer));
 
-	while(running) {
+	do {
 
 		currentState->handleEvent();
 		currentState->update();
@@ -26,7 +26,7 @@ void GameManager::play() {
 			std::unique_ptr<GameState> nextState = currentState->nextState();
 			std::swap(currentState, nextState);
 		}
-	}
+	} while(running);
 
 	gameEnded = true; // quit (TODO: handle swap states - pause / main menu)
 }

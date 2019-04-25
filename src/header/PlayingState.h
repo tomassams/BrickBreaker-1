@@ -3,6 +3,8 @@
 
 #include <SDL.h>
 #include <memory.h>
+#include <thread>
+
 #include "GameState.h"
 #include "InputManager.h"
 #include "Paddle.h"
@@ -37,6 +39,4 @@ private:
     bool active = true; // temp
     bool isActive(); // temp
 };
-
-
-#endif //BRICKBREAKER_PLAYINGSTATE_H
+#endif

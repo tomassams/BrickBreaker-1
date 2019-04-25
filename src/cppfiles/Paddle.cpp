@@ -8,10 +8,12 @@ void Paddle::setPaddlePositions(int w, int h)
 
 void Paddle::moveLeft()
 {
-	if (getPaddleX() > 0) paddleX -= paddleSpeed;
+	if (getPaddleX() > 0)
+		paddleX -= paddleSpeed;
 }
 
 void Paddle::moveRight()
 {
-	if (getPaddleX() <= WIDTH - 90) paddleX += paddleSpeed;
+	if (getPaddleX() <= WIDTH - 90)
+		paddleX += paddleSpeed;
 }

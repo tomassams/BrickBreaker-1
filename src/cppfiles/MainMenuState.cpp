@@ -106,12 +106,10 @@ void MainMenuState::handleEvent() {
 std::unique_ptr<GameState> MainMenuState::nextState() {
 
     if(selectedItem == 1) {
-        SDL_Log("Triggering new game!");
         std::unique_ptr<GameState> nextState(new PlayingState(sRenderer));
 
         return nextState;
-    } else if(selectedItem == 0) {
-        SDL_Log("Triggering exit!");
+    } else if(selectedItem == -1) {
         this->MainMenuState::~MainMenuState();
     }
 

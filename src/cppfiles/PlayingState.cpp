@@ -18,35 +18,33 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 
     bricks.InitializeBricks();
 
-    paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
-    ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
+	update();
 
-    //mBall.reset(); // from old activateGame(), not sure if necessary
+	//mBall.reset(); // from old activateGame(), not sure if necessary
 }
 PlayingState::~PlayingState() = default;
 
-void PlayingState::update() {
+void PlayingState:: update() {
 
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
-    ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
+    ballPosition = ball.moveBall(paddlePosition);
+	//    if (ball.isOutOfBounds()) { active = false; }
 
-//    if (ball.isOutOfBounds()) { active = false; }
+	if (bricks.ballBrickCollision(ballPosition))
+	{
+		numBrokenBricks++;
+		ball.changeVerticalVelocity();
 
-    if (bricks.ballBrickCollision(ballPosition))
-    {
-        numBrokenBricks++;
-        ball.changeVelocityX();
-
-        //if (numBrokenBricks == bricks.numberOfBricks){ active = false;} //TODO: Finish state is now grater than just the number of bricks
-    }
-
+		//if (numBrokenBricks == bricks.numberOfBricks){ active = false;}
+		// TODO: Finish state is now grater than just the number of bricks
+	}
 }
 
 void PlayingState::display() {
     SDL_RenderClear(renderer->getRenderer());
 
     // TODO: loop through a SDL_
-    renderer->drawBricks(bricks);
+	renderer->drawBricks(bricks);
     renderer->drawPaddle(paddlePosition);
     renderer->drawBall(ballPosition);
 
@@ -76,9 +74,7 @@ bool PlayingState::isActive() {
 
 std::unique_ptr<GameState> PlayingState::nextState() {
     if(!active) {
-        SDL_Log("Triggering new state!");
         std::unique_ptr<GameState> nextState(new MainMenuState(renderer));
-
         return nextState;
     }
     // TODO: handle transition to next state (e.g. pause or exit/menu)
