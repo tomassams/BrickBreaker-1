@@ -59,7 +59,7 @@ void PlayingState:: display()
     renderer->drawBricks(bricks);
     renderer->drawPaddle(paddlePosition);
 	renderer->drawBall(ballPosition);
-	renderer->drawTopLine(health);
+	renderer->drawStatusBar(health, 198443);
 
     SDL_RenderPresent(renderer->getRenderer());
 }
