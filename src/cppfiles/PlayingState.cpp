@@ -59,13 +59,13 @@ void PlayingState::display() {
 
 void PlayingState::handleEvent() {
     switch(inputManager.handle()) {
-        case 0:
+        case QUIT_GAME:
             active = false;
             break;
-        case 1:
+        case MOVE_LEFT:
             paddle.moveLeft();
             break;
-        case 2:
+        case MOVE_RIGHT:
             paddle.moveRight();
             break;
         default:

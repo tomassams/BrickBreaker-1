@@ -32,10 +32,10 @@ private:
 
     int numBrokenBricks = 0;
 
-    std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY];
+    std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY]; // TODO
 
     bool active = true; // temp
-    bool isActive(); // temp
+    bool isActive() override; // temp
 };
 
 

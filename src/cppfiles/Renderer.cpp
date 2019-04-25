@@ -12,12 +12,12 @@ void Renderer::initialize() {
     SDL_Init(SDL_INIT_VIDEO);
 
     if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
-    	std::cout << "Could not initialize SDL Images: " << SDL_GetError() << std::endl;
+        std::cout << "Could not initialize SDL Images: " << SDL_GetError() << std::endl;
 
     window = SDL_CreateWindow("Brick Breaker", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, 0);
 
     if (window == nullptr)
-    	std::cout << "Could not create window" << SDL_GetError() << std::endl;
+        std::cout << "Could not create window" << SDL_GetError() << std::endl;
 
     renderer = SDL_CreateRenderer(window, -1, 0);
 

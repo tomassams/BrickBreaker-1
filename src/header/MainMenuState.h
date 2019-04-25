@@ -24,7 +24,6 @@ public:
     int showMenu();
     int selectedItem = -1;
 private:
-//    Renderer sRenderer;
     std::shared_ptr<Renderer> sRenderer = nullptr;
     InputManager inputManager;
     bool active = true;
@@ -36,7 +35,7 @@ private:
     int titleWidth = 0, titleHeight = 0;
     int menuItems[4] = {0,0,0,0};
 
-    //TODO: Remove
+    SDL_Window *screen;
     SDL_Renderer *renderer;
     TTF_Font *largeFont, *smallFont ;
 
@@ -52,6 +51,5 @@ private:
     bool isMouseOnItem(int i);
     void updateMenuContent(int position, int newColor);
 };
-
 
 #endif //BRICKBREAKER_MAINMENUSTATE_H

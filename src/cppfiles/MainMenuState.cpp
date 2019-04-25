@@ -29,7 +29,6 @@ MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
     //CREATE MENU OPTIONS
     for (int i = 0; i < options; i++)
         updateMenuContent(i, 0);
-
 }
 
 MainMenuState::~MainMenuState() {
