@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SDL_image.h>
+#include <sstream>
 #include "../header/Renderer.h"
 
 Renderer::Renderer()
@@ -173,7 +174,7 @@ void Renderer:: drawBrick(int health, SDL_Rect rect)
 	);
 }
 
-void Renderer:: drawStatusBar(int health, int score)
+void Renderer:: drawStatusBar(int health, int score, bool paused)
 {
 	for (int i = 0; i < health; i++)
 	{
@@ -185,11 +186,21 @@ void Renderer:: drawStatusBar(int health, int score)
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
 	}
 
-    SDL_Surface* scoreTxtSurface = TTF_RenderText_Solid(FONT_SCORE, "753435", COLOR_GREEN);
+    SDL_Surface* scoreTxtSurface = TTF_RenderText_Solid(FONT_SCORE, std::to_string(score).c_str(), COLOR_GREEN);
     SDL_Texture* scoreTxtTexture = SDL_CreateTextureFromSurface(renderer, scoreTxtSurface);
     SDL_Rect scoreTxtPosition = { 10, 10, scoreTxtSurface->clip_rect.w, scoreTxtSurface->clip_rect.h, };
 
+    std::string statusText = "GAME ACTIVE";
+    if(paused) {
+        statusText = "GAME PAUSED";
+    }
+
+    SDL_Surface* gameStatusTxtSurface = TTF_RenderText_Solid(FONT_SCORE, statusText.c_str(), COLOR_GREEN);
+    SDL_Texture* gameStatusTxtTexture = SDL_CreateTextureFromSurface(renderer, gameStatusTxtSurface);
+    SDL_Rect gameStatusTxtPosition = { WIDTH / 2 - (gameStatusTxtSurface->clip_rect.w / 2) , 10, gameStatusTxtSurface->clip_rect.w, gameStatusTxtSurface->clip_rect.h, };
+
     SDL_RenderCopy(renderer, scoreTxtTexture, nullptr, &scoreTxtPosition);
+    SDL_RenderCopy(renderer, gameStatusTxtTexture, nullptr, &gameStatusTxtPosition);
 }
 
 SDL_Renderer* Renderer:: getRenderer()

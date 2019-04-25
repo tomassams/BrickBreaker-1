@@ -20,7 +20,7 @@ public:
     void drawBall(SDL_Rect rect);
     void drawBrick(int health, SDL_Rect rect);
     void drawBricks(Bricks &bricks);
-	void drawStatusBar(int health, int score);
+	void drawStatusBar(int health, int score, bool paused);
 
     void drawMenuItems(int highlightedItem);
     void drawMenuTitle();

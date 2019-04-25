@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "CollisionManager.h"
 
 void CollisionManager:: collision(Ball* ball, SDL_Rect paddleRect, std::vector<Brick>* bricks )

@@ -59,21 +59,29 @@ void PlayingState:: display()
     renderer->drawBricks(bricks);
     renderer->drawPaddle(paddlePosition);
 	renderer->drawBall(ballPosition);
-	renderer->drawStatusBar(health, 198443);
+	renderer->drawStatusBar(health, collisionManager.brickCollisions()*100, paused);
 
     SDL_RenderPresent(renderer->getRenderer());
+
+    if(paused) {
+        return;
+    }
+
 }
 
 void PlayingState::handleEvent()
 {
+
     switch(inputManager.handle()) {
         case QUIT_GAME:
             exitToMenu = !exitToMenu;
             break;
         case MOVE_LEFT:
+            if(!paused)
             paddle.moveLeft();
             break;
         case MOVE_RIGHT:
+            if(!paused)
             paddle.moveRight();
             break;
         case TOGGLE_PAUSE:
