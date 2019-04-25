@@ -22,11 +22,32 @@ void Ball::setBallStartPosition()
 	if (horizontal > WIDTH/2) changeVerticalVelocity();
 }
 
-SDL_Rect Ball:: moveBall( SDL_Rect paddleRect )
+SDL_Rect Ball:: moveBall()
 {
-	std::thread handleCollision( [this, paddleRect]()
+	vertical += horizontalVelocity;
+	horizontal += verticalVelocity;
+	ballRect = { horizontal, vertical, 13, 13 };
+	return ballRect;
+}
+
+
+
+void Ball:: collision( SDL_Rect paddleRect, std::vector<Brick>* bricks )
+{
+	std::thread handlePaddleCollision( [this, paddleRect]()
 	{
-		collision( paddleRect );
+	   if ( paddleCollision(paddleRect) || vertical + ballScaling <= 50)
+	   {
+		   if (paddleCollisionAtEnd(paddleRect.x, paddleRect.w))
+		   {
+			   changeVerticalVelocity();
+		   }
+		   changeHorizontalVelocity();
+	   }
+	});
+
+	std::thread handleBrickCollision( [this, &bricks](){
+		ballBrickCollision(bricks);
 	});
 
 	if (horizontal + ballScaling == WIDTH || horizontal + ballScaling == 0)
@@ -38,26 +59,11 @@ SDL_Rect Ball:: moveBall( SDL_Rect paddleRect )
 	{
 		outOfBounds = true;
 	}
-
-	handleCollision.join();
-	vertical += horizontalVelocity;
-	horizontal += verticalVelocity;
-
-	return { horizontal, vertical, 13, 13 };
+	handlePaddleCollision.join();
+	handleBrickCollision.join();
 }
 
-void Ball:: collision( SDL_Rect paddleRect )
-{
-	if ( paddleCollision(paddleRect) || vertical + ballScaling <= 50)
-	{
-		if (paddleCollisionAtEnd(paddleRect.x, paddleRect.w))
-		{
-			changeVerticalVelocity();
-		}
-		changeHorizontalVelocity();
-	}
-}
-
+/************************************ Paddle Collision *********************************************/
 bool Ball:: paddleCollision( SDL_Rect paddleRect )
 {
 	return horizontal + ballScaling >= paddleRect.x
@@ -76,4 +82,32 @@ bool Ball:: paddleCollisionAtEnd( int x, int w )
 			&& horizontal + ballScaling >= (x + 60)
 	);
 	return (onLeftSide || onRightSide);
+}
+
+/************************************ Brick Collision *********************************************/
+bool Ball:: ballBrickCollisionDetected( SDL_Rect brickRect )
+{
+	if (brickRect.x > ballRect.x + ballRect.w)
+		return false;
+
+	else if (brickRect.x + brickRect.w < ballRect.x)
+		return false;
+
+	else if (brickRect.y > ballRect.y + ballRect.h)
+		return false;
+
+	else return brickRect.y + brickRect.h >= ballRect.y;
+}
+
+void Ball:: ballBrickCollision(std::vector<Brick>* bricks)
+{
+	std::for_each(bricks->begin(), bricks->end(), [this](Brick &brick)
+	{
+		if (ballBrickCollisionDetected(brick.rect) && !brick.isHit())
+		{
+			brick.hit();
+			changeHorizontalVelocity();
+			return;
+		}
+	});
 }

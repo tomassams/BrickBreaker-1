@@ -1,6 +1,4 @@
-#include <SDL.h>
 #include "../header/PlayingState.h"
-#include "../header/MainMenuState.h"
 
 PlayingState::PlayingState(std::shared_ptr<Renderer> r)
 {
@@ -27,21 +25,10 @@ PlayingState::~PlayingState() = default;
 
 void PlayingState:: update()
 {
-	std::thread ballBrickCollisionHandler ([this]()
-	{
-		if (bricks.ballBrickCollision(ballPosition))
-		{
-			numBrokenBricks++;
-			ball.changeHorizontalVelocity();
-			//if (numBrokenBricks == bricks.numberOfBricks){ active = false;}
-			// TODO: Finish state is now grater than just the number of bricks
-		}
-	});
+	paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 26 };
 
-    paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 26 };
-
-	ballBrickCollisionHandler.join();
-	ballPosition = ball.moveBall(paddlePosition);
+	ball.collision(paddlePosition, bricks.getBricks());
+	ballPosition = ball.moveBall();
 
     if (ball.isOutOfBounds())
     {

@@ -4,8 +4,10 @@
 #include <SDL.h>
 #include <memory.h>
 #include <thread>
+#include <vector>
 #include <algorithm>
 
+#include "MainMenuState.h"
 #include "GameState.h"
 #include "InputManager.h"
 #include "Paddle.h"

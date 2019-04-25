@@ -132,7 +132,7 @@ SDL_Renderer* Renderer:: getRenderer()
 void Renderer:: drawBricks(Bricks &bricks)
 {
 	auto brickVector = bricks.getBricks();
-	std::for_each(brickVector.begin(), brickVector.end(), [this](Brick brick)
+	std::for_each(brickVector->begin(), brickVector->end(), [this](Brick brick)
 	{
 			SDL_Rect brickRect = brick.rect;
 
