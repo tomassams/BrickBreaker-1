@@ -11,7 +11,6 @@ public:
     virtual void display() = 0;
     virtual void handleEvent() = 0;
     virtual std::unique_ptr<GameState> nextState() = 0;
-
     virtual bool isActive() = 0; // temp
 };
 

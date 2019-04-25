@@ -1,12 +1,12 @@
-#include <iostream>
-#include <SDL_image.h>
-#include <sstream>
 #include "../header/Renderer.h"
-#include "../header/Status.h"
 
-void Renderer::initialize() {
+void Renderer::initialize()
+{
     SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
+    FONT_LARGE = TTF_OpenFont("../res/fonts/DIGDUG.ttf", 100);
+    FONT_SMALL =  TTF_OpenFont("../res/fonts/barcadbold.ttf", 50);
+    FONT_SCORE =  TTF_OpenFont("../res/fonts/digital-7.ttf", 28);
 
     if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)) {
         std::cout << "Could not initialize SDL Images: " << SDL_GetError() << std::endl;
@@ -22,9 +22,6 @@ void Renderer::initialize() {
 
 void Renderer::initializeMainMenu()
 {
-    FONT_LARGE = TTF_OpenFont("../res/fonts/DIGDUG.ttf", 100);
-    FONT_SMALL =  TTF_OpenFont("../res/fonts/barcadbold.ttf", 50);
-
     // initialize the game title
     titleSurface = TTF_RenderText_Solid(FONT_LARGE, "BRICKBREAKER", COLOR_WHITE);
     titleTexture = SDL_CreateTextureFromSurface(renderer, titleSurface);
@@ -96,8 +93,6 @@ void Renderer::initializeGame()
 		return;
 	}
 
-    FONT_SCORE =  TTF_OpenFont("../res/fonts/digital-7.ttf", 28);
-
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectGreen.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectBlue.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectYellow.png"));
@@ -117,6 +112,92 @@ void Renderer::initializeGame()
     paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
     ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
 	hartTexture = SDL_CreateTextureFromSurface(renderer, hartSurface);
+}
+
+void Renderer:: drawBricks(Bricks &bricks)
+{
+    auto brickVector = bricks.getBricks();
+    std::for_each(brickVector->begin(), brickVector->end(), [this](Brick brick)
+    {
+        SDL_Rect brickRect = brick.rect;
+
+        if (brick.isHit())
+        {
+            brickRect.h = 0;
+            brickRect.w = 0;
+        }
+
+        int health = brick.getHealth();
+        drawBrick(health, brickRect);
+    });
+}
+
+
+void Renderer:: drawBrick(int health, SDL_Rect rect)
+{
+    SDL_RenderCopy(
+            renderer,
+            brickTextureVector.at((health <= 0) ? 0 : health-1), //Make sure health is never less then 0
+            nullptr,
+            &rect
+    );
+}
+
+
+void Renderer:: drawPaddle(SDL_Rect rect)
+{
+    SDL_RenderCopy(renderer, paddleTexture, nullptr, &rect);
+}
+
+void Renderer:: drawBall(SDL_Rect rect)
+{
+    SDL_RenderCopy(renderer, ballTexture, nullptr, &rect);
+}
+
+void Renderer:: drawStatusBar(int health, int score, Status status)
+{
+    for (int i = 0; i < health; i++)
+    {
+        SDL_Rect rect = {WIDTH - (40 + (35 * i)) , 10, 22, 20};
+        SDL_RenderCopy(renderer, hartTexture, nullptr, &rect);
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawLine(renderer, 0, 43, WIDTH, 43);
+        SDL_RenderDrawLine(renderer, 0, 44, WIDTH, 44);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    }
+
+    SDL_Surface* scoreTxtSurface = TTF_RenderText_Solid(FONT_SCORE, std::to_string(score).c_str(), COLOR_GREEN);
+    SDL_Texture* scoreTxtTexture = SDL_CreateTextureFromSurface(renderer, scoreTxtSurface);
+    SDL_Rect scoreTxtPosition = { 10, 10, scoreTxtSurface->clip_rect.w, scoreTxtSurface->clip_rect.h, };
+
+    std::string statusText;
+    switch(status) {
+        case INITIALIZED:
+            statusText = "PRESS SPACE TO PLAY";
+            break;
+        case PAUSED:
+            statusText = "GAME PAUSED - SPACE TO RESUME";
+            break;
+        case PLAYING:
+            statusText = "GAME ACTIVE - SPACE TO PAUSE";
+            break;
+        case GAME_WON:
+            statusText = "YOU WON! SPACE TO SEE MAIN MENU";
+            break;
+        case GAME_LOST:
+            statusText = "YOU LOSE! SPACE TO SEE MAIN MENU";
+            break;
+        default:
+            statusText = "";
+            break;
+    }
+
+    SDL_Surface* gameStatusTxtSurface = TTF_RenderText_Solid(FONT_SCORE, statusText.c_str(), COLOR_GREEN);
+    SDL_Texture* gameStatusTxtTexture = SDL_CreateTextureFromSurface(renderer, gameStatusTxtSurface);
+    SDL_Rect gameStatusTxtPosition = { WIDTH / 2 - (gameStatusTxtSurface->clip_rect.w / 2) , 10, gameStatusTxtSurface->clip_rect.w, gameStatusTxtSurface->clip_rect.h, };
+
+    SDL_RenderCopy(renderer, scoreTxtTexture, nullptr, &scoreTxtPosition);
+    SDL_RenderCopy(renderer, gameStatusTxtTexture, nullptr, &gameStatusTxtPosition);
 }
 
 void Renderer:: destroyGame()
@@ -155,92 +236,4 @@ void Renderer:: destroy()
 	IMG_Quit();
 	TTF_Quit();
 	SDL_Quit();
-}
-
-void Renderer:: drawPaddle(SDL_Rect rect)
-{
-    SDL_RenderCopy(renderer, paddleTexture, nullptr, &rect);
-}
-
-void Renderer:: drawBall(SDL_Rect rect)
-{
-    SDL_RenderCopy(renderer, ballTexture, nullptr, &rect);
-}
-
-void Renderer:: drawBrick(int health, SDL_Rect rect)
-{
-	SDL_RenderCopy(
-			renderer,
-			brickTextureVector.at((health <= 0) ? 0 : health-1), //Make sure health is never less then 0
-			nullptr,
-			&rect
-	);
-}
-
-void Renderer:: drawStatusBar(int health, int score, Status status)
-{
-	for (int i = 0; i < health; i++)
-	{
-		SDL_Rect rect = {WIDTH - (40 + (35 * i)) , 10, 22, 20};
-		SDL_RenderCopy(renderer, hartTexture, nullptr, &rect);
-		SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-		SDL_RenderDrawLine(renderer, 0, 43, WIDTH, 43);
-		SDL_RenderDrawLine(renderer, 0, 44, WIDTH, 44);
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-	}
-
-    SDL_Surface* scoreTxtSurface = TTF_RenderText_Solid(FONT_SCORE, std::to_string(score).c_str(), COLOR_GREEN);
-    SDL_Texture* scoreTxtTexture = SDL_CreateTextureFromSurface(renderer, scoreTxtSurface);
-    SDL_Rect scoreTxtPosition = { 10, 10, scoreTxtSurface->clip_rect.w, scoreTxtSurface->clip_rect.h, };
-
-    std::string statusText;
-    switch(status) {
-        case INITIALIZED:
-            statusText = "PRESS SPACE TO PLAY";
-            break;
-        case PAUSED:
-            statusText = "GAME PAUSED - SPACE TO RESUME";
-            break;
-        case PLAYING:
-            statusText = "GAME ACTIVE - SPACE TO PAUSE";
-            break;
-        case GAME_WON:
-            statusText ="YOU WON! SPACE TO SEE MAIN MENU";
-            break;
-        default:
-            statusText = "";
-            break;
-    }
-
-    SDL_Surface* gameStatusTxtSurface = TTF_RenderText_Solid(FONT_SCORE, statusText.c_str(), COLOR_GREEN);
-    SDL_Texture* gameStatusTxtTexture = SDL_CreateTextureFromSurface(renderer, gameStatusTxtSurface);
-    SDL_Rect gameStatusTxtPosition = { WIDTH / 2 - (gameStatusTxtSurface->clip_rect.w / 2) , 10, gameStatusTxtSurface->clip_rect.w, gameStatusTxtSurface->clip_rect.h, };
-
-    SDL_RenderCopy(renderer, scoreTxtTexture, nullptr, &scoreTxtPosition);
-    SDL_RenderCopy(renderer, gameStatusTxtTexture, nullptr, &gameStatusTxtPosition);
-}
-
-SDL_Renderer* Renderer:: getRenderer()
-{
-    return renderer;
-}
-
-void Renderer:: drawBricks(Bricks &bricks)
-{
-
-
-    auto brickVector = bricks.getBricks();
-	std::for_each(brickVector->begin(), brickVector->end(), [this](Brick brick)
-	{
-			SDL_Rect brickRect = brick.rect;
-
-			if (brick.isHit())
-			{
-				brickRect.h = 0;
-				brickRect.w = 0;
-			}
-
-			int health = brick.getHealth();
-			drawBrick(health, brickRect);
-	});
 }

@@ -20,32 +20,24 @@
 class PlayingState : public GameState
 {
 public:
-    explicit PlayingState(std::shared_ptr<Renderer> renderer);
-    ~PlayingState();
-    void update() override;
-    void display() override;
-    void handleEvent() override;
-    std::unique_ptr<GameState> nextState() override;
+    PlayingState(std::shared_ptr<Renderer> renderer);
+    virtual void update() override;
+    virtual void display() override;
+    virtual void handleEvent() override;
+    virtual std::unique_ptr<GameState> nextState() override;
+    virtual bool isActive() override { return active; };
 private:
-	int health = 5;
+	int lives = 5;
 	bool active = true;
-
-	bool isActive() { return active; };
 	bool exitToMenu = false;
-
 	Status status;
-
 	CollisionManager collisionManager;
     InputManager inputManager;
     std::shared_ptr<Renderer> renderer;
-
     Bricks bricks = Bricks();
     Paddle paddle = Paddle();
     Ball ball = Ball();
-
-    SDL_Rect paddlePosition{};
-    SDL_Rect ballPosition{};
-
-	std::vector<SDL_Rect> brickPositions[Bricks::brickColumns * Bricks::brickRows];
+    SDL_Rect paddlePosition;
+    SDL_Rect ballPosition;
 };
 #endif

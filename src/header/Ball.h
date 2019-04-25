@@ -1,11 +1,12 @@
 #ifndef BRICKBREAKER_BALL_H
 #define BRICKBREAKER_BALL_H
 
+#include <SDL.h>
 #include <iostream>
+#include <algorithm>
 #include <random>
 #include <thread>
 #include <vector>
-#include <SDL.h>
 #include "Brick.h"
 
 class Ball {

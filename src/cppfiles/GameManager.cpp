@@ -1,7 +1,4 @@
 #include "../header/GameManager.h"
-#include "../header/GameState.h"
-#include "../header/PlayingState.h"
-#include "../header/MainMenuState.h"
 
 void GameManager::init()
 {

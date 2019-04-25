@@ -4,6 +4,7 @@
 #include <SDL_rect.h>
 #include <thread>
 #include <vector>
+#include <algorithm>
 
 #include "Brick.h"
 #include "Ball.h"

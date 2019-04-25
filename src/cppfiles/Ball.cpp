@@ -1,4 +1,3 @@
-#include <algorithm>
 #include "../header/Ball.h"
 
 void Ball::initialize(int h, int w)

@@ -6,13 +6,9 @@
 
 class Paddle
 {
-
 public:
-	Paddle() {
-		SDL_Log("Paddle() constructor called");
-	}
-	void setParams(int w) {WIDTH = w;}
-	SDL_Rect paddleRect() {return { paddleX, paddleY, 80, 20 }; }
+	void setParams(int w) { width = w; };
+	SDL_Rect paddleRect() { return { paddleX, paddleY, 80, 20 }; };
 	void setPaddlePositions(int w, int h);
 	int getPaddleX() { return paddleX; }
 	int getPaddleY() { return paddleY; }
@@ -20,7 +16,7 @@ public:
 	void moveRight();
 
 private:
-	int WIDTH;
+	int width;
 	int paddleX = 0, paddleY = 0;
 	int paddleSpeed = 2;
 };

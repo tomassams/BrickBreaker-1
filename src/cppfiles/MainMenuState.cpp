@@ -1,13 +1,4 @@
-//
-// Created by ts on 4/24/2019.
-//
-
 #include "../header/MainMenuState.h"
-#include "../header/PlayingState.h"
-
-
-#include "../header/MainMenuState.h"
-#include "../header/PlayingState.h"
 
 MainMenuState::MainMenuState(std::shared_ptr<Renderer> r)
 {

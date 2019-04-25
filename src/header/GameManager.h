@@ -6,12 +6,14 @@
 #include <memory>
 #include <thread>
 
+#include "InputManager.h"
 #include "Ball.h"
 #include "Bricks.h"
-#include "InputManager.h"
 #include "Paddle.h"
 #include "Renderer.h"
 #include "GameState.h"
+#include "PlayingState.h"
+#include "MainMenuState.h"
 
 class GameManager{
 public:

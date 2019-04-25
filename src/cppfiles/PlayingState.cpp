@@ -1,4 +1,3 @@
-#include <SDL.h>
 #include "../header/PlayingState.h"
 
 PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
@@ -11,40 +10,37 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
     paddle.setPaddlePositions(renderer->getWindowWidth(), renderer->getWindowHeight());
     ball.initialize(600, 800);
 
-    // we leave room at the top for a statusbar
+    // we leave some room at the top for a statusbar
     int topOfGameScreen = renderer->getWindowWidth() / 100 * 6;
     bricks.InitializeBricks(topOfGameScreen);
 
-    // run update to render everything once
+    // run update() to render everything once before "freezing" at the initial screen
     status = PLAYING;
     update();
     status = INITIALIZED;
 }
 
-PlayingState::~PlayingState() = default;;
-
-void PlayingState:: update()
+void PlayingState::update()
 {
-    if(collisionManager.brickCollisions() == 135) {
+    if(collisionManager.brickCollisions() == 135)
+    {
         status = GAME_WON;
         return;
     }
-    if(status != PLAYING) {
+
+    if(status != PLAYING)
         return;
-    }
+
 
 	paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 26 };
-
 	collisionManager.collision(&ball, paddlePosition, bricks.getBricks());
 	ballPosition = ball.moveBall();
 
-
     if (ball.isOutOfBounds())
     {
-        if (--health == 0)
-		{
-			exitToMenu = true;
-			display();
+        if (--lives == 0) {
+            status = GAME_LOST;
+            return;
 		} else {
 			ball.setStartingPosition();
 		}
@@ -53,40 +49,42 @@ void PlayingState:: update()
 
 void PlayingState:: display()
 {
-
     SDL_RenderClear(renderer->getRenderer());
 
     renderer->drawBricks(bricks);
     renderer->drawPaddle(paddlePosition);
 	renderer->drawBall(ballPosition);
-	renderer->drawStatusBar(health, collisionManager.brickCollisions()*100, status);
+	renderer->drawStatusBar(lives, collisionManager.brickCollisions()*100, status); // *100 for a more "impressive" score than single brick hits
 
     SDL_RenderPresent(renderer->getRenderer());
-
 }
 
 void PlayingState::handleEvent()
 {
-
-    switch(inputManager.handle()) {
+    switch(inputManager.handle())
+    {
         case QUIT_GAME:
             exitToMenu = !exitToMenu;
             break;
+
         case MOVE_LEFT:
             if(status == PLAYING)
-            paddle.moveLeft();
-            break;
+                paddle.moveLeft();
+                break;
         case MOVE_RIGHT:
             if(status == PLAYING)
-            paddle.moveRight();
-            break;
+                paddle.moveRight();
+                break;
         case TOGGLE_PAUSE:
-            if(status == GAME_WON) {
+            if(status == GAME_WON || status == GAME_LOST)
+            {
                 exitToMenu = true;
-            } else if(status != PLAYING) {
-                SDL_Log("TOGGLE_PAUSE");
+            }
+            else if(status != PLAYING)
+            {
                 status = PLAYING;
-            } else {
+            }
+            else {
                 status = PAUSED;
             }
             break;
@@ -96,7 +94,6 @@ void PlayingState::handleEvent()
 }
 
 std::unique_ptr<GameState> PlayingState::nextState() {
-
     if(exitToMenu) {
         std::unique_ptr<GameState> nextState(new MainMenuState(renderer));
         renderer->destroyGame();
