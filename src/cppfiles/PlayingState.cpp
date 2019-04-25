@@ -39,9 +39,7 @@ void PlayingState:: update()
 		{
 			exitToMenu = true;
 			display();
-		}
-		else
-		{
+		} else {
 			ball.setBallStartPosition();
 		}
 	}
