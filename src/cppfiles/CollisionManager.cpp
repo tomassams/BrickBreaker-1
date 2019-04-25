@@ -55,27 +55,12 @@ bool CollisionManager:: paddleCollisionAtEnd(int horizontal, int x, int w )
 	return (onLeftSide || onRightSide);
 }
 
-/************************************ Brick Collision *********************************************/
-bool CollisionManager:: ballBrickCollisionDetected( SDL_Rect ballRect, SDL_Rect brickRect )
-{
-	if (brickRect.x > ballRect.x + ballRect.w)
-		return false;
-
-	else if (brickRect.x + brickRect.w < ballRect.x)
-		return false;
-
-	else if (brickRect.y > ballRect.y + ballRect.h)
-		return false;
-
-	else return brickRect.y + brickRect.h >= ballRect.y;
-}
-
 bool CollisionManager:: ballBrickCollision( SDL_Rect ballRect, std::vector<Brick>* bricks )
 {
 	bool changeVelocity = false;
 	std::for_each(bricks->begin(), bricks->end(), [this, ballRect, &changeVelocity] ( Brick &brick )
 	{
-		if (ballBrickCollisionDetected(ballRect, brick.rect) && !brick.isHit())
+		if (SDL_IntersectRect(&ballRect, &brick.rect, &interSectRect) && !brick.isHit())
 		{
 			brick.hit();
 			brickCollisionCounter++;
