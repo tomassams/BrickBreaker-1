@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "../header/Ball.h"
 
 void Ball::setParams(int h, int w)

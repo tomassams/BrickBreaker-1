@@ -2,41 +2,35 @@
 #include "../header/GameState.h"
 #include "../header/PlayingState.h"
 #include "../header/MainMenuState.h"
-
-void GameManager::init()
-{
+void GameManager::init() {
 	stateRenderer->initialize();
 }
 
-void GameManager::play()
-{
+void GameManager::play() {
 
-	bool running = true;
-	//std::unique_ptr<GameState> currentState(new PlayingState(stateRenderer));
-
-	SDL_Log("Making currentState...");
 	std::unique_ptr<GameState> currentState(new MainMenuState(stateRenderer));
 
+	while(currentState->isActive()) {
 
-	do {
 		currentState->handleEvent();
 		currentState->update();
 		currentState->display();
 
 		SDL_Delay(2);
 
-		if (currentState->nextState())
-		{
-			std::unique_ptr<GameState> nextState = currentState->nextState();
+		std::unique_ptr<GameState> nextState = currentState->nextState();
+		if(nextState) {
+			SDL_Delay(150);
 			std::swap(currentState, nextState);
 		}
-	} while(running);
 
-	gameEnded = true; // quit (TODO: handle swap states - pause / main menu)
+	}
+
+	gameEnded = true;
+
 }
 
-void GameManager::quit()
-{
-	//stateRenderer->destroy();
-    SDL_Quit();
+void GameManager::quit() {
+	stateRenderer->destroy();
 }
+

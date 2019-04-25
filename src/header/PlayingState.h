@@ -40,7 +40,10 @@ private:
     SDL_Rect paddlePosition;
     SDL_Rect ballPosition;
 
-	bool isActive(); // temp
+	bool isActive();
     std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY];
+
+    bool paused = false;
+    bool exitToMenu = false;
 };
 #endif

@@ -1,9 +1,10 @@
+#include <SDL.h>
 #include "../header/PlayingState.h"
 
-PlayingState::PlayingState(std::shared_ptr<Renderer> r)
-{
-
-    renderer = r;
+PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
+    SDL_Log("PlayingState() constructor called");
+    exitToMenu = false;
+    renderer = std::move(r);
 
     paddle = Paddle();
     ball = Ball();
@@ -16,15 +17,17 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r)
     paddle.setPaddlePositions(800, 600);
     ball.setParams(600, 800);
     bricks.InitializeBricks(topOfGameScreen);
-
-	update();
-
-	//mBall.reset(); // from old activateGame(), not sure if necessary
 }
-PlayingState::~PlayingState() = default;
+
+PlayingState::~PlayingState() {
+};
 
 void PlayingState:: update()
 {
+    if(paused) {
+        return;
+    }
+
 	paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 26 };
 
 	ball.collision(paddlePosition, bricks.getBricks());
@@ -47,26 +50,29 @@ void PlayingState:: update()
 void PlayingState:: display()
 {
     SDL_RenderClear(renderer->getRenderer());
+
     renderer->drawBricks(bricks);
 	renderer->drawPaddle(paddlePosition);
 	renderer->drawBall(ballPosition);
 	renderer->drawTopLine(health);
+
     SDL_RenderPresent(renderer->getRenderer());
 }
 
 void PlayingState::handleEvent()
 {
-    switch(inputManager.handle())
-    {
-        case 0:
-            active = false;
+    switch(inputManager.handle()) {
+        case QUIT_GAME:
+            exitToMenu = !exitToMenu;
             break;
-        case 1:
+        case MOVE_LEFT:
             paddle.moveLeft();
             break;
-        case 2:
+        case MOVE_RIGHT:
             paddle.moveRight();
             break;
+        case TOGGLE_PAUSE:
+            paused = !paused;
         default:
             return;
     }
@@ -78,12 +84,14 @@ bool PlayingState::isActive()
     return active;
 }
 
-std::unique_ptr<GameState> PlayingState::nextState()
-{
-    if(!active) {
+std::unique_ptr<GameState> PlayingState::nextState() {
+
+    if(exitToMenu) {
         std::unique_ptr<GameState> nextState(new MainMenuState(renderer));
+        renderer->destroyGame();
+
         return nextState;
     }
-    // TODO: handle transition to next state (e.g. pause or exit/menu)
+
     return nullptr;
 }
