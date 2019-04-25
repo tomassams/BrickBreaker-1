@@ -20,8 +20,7 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 
 }
 
-PlayingState::~PlayingState() {
-};
+PlayingState::~PlayingState() = default;;
 
 void PlayingState:: update()
 {

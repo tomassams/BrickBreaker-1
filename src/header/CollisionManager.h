@@ -5,8 +5,8 @@
 #include <thread>
 #include <vector>
 
-#include "../header/Brick.h"
-#include "../header/Ball.h"
+#include "Brick.h"
+#include "Ball.h"
 
 class CollisionManager
 {

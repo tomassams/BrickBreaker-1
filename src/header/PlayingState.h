@@ -15,12 +15,12 @@
 #include "Ball.h"
 #include "Bricks.h"
 #include "Brick.h"
-#include "../cppfiles/CollisionManager.h"
+#include "CollisionManager.h"
 
 class PlayingState : public GameState
 {
 public:
-    PlayingState(std::shared_ptr<Renderer> renderer);
+    explicit PlayingState(std::shared_ptr<Renderer> renderer);
     ~PlayingState();
     void update() override;
     void display() override;
@@ -38,8 +38,8 @@ private:
     Paddle paddle;
     Ball ball;
 
-    SDL_Rect paddlePosition;
-    SDL_Rect ballPosition;
+    SDL_Rect paddlePosition{};
+    SDL_Rect ballPosition{};
 
 	bool isActive();
     std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY];
