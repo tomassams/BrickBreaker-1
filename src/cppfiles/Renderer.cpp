@@ -10,6 +10,7 @@ Renderer::Renderer()
 
 void Renderer::initialize() {
     SDL_Init(SDL_INIT_VIDEO);
+	TTF_Init();
 
     if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)) {
         std::cout << "Could not initialize SDL Images: " << SDL_GetError() << std::endl;
@@ -25,9 +26,6 @@ void Renderer::initialize() {
 
 void Renderer::initializeMainMenu()
 {
-
-    // initialize TTF package and fonts
-    TTF_Init();
     FONT_LARGE = TTF_OpenFont("../res/fonts/DIGDUG.ttf", 100);
     FONT_SMALL =  TTF_OpenFont("../res/fonts/barcadbold.ttf", 50);
 
@@ -67,30 +65,31 @@ void Renderer::initializeMainMenu()
 
 }
 
-void Renderer::drawMenuItems(int highlightedItem) {
+void Renderer::drawMenuItems(int highlightedItem)
+{
 
-    // TODO, possibly cleanup..
-    if(highlightedItem == 0) {
+    if(highlightedItem == 0)
+    {
         menuItemOne = TTF_RenderText_Solid(FONT_SMALL, "New Game", COLOR_GREEN);
-        menuItemOneTexture = SDL_CreateTextureFromSurface(renderer, menuItemOne);
         menuItemTwo = TTF_RenderText_Solid(FONT_SMALL, "Exit", COLOR_WHITE);
-        menuItemTwoTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwo);
-    } else{
+    } else {
         menuItemOne = TTF_RenderText_Solid(FONT_SMALL, "New Game", COLOR_WHITE);
-        menuItemOneTexture = SDL_CreateTextureFromSurface(renderer, menuItemOne);
         menuItemTwo = TTF_RenderText_Solid(FONT_SMALL, "Exit", COLOR_GREEN);
-        menuItemTwoTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwo);
     }
+	menuItemOneTexture = SDL_CreateTextureFromSurface(renderer, menuItemOne);
+	menuItemTwoTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwo);
 
     SDL_RenderCopy(renderer, menuItemOneTexture, nullptr, &firstOptionPosition);
     SDL_RenderCopy(renderer, menuItemTwoTexture, nullptr, &secondOptionPosition);
 }
 
-void Renderer::drawMenuTitle() {
+void Renderer::drawMenuTitle()
+{
     SDL_RenderCopy(renderer, titleTexture, nullptr, &titlePosition);
 };
 
-void Renderer::initializeGame() {
+void Renderer::initializeGame()
+{
     ballSurface = IMG_Load("../res/images/ballBlue.png");
     paddleSurface = IMG_Load("../res/images/paddleRed.png");
 	hartSurface = IMG_Load("../res/images/health.png");
@@ -124,8 +123,8 @@ void Renderer::initializeGame() {
 	hartTexture = SDL_CreateTextureFromSurface(renderer, hartSurface);
 }
 
-void Renderer::destroyGame() {
-    SDL_Log("destroyGame() called from Renderer");
+void Renderer:: destroyGame()
+{
     SDL_DestroyTexture(paddleTexture);
     SDL_DestroyTexture(ballTexture);
 
@@ -145,13 +144,21 @@ void Renderer::destroyGame() {
     });
 }
 
-void Renderer::destroyMainMenu() {
-    SDL_Log("destroyMainMenu() called from Renderer");
+void Renderer:: destroyMainMenu()
+{
+	SDL_FreeSurface(menuItemOne);
+	SDL_FreeSurface(menuItemTwo);
+	SDL_DestroyTexture(menuItemOneTexture);
+	SDL_DestroyTexture(menuItemTwoTexture);
 }
 
-void Renderer::destroy() {
+void Renderer:: destroy()
+{
+	SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    SDL_Quit();
+	IMG_Quit();
+	TTF_Quit();
+	SDL_Quit();
 }
 
 void Renderer:: drawPaddle(SDL_Rect rect)

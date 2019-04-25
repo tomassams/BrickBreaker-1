@@ -24,8 +24,7 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 
 }
 
-PlayingState::~PlayingState() {
-};
+PlayingState::~PlayingState() = default;;
 
 void PlayingState:: update()
 {
@@ -44,9 +43,7 @@ void PlayingState:: update()
 		{
 			exitToMenu = true;
 			display();
-		}
-		else
-		{
+		} else {
 			ball.setBallStartPosition();
 		}
 	}

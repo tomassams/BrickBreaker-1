@@ -10,13 +10,15 @@
 
 class Ball{
 public:
-	void setParams(int h, int w);
 	SDL_Rect moveBall();
+	SDL_Rect getCurrentPosition() const {return ballRect;}
+
+	void setParams(int h, int w);
 	void changeHorizontalVelocity() { horizontalVelocity = -horizontalVelocity; }
 	void changeVerticalVelocity() { verticalVelocity = -verticalVelocity; }
 	bool isOutOfBounds() const { return outOfBounds; }
 	void setBallStartPosition();
-	SDL_Rect getCurrentPosition() const {return ballRect;}
+
 	int getVerticalSize() const { return vertical + ballScaling; }
 	int getHorizontalSize() const { return horizontal + ballScaling; }
 

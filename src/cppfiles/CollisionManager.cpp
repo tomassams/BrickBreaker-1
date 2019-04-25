@@ -1,5 +1,6 @@
+
 #include <algorithm>
-#include "CollisionManager.h"
+#include "../header/CollisionManager.h"
 
 void CollisionManager:: collision(Ball* ball, SDL_Rect paddleRect, std::vector<Brick>* bricks )
 {
@@ -39,7 +40,7 @@ void CollisionManager:: collision(Ball* ball, SDL_Rect paddleRect, std::vector<B
 }
 
 /************************************ Paddle Collision *********************************************/
-bool CollisionManager:: paddleCollision( int horizontal, int vertical, SDL_Rect paddleRect)
+bool CollisionManager:: paddleCollision( int horizontal, int vertical, SDL_Rect paddleRect )
 {
 	return horizontal >= paddleRect.x
 		   && horizontal <= paddleRect.x + paddleRect.w
@@ -55,7 +56,7 @@ bool CollisionManager:: paddleCollisionAtEnd(int horizontal, int x, int w )
 }
 
 /************************************ Brick Collision *********************************************/
-bool CollisionManager:: ballBrickCollisionDetected( SDL_Rect ballRect, SDL_Rect brickRect)
+bool CollisionManager:: ballBrickCollisionDetected( SDL_Rect ballRect, SDL_Rect brickRect )
 {
 	if (brickRect.x > ballRect.x + ballRect.w)
 		return false;
@@ -69,7 +70,7 @@ bool CollisionManager:: ballBrickCollisionDetected( SDL_Rect ballRect, SDL_Rect 
 	else return brickRect.y + brickRect.h >= ballRect.y;
 }
 
-bool CollisionManager:: ballBrickCollision( SDL_Rect ballRect, std::vector<Brick>* bricks)
+bool CollisionManager:: ballBrickCollision( SDL_Rect ballRect, std::vector<Brick>* bricks )
 {
 	bool changeVelocity = false;
 	std::for_each(bricks->begin(), bricks->end(), [this, ballRect, &changeVelocity] ( Brick &brick )
