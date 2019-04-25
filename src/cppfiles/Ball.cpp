@@ -12,7 +12,7 @@ void Ball::setBallStartPosition()
 {
 	std::random_device r;
 	std::default_random_engine engine(r());
-	std::uniform_int_distribution uniformDist(10, WIDTH-10);
+	std::uniform_int_distribution<int> uniformDist(10, WIDTH-10);
 
 	const int i = uniformDist(engine);
 	std::cout << i << std::endl;

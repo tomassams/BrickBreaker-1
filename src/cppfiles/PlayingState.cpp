@@ -24,6 +24,10 @@ PlayingState::~PlayingState() = default;;
 
 void PlayingState:: update()
 {
+    if(collisionManager.brickCollisions() == 145) {
+        status = GAME_WON;
+        return;
+    }
     if(status != PLAYING) {
         return;
     }
@@ -32,6 +36,7 @@ void PlayingState:: update()
 
 	collisionManager.collision(&ball, paddlePosition, bricks.getBricks());
 	ballPosition = ball.moveBall();
+
 
     if (ball.isOutOfBounds())
     {
@@ -47,6 +52,7 @@ void PlayingState:: update()
 
 void PlayingState:: display()
 {
+
     SDL_RenderClear(renderer->getRenderer());
 
     renderer->drawBricks(bricks);
@@ -74,7 +80,9 @@ void PlayingState::handleEvent()
             paddle.moveRight();
             break;
         case TOGGLE_PAUSE:
-            if(status != PLAYING) {
+            if(status == GAME_WON) {
+                exitToMenu = true;
+            } else if(status != PLAYING) {
                 SDL_Log("TOGGLE_PAUSE");
                 status = PLAYING;
             } else {

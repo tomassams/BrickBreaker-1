@@ -209,6 +209,9 @@ void Renderer:: drawStatusBar(int health, int score, Status status)
         case PLAYING:
             statusText = "GAME ACTIVE - SPACE TO PAUSE";
             break;
+        case GAME_WON:
+            statusText ="YOU WON! SPACE TO SEE MAIN MENU";
+            break;
         default:
             statusText = "";
             break;
