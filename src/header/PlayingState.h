@@ -27,7 +27,7 @@ public:
     std::unique_ptr<GameState> nextState() override;
 private:
 	int numBrokenBricks = 0;
-	int health = 3;
+	int health = 5;
 	bool active = true;
 
     InputManager inputManager;
@@ -41,6 +41,5 @@ private:
     SDL_Rect ballPosition;
 
 	bool isActive(); // temp
-    std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY];
 };
 #endif

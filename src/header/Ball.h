@@ -26,7 +26,7 @@ private:
 	int ballScaling = 13;
 	bool outOfBounds = false;
 	bool ballBrickCollisionDetected( SDL_Rect brickRect );
-	void ballBrickCollision(std::vector<Brick>* bricks);
+	bool ballBrickCollision(std::vector<Brick>* bricks);
 	bool paddleCollision( SDL_Rect paddleRect );
 	bool paddleCollisionAtEnd( int x, int w );
 };
