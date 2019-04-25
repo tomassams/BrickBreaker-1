@@ -26,11 +26,8 @@ private:
 	int ballScaling = 13;
 	bool outOfBounds = false;
 	bool paddleCollision(SDL_Rect paddleRect);
-	bool paddleCollisionAtEnd(int x, int y, int h);
-	bool hitPaddleSurface(int x, int h);
+	bool paddleCollisionAtEnd(int x, int w);
 	void collision(SDL_Rect paddleRect);
-	void (Ball::*func)(SDL_Rect);
-
 };
 
 #endif

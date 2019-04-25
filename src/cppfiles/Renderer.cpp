@@ -31,8 +31,9 @@ void Renderer::initializeGame() {
 
     ballSurface = IMG_Load("../res/images/ballBlue.png");
     paddleSurface = IMG_Load("../res/images/paddleRed.png");
+	hartSurface = IMG_Load("../res/images/health.png");
 
-    if (paddleSurface == nullptr || ballSurface == nullptr)
+    if (paddleSurface == nullptr || ballSurface == nullptr || hartSurface == nullptr)
 	{
 		std::cout << "SDL_Image Error: " << SDL_GetError() << std::endl;
 		return;
@@ -55,24 +56,28 @@ void Renderer::initializeGame() {
 
     paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
     ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
+	hartTexture = SDL_CreateTextureFromSurface(renderer, hartSurface);
 }
 
 void Renderer:: destroy() {
-	brickSurfaceVector.clear();
-	brickTextureVector.clear();
-    SDL_DestroyTexture(paddleTexture);
-    SDL_DestroyTexture(ballTexture);
+	SDL_DestroyTexture(paddleTexture);
+	SDL_DestroyTexture(paddleTexture);
+	SDL_DestroyTexture(hartTexture);
 
-    SDL_FreeSurface(ballSurface);
-    SDL_FreeSurface(paddleSurface);
+	std::for_each(brickTextureVector.begin(), brickTextureVector.end(), [](auto texture){
+		SDL_DestroyTexture(texture);
+	});
 
 	std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [](auto surface){
 		SDL_FreeSurface(surface);
 	});
 
-	std::for_each(brickTextureVector.begin(), brickTextureVector.end(), [](auto texture){
-		SDL_DestroyTexture(texture);
-	});
+	SDL_FreeSurface(ballSurface);
+	SDL_FreeSurface(paddleSurface);
+	SDL_FreeSurface(hartSurface);
+
+	brickSurfaceVector.clear();
+	brickTextureVector.clear();
 
     SDL_DestroyWindow(window);
 }
@@ -92,6 +97,20 @@ void Renderer:: drawBrick(int health, SDL_Rect rect) {
 			nullptr,
 			&rect
 	);
+}
+
+void Renderer:: drawTopLine(int health)
+{
+	for (int i = 0; i < health; i++)
+	{
+		SDL_Rect rect = {WIDTH - (40 + (35 * i)) , 10, 30, 28};
+		SDL_RenderCopy(renderer, hartTexture, nullptr, &rect);
+		SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+		//SDL_RenderDrawLine(renderer, 0, 42, WIDTH, 42);
+		SDL_RenderDrawLine(renderer, 0, 43, WIDTH, 43);
+		SDL_RenderDrawLine(renderer, 0, 44, WIDTH, 44);
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+	}
 }
 
 SDL_Renderer* Renderer:: getRenderer() {

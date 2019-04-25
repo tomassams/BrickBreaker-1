@@ -33,6 +33,7 @@ private:
     SDL_Rect ballPosition;
 
     int numBrokenBricks = 0;
+    int health = 3;
 
     std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY];
 

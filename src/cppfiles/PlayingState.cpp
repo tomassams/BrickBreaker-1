@@ -12,11 +12,11 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 
     renderer->initializeGame();
 
+    int topOfGameScreen = 800/100*6;
     paddle.setParams(800);
     paddle.setPaddlePositions(800, 600);
     ball.setParams(600, 800);
-
-    bricks.InitializeBricks();
+    bricks.InitializeBricks(topOfGameScreen);
 
 	update();
 
@@ -26,9 +26,19 @@ PlayingState::~PlayingState() = default;
 
 void PlayingState:: update() {
 
-    paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
+    paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 26 };
     ballPosition = ball.moveBall(paddlePosition);
-	//    if (ball.isOutOfBounds()) { active = false; }
+
+    if (ball.isOutOfBounds()) {
+		if (--health == 0)
+		{
+			active = false;
+			display();
+		} else
+		{
+			ball.setBallStartPosition();
+		}
+	}
 
 	if (bricks.ballBrickCollision(ballPosition))
 	{
@@ -47,6 +57,7 @@ void PlayingState::display() {
 	renderer->drawBricks(bricks);
     renderer->drawPaddle(paddlePosition);
     renderer->drawBall(ballPosition);
+	renderer->drawTopLine(health);
 
     SDL_RenderPresent(renderer->getRenderer());
 }

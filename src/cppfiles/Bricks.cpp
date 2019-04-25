@@ -1,10 +1,10 @@
 #include "../header/Bricks.h"
 
-void Bricks:: InitializeBricks()
+void Bricks:: InitializeBricks(int top)
 {
 	brickVector.clear();
 
-	int horizontalSpacing = 10;
+	int horizontalSpacing = top;
 
 	for (int i = 0; i < brickY; i++)
 	{

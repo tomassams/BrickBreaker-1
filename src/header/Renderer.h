@@ -17,6 +17,7 @@ public:
     void drawBall(SDL_Rect rect);
     void drawBrick(int health, SDL_Rect rect);
     void drawBricks(Bricks &bricks);
+	void drawTopLine(int health);
 
     SDL_Renderer* getRenderer();
 private:
@@ -32,5 +33,8 @@ private:
 
     SDL_Surface *paddleSurface;
     SDL_Texture *paddleTexture;
+
+	SDL_Surface *hartSurface;
+	SDL_Texture *hartTexture;
 };
 #endif

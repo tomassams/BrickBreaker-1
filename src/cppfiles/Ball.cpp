@@ -4,7 +4,7 @@ void Ball::setBallStartPosition()
 {
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::uniform_int_distribution<int> dis(10, WIDTH);
+	std::uniform_int_distribution<int> dis(10, WIDTH-10);
 
 	outOfBounds = false;
 	vertical = HEIGHT-250;
@@ -35,39 +35,34 @@ SDL_Rect Ball:: moveBall(const SDL_Rect paddleRect)
 	return { horizontal, vertical, 13, 13 };
 }
 
-void Ball:: collision(const SDL_Rect paddleRect)
+void Ball:: collision(SDL_Rect paddleRect)
 {
-	if ( paddleCollision(paddleRect)
-		 || vertical + ballScaling <= 0
-		 || vertical + ballScaling >= HEIGHT) //DEVMODE
+	if ( paddleCollision(paddleRect) || vertical + ballScaling <= 50)
 	{
-		changeVerticalVelocity();
-
-		if (paddleCollisionAtEnd(paddleRect.x, paddleRect.y, paddleRect.h))
+		if (paddleCollisionAtEnd(paddleRect.x, paddleRect.w))
 		{
 			changeHorizontalVelocity();
 		}
+		changeVerticalVelocity();
 	}
 }
 
-bool Ball:: paddleCollision(const SDL_Rect paddleRect)
+bool Ball:: paddleCollision(SDL_Rect paddleRect)
 {
 	return horizontal + ballScaling >= paddleRect.x
 		&& horizontal + ballScaling <= paddleRect.x + paddleRect.w
-	 	&& hitPaddleSurface(paddleRect.y, paddleRect.h);
+	 	&& vertical + ballScaling >= paddleRect.y
+	 	&& vertical + ballScaling <= paddleRect.y + paddleRect.h;
 }
 
-bool Ball:: paddleCollisionAtEnd(const int x, const int y, const int h)
+bool Ball:: paddleCollisionAtEnd(int x, int w)
 {
-	const bool onLeftSide = ( horizontal + ballScaling >= y && horizontal + ballScaling <= y + 20);
-	const bool onRightSide = (horizontal + ballScaling <= y + 80 && horizontal + ballScaling > y + 60);
-	return (onLeftSide || onRightSide) &&  hitPaddleSurface(x, h);
-
-}
-
-bool Ball:: hitPaddleSurface(const int x, const int h)
-{
-	return (vertical + ballScaling >= x
-		   && vertical + ballScaling <= x + h
+	const bool onLeftSide = ( horizontal + ballScaling >= x
+			&& horizontal + ballScaling <= (x + 20)
 	);
+
+	const bool onRightSide = (horizontal + ballScaling <= (x + w)
+			&& horizontal + ballScaling >= (x + 60)
+	);
+	return (onLeftSide || onRightSide);
 }
