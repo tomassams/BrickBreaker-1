@@ -1,5 +1,5 @@
 # BrickBreaker
-This is our edition of the classic game Arkanoid. Our solution is built using SDL as graphics library and as much as possible of the C\++ standard library.
+This is our edition of the classic game Arkanoid. Our solution is built using SDL as graphics library and as much as possible of the C\++ standard library. The game at first glance may look simple, but make no mistake. The bricks get harder and harder to brake the closer to the top you'll get. Colors display the number of hits you will have to make on one simple brick in order to brake it.
 
 ## How to run
 Open the project in CLion (Works on both Mac and Windows) and hit the run button. The program is extensively tested on both operativsystems.
@@ -12,16 +12,16 @@ We sat together everyday during the exam period period (from the morning of 23. 
 ## Chooses we made
 We decided quite early that we needed to split up different arias of the code in order to easier handle different aspects of the program. For one, we just needed to make one SDL Window so to handle that and to handle only one renderer we made classes. The advantage we got was to give the classes specific arias to handle. This ensured  a cleaner codebase and something that would be more scalable if we wanted to expand our program in the future.  
 
-We did the same with all the game logic elements. We have a collision class that only has two external methods `collision` and `brickCollisions ` that returns the amount of brick hits. 
+We did the same with all the game logic elements. We have a collision class that only has two external methods `collision` and `brickCollisions` that returns the amount of brick hits. 
 
-### Use of virtual 
+### Use of virtual
 We made game state in to virtual class in order to have more than one state. Both the menu and game is an instance of game state. This makes it also possible for us to extend this game in the future with more than one state. 
 
-### Heavy use of standard library 
+### Heavy use of standard library
 One of the features of our game is the use of the standard library. We use `std::vectors` in stead of arrays and other collections, and we use `std::for_each` where it was the better choice. Our thread management was by using `std::thread` and even out random number is accessed trough `std::random_device`,  `std:: default_random_engine` and the`std::uniform_int_distribution`. The quality of the functions from the standard library is in all likelihood better than other third party libraries we might end up using. 
 
 ### Smart pointers
-We use smart pointers in the form of a shared pointer. This is used for the renderer. This ensures that all calls can be to the same pointer. We also use a unique pointer…. -> HJELP!!!
+We use smart pointers in the form of a shared pointer. This is used for the renderer. This ensures that all calls can be to the same pointer. We also use a unique pointer…. -\> HJELP!!!
 
 ## What we like about our project
 This was a fun experience for us. Creating a game was a lot of fun and made us think differently to a lot of problems. We think we have made a solid game and shown in the proses a relatively good understanding for CPP. The code is concise and quite readable. 
