@@ -27,11 +27,11 @@ void Renderer::initializeMainMenu()
 
     // initialize TTF package and fonts
     TTF_Init();
-    FONT_LARGE = TTF_OpenFont("../res/arial/films.Dynasty.ttf", 100);
-    FONT_SMALL =  TTF_OpenFont("../res/arial/films.Dynasty.ttf", 50);
+    FONT_LARGE = TTF_OpenFont("../res/fonts/DIGDUG.ttf", 100);
+    FONT_SMALL =  TTF_OpenFont("../res/fonts/barcadbold.ttf", 50);
 
     // initialize the game title
-    titleSurface = TTF_RenderText_Solid(FONT_LARGE, "Brick Breaker", COLOR_WHITE);
+    titleSurface = TTF_RenderText_Solid(FONT_LARGE, "BRICKBREAKER", COLOR_WHITE);
     titleTexture = SDL_CreateTextureFromSurface(renderer, titleSurface);
 
     // fetch the title texture width and height and make the rect
@@ -46,7 +46,7 @@ void Renderer::initializeMainMenu()
     menuItemTwoTexture = SDL_CreateTextureFromSurface(renderer, menuItemTwo);
 
     int menuItemHeight = menuItemOne->clip_rect.h;
-    int positioningHeight = HEIGHT / 2;
+    int positioningHeight = HEIGHT / 3;
 
     SDL_QueryTexture ( menuItemOneTexture, nullptr, nullptr, &menuItems[0], &menuItems[0 + 1] );
     SDL_QueryTexture ( menuItemTwoTexture, nullptr, nullptr, &menuItems[1], &menuItems[1 + 1] );
@@ -59,9 +59,9 @@ void Renderer::initializeMainMenu()
     };
     secondOptionPosition = {
             WIDTH / 2 - menuItemTwo->clip_rect.w / 2,
-            positioningHeight + menuItemHeight,
+            positioningHeight + menuItemHeight*2,
             menuItems[1],
-            menuItems[1 + 1]
+            menuItems[0 + 1]
     };
 
 }
