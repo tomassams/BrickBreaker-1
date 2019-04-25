@@ -33,8 +33,7 @@ MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
 }
 
 MainMenuState::~MainMenuState() {
-    SDL_Log("destructor called");
-    SDL_Quit();
+    SDL_Log("MainMenuState destructor called");
 //
 //    TTF_CloseFont(largeFont);
 //    TTF_CloseFont(smallFont);
@@ -107,12 +106,13 @@ void MainMenuState::handleEvent() {
 std::unique_ptr<GameState> MainMenuState::nextState() {
 
     if(selectedItem == 1) {
-        SDL_Log("Triggering new game!");
+        SDL_Log("selectedItem is 1! returning a PlayingState");
         std::unique_ptr<GameState> nextState(new PlayingState(sRenderer));
         return nextState;
-    } else if(selectedItem == -1) {
-        SDL_Log("Triggering exit!");
-        this->MainMenuState::~MainMenuState();
+    } else if(selectedItem == 0) {
+        SDL_Log("selectedItem is 0! Setting active to false");
+        active = false;
+        //this->MainMenuState::~MainMenuState();
     }
 
     return nullptr;

@@ -9,13 +9,10 @@ void GameManager::init() {
 
 void GameManager::play() {
 
-	bool running = true;
-	//std::unique_ptr<GameState> currentState(new PlayingState(stateRenderer));
-
 	SDL_Log("Making currentState...");
 	std::unique_ptr<GameState> currentState(new MainMenuState(stateRenderer));
 
-	while(running) {
+	while(currentState->isActive()) {
 		currentState->handleEvent();
 		currentState->update();
 		currentState->display();
@@ -28,10 +25,10 @@ void GameManager::play() {
 		}
 	}
 
-	gameEnded = true; // quit (TODO: handle swap states - pause / main menu)
+	gameEnded = true;
 }
 
 void GameManager::quit() {
-	//stateRenderer->destroy();
+	stateRenderer->destroy();
     SDL_Quit();
 }

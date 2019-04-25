@@ -22,7 +22,7 @@ public:
     bool isActive() override;
 
     int showMenu();
-    int selectedItem;
+    int selectedItem = -1;
 private:
 //    Renderer sRenderer;
     std::shared_ptr<Renderer> sRenderer = nullptr;
