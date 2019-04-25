@@ -18,7 +18,7 @@ void Bricks:: InitializeBricks(int top)
 	}
 }
 
-bool Bricks:: ballBrickCollisionDetected(SDL_Rect brickRect, SDL_Rect ballRect)
+bool Bricks:: ballBrickCollisionDetected( SDL_Rect brickRect, SDL_Rect ballRect )
 {
 	if (brickRect.x > ballRect.x + ballRect.w)
 		return false;

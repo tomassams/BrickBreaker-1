@@ -13,7 +13,8 @@ void InputManager:: readEvent()
 		keymap[event.key.keysym.sym] = false;
 }
 
-InputAction InputManager::handle() {
+InputAction InputManager::handle()
+{
 	SDL_PollEvent(&event);
 	readEvent();
 

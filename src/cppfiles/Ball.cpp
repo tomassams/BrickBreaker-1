@@ -1,5 +1,12 @@
 #include "../header/Ball.h"
 
+void Ball::setParams(int h, int w)
+{
+	HEIGHT = h;
+	WIDTH = w;
+	setBallStartPosition();
+}
+
 void Ball::setBallStartPosition()
 {
 	std::random_device rd;
@@ -9,45 +16,49 @@ void Ball::setBallStartPosition()
 	outOfBounds = false;
 	vertical = HEIGHT-250;
 	horizontal = dis(gen);
-	velocityX = 1;
-	velocityY = 1;
+	horizontalVelocity = 1;
+	verticalVelocity = 1;
 
-	if (horizontal > WIDTH/2) changeHorizontalVelocity();
+	if (horizontal > WIDTH/2) changeVerticalVelocity();
 }
 
-SDL_Rect Ball:: moveBall(const SDL_Rect paddleRect)
+SDL_Rect Ball:: moveBall( SDL_Rect paddleRect )
 {
+	std::thread handleCollision( [this, paddleRect]()
+	{
+		collision( paddleRect );
+	});
+
 	if (horizontal + ballScaling == WIDTH || horizontal + ballScaling == 0)
 	{
-		changeHorizontalVelocity();
+		changeVerticalVelocity();
 	}
-
-	collision(paddleRect);
 
 	if (vertical + ballScaling >= HEIGHT)
 	{
 		outOfBounds = true;
 	}
 
-	vertical += velocityX;
-	horizontal += velocityY;
+	handleCollision.join();
+	vertical += horizontalVelocity;
+	horizontal += verticalVelocity;
 
 	return { horizontal, vertical, 13, 13 };
 }
 
-void Ball:: collision(SDL_Rect paddleRect)
+void Ball:: collision( SDL_Rect paddleRect )
 {
 	if ( paddleCollision(paddleRect) || vertical + ballScaling <= 50)
 	{
 		if (paddleCollisionAtEnd(paddleRect.x, paddleRect.w))
 		{
-			changeHorizontalVelocity();
+			changeVerticalVelocity();
 		}
-		changeVerticalVelocity();
+		changeHorizontalVelocity();
 	}
 }
 
-bool Ball:: paddleCollision(SDL_Rect paddleRect)
+bool Ball:: paddleCollision( SDL_Rect paddleRect )
 {
 	return horizontal + ballScaling >= paddleRect.x
 		&& horizontal + ballScaling <= paddleRect.x + paddleRect.w
@@ -55,7 +66,7 @@ bool Ball:: paddleCollision(SDL_Rect paddleRect)
 	 	&& vertical + ballScaling <= paddleRect.y + paddleRect.h;
 }
 
-bool Ball:: paddleCollisionAtEnd(int x, int w)
+bool Ball:: paddleCollisionAtEnd( int x, int w )
 {
 	const bool onLeftSide = ( horizontal + ballScaling >= x
 			&& horizontal + ballScaling <= (x + 20)

@@ -2,11 +2,13 @@
 #include <SDL_image.h>
 #include "../header/Renderer.h"
 
-Renderer::Renderer() {
+Renderer::Renderer()
+{
     SDL_Log("Renderer() constructor called");
 }
 
-void Renderer::initialize() {
+void Renderer::initialize()
+{
     SDL_Log("Renderer initialize() method called");
 
     SDL_Init(SDL_INIT_VIDEO);
@@ -23,11 +25,13 @@ void Renderer::initialize() {
 
 }
 
-void Renderer::initializeMainMenu() {
+void Renderer::initializeMainMenu()
+{
 
 }
 
-void Renderer::initializeGame() {
+void Renderer::initializeGame()
+{
 
     ballSurface = IMG_Load("../res/images/ballBlue.png");
     paddleSurface = IMG_Load("../res/images/paddleRed.png");
@@ -45,7 +49,8 @@ void Renderer::initializeGame() {
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectYellow.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectRed.png"));
 
-    std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [this](auto surface){
+    std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [this](auto surface)
+    {
 		if (surface == nullptr)
 		{
 			std::cout << "SDL_Image Error: " << SDL_GetError() << std::endl;
@@ -59,16 +64,19 @@ void Renderer::initializeGame() {
 	hartTexture = SDL_CreateTextureFromSurface(renderer, hartSurface);
 }
 
-void Renderer:: destroy() {
+void Renderer:: destroy()
+{
 	SDL_DestroyTexture(paddleTexture);
 	SDL_DestroyTexture(paddleTexture);
 	SDL_DestroyTexture(hartTexture);
 
-	std::for_each(brickTextureVector.begin(), brickTextureVector.end(), [](auto texture){
+	std::for_each(brickTextureVector.begin(), brickTextureVector.end(), [](auto texture)
+	{
 		SDL_DestroyTexture(texture);
 	});
 
-	std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [](auto surface){
+	std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [](auto surface)
+	{
 		SDL_FreeSurface(surface);
 	});
 
@@ -82,15 +90,18 @@ void Renderer:: destroy() {
     SDL_DestroyWindow(window);
 }
 
-void Renderer:: drawPaddle(SDL_Rect rect) {
+void Renderer:: drawPaddle(SDL_Rect rect)
+{
     SDL_RenderCopy(renderer, paddleTexture, nullptr, &rect);
 }
 
-void Renderer:: drawBall(SDL_Rect rect) {
+void Renderer:: drawBall(SDL_Rect rect)
+{
     SDL_RenderCopy(renderer, ballTexture, nullptr, &rect);
 }
 
-void Renderer:: drawBrick(int health, SDL_Rect rect) {
+void Renderer:: drawBrick(int health, SDL_Rect rect)
+{
 	SDL_RenderCopy(
 			renderer,
 			brickTextureVector.at(health),
@@ -113,13 +124,16 @@ void Renderer:: drawTopLine(int health)
 	}
 }
 
-SDL_Renderer* Renderer:: getRenderer() {
+SDL_Renderer* Renderer:: getRenderer()
+{
     return renderer;
 }
 
-void Renderer:: drawBricks(Bricks &bricks) {
+void Renderer:: drawBricks(Bricks &bricks)
+{
 	auto brickVector = bricks.getBricks();
-	std::for_each(brickVector.begin(), brickVector.end(), [this](Brick brick){
+	std::for_each(brickVector.begin(), brickVector.end(), [this](Brick brick)
+	{
 			SDL_Rect brickRect = brick.rect;
 
 			if (brick.isHit())

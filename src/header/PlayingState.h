@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <memory.h>
 #include <thread>
+#include <algorithm>
 
 #include "GameState.h"
 #include "InputManager.h"
@@ -13,7 +14,8 @@
 #include "Bricks.h"
 #include "Brick.h"
 
-class PlayingState : public GameState {
+class PlayingState : public GameState
+{
 public:
     PlayingState(std::shared_ptr<Renderer> renderer);
     ~PlayingState();
@@ -22,6 +24,10 @@ public:
     void handleEvent() override;
     std::unique_ptr<GameState> nextState() override;
 private:
+	int numBrokenBricks = 0;
+	int health = 3;
+	bool active = true;
+
     InputManager inputManager;
     std::shared_ptr<Renderer> renderer;
 
@@ -32,12 +38,7 @@ private:
     SDL_Rect paddlePosition;
     SDL_Rect ballPosition;
 
-    int numBrokenBricks = 0;
-    int health = 3;
-
+	bool isActive(); // temp
     std::vector<SDL_Rect> brickPositions[Bricks::brickX * Bricks::brickY];
-
-    bool active = true; // temp
-    bool isActive(); // temp
 };
 #endif

@@ -3,11 +3,13 @@
 #include "../header/PlayingState.h"
 #include "../header/MainMenuState.h"
 
-void GameManager::init() {
+void GameManager::init()
+{
 	stateRenderer->initialize();
 }
 
-void GameManager::play() {
+void GameManager::play()
+{
 
 	bool running = true;
 	//std::unique_ptr<GameState> currentState(new PlayingState(stateRenderer));
@@ -23,7 +25,8 @@ void GameManager::play() {
 
 		SDL_Delay(2);
 
-		if(currentState->nextState()) {
+		if (currentState->nextState())
+		{
 			std::unique_ptr<GameState> nextState = currentState->nextState();
 			std::swap(currentState, nextState);
 		}
@@ -32,7 +35,8 @@ void GameManager::play() {
 	gameEnded = true; // quit (TODO: handle swap states - pause / main menu)
 }
 
-void GameManager::quit() {
+void GameManager::quit()
+{
 	//stateRenderer->destroy();
     SDL_Quit();
 }

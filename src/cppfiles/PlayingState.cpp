@@ -2,7 +2,8 @@
 #include "../header/PlayingState.h"
 #include "../header/MainMenuState.h"
 
-PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
+PlayingState::PlayingState(std::shared_ptr<Renderer> r)
+{
 
     renderer = r;
 
@@ -24,46 +25,52 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
 }
 PlayingState::~PlayingState() = default;
 
-void PlayingState:: update() {
+void PlayingState:: update()
+{
+	std::thread ballBrickCollisionHandler ([this]()
+	{
+		if (bricks.ballBrickCollision(ballPosition))
+		{
+			numBrokenBricks++;
+			ball.changeHorizontalVelocity();
+			//if (numBrokenBricks == bricks.numberOfBricks){ active = false;}
+			// TODO: Finish state is now grater than just the number of bricks
+		}
+	});
 
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 26 };
-    ballPosition = ball.moveBall(paddlePosition);
 
-    if (ball.isOutOfBounds()) {
+	ballBrickCollisionHandler.join();
+	ballPosition = ball.moveBall(paddlePosition);
+
+    if (ball.isOutOfBounds())
+    {
 		if (--health == 0)
 		{
 			active = false;
 			display();
-		} else
+		}
+		else
 		{
 			ball.setBallStartPosition();
 		}
 	}
-
-	if (bricks.ballBrickCollision(ballPosition))
-	{
-		numBrokenBricks++;
-		ball.changeVerticalVelocity();
-
-		//if (numBrokenBricks == bricks.numberOfBricks){ active = false;}
-		// TODO: Finish state is now grater than just the number of bricks
-	}
 }
 
-void PlayingState::display() {
+void PlayingState:: display()
+{
     SDL_RenderClear(renderer->getRenderer());
-
-    // TODO: loop through a SDL_
-	renderer->drawBricks(bricks);
-    renderer->drawPaddle(paddlePosition);
-    renderer->drawBall(ballPosition);
+    renderer->drawBricks(bricks);
+	renderer->drawPaddle(paddlePosition);
+	renderer->drawBall(ballPosition);
 	renderer->drawTopLine(health);
-
     SDL_RenderPresent(renderer->getRenderer());
 }
 
-void PlayingState::handleEvent() {
-    switch(inputManager.handle()) {
+void PlayingState::handleEvent()
+{
+    switch(inputManager.handle())
+    {
         case 0:
             active = false;
             break;
@@ -79,11 +86,13 @@ void PlayingState::handleEvent() {
 }
 
 // temp
-bool PlayingState::isActive() {
+bool PlayingState::isActive()
+{
     return active;
 }
 
-std::unique_ptr<GameState> PlayingState::nextState() {
+std::unique_ptr<GameState> PlayingState::nextState()
+{
     if(!active) {
         std::unique_ptr<GameState> nextState(new MainMenuState(renderer));
         return nextState;

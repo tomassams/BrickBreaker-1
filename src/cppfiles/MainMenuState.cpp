@@ -5,7 +5,8 @@
 #include "../header/MainMenuState.h"
 #include "../header/PlayingState.h"
 
-MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
+MainMenuState::MainMenuState(std::shared_ptr<Renderer> r)
+{
     SDL_Log("MainMenuState() constructor called");
 
     r.get()->initializeMainMenu();
@@ -32,7 +33,8 @@ MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
 
 }
 
-MainMenuState::~MainMenuState() {
+MainMenuState::~MainMenuState()
+{
     SDL_Log("destructor called");
     SDL_Quit();
 //
@@ -48,11 +50,13 @@ MainMenuState::~MainMenuState() {
 
 };
 
-void MainMenuState::update() {
+void MainMenuState::update()
+{
 
 }
 
-void MainMenuState::display() {
+void MainMenuState::display()
+{
     SDL_RenderClear(renderer);
 
     SDL_RenderCopy(renderer, titleTexture, nullptr, &titleRect);
@@ -62,11 +66,14 @@ void MainMenuState::display() {
     SDL_RenderPresent(renderer);
 }
 
-void MainMenuState::handleEvent() {
+void MainMenuState::handleEvent()
+{
     SDL_Event event;
 
-    while(SDL_PollEvent(&event)) {
-        switch(event.type) {
+    while(SDL_PollEvent(&event))
+    {
+        switch(event.type)
+        {
             case SDL_QUIT:
                 active = false;
                 break;
@@ -91,7 +98,8 @@ void MainMenuState::handleEvent() {
             case SDL_MOUSEBUTTONDOWN:
                 x = event.button.x;
                 y = event.button.y;
-                for (int i = 0; i < options; i++) {
+                for (int i = 0; i < options; i++)
+                {
                     if (isMouseOnItem(i))
                     {
                         selectedItem = (i == 0) ? 1 : 0;
@@ -104,19 +112,24 @@ void MainMenuState::handleEvent() {
 
 }
 
-std::unique_ptr<GameState> MainMenuState::nextState() {
+std::unique_ptr<GameState> MainMenuState::nextState()
+{
 
-    if(selectedItem == 1) {
+    if(selectedItem == 1)
+    {
         std::unique_ptr<GameState> nextState(new PlayingState(sRenderer));
         return nextState;
-    } else if(selectedItem == -1) {
+    }
+    else if(selectedItem == -1)
+    {
         this->MainMenuState::~MainMenuState();
     }
 
     return nullptr;
 }
 
-bool MainMenuState::isActive() {
+bool MainMenuState::isActive()
+{
     return active;
 }
 
@@ -150,7 +163,8 @@ void MainMenuState:: updateMenuContent(int position, int newColor)
             &menuItems[position + 1 + extra]
     );
 
-    rectPosition[position] = {
+    rectPosition[position] =
+	{
             width/2 - menu[position]->clip_rect.w / 2,
             positioningHeight,
             menuItems[position + extra],
