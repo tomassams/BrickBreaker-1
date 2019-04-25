@@ -8,7 +8,6 @@
 
 #include "Brick.h"
 #include "Ball.h"
-
 class CollisionManager
 {
 public:
