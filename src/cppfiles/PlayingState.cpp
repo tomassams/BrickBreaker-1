@@ -18,6 +18,10 @@ PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
     ball.setParams(600, 800);
     bricks.InitializeBricks(topOfGameScreen);
 
+    update();
+
+    paused = true;
+
 }
 
 PlayingState::~PlayingState() {
