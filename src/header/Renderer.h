@@ -3,12 +3,14 @@
 
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <SDL_image.h>
+#include <iostream>
+#include <sstream>
 #include "Bricks.h"
 #include "Status.h"
 
 class Renderer {
 public:
-	Renderer();
     void initialize();
 	void initializeMainMenu();
     void initializeGame();
@@ -26,9 +28,21 @@ public:
     void drawMenuItems(int highlightedItem);
     void drawMenuTitle();
 
-    SDL_Renderer* getRenderer();
+    int getWindowHeight() { return HEIGHT; };
+    int getWindowWidth() { return WIDTH; };
+
+    SDL_Renderer* getRenderer() { return renderer; };
 private:
-    int WIDTH = 800, HEIGHT = 600;
+    int WIDTH = 800;
+    int HEIGHT = 600;
+
+	TTF_Font *FONT_LARGE;
+	TTF_Font *FONT_SMALL;
+	TTF_Font *FONT_SCORE;
+
+	SDL_Color COLOR_WHITE = { 255, 255, 255 };
+	SDL_Color COLOR_GREEN = { 141, 182, 0 };
+
 	std::vector<SDL_Surface*> brickSurfaceVector;
 	std::vector<SDL_Texture*> brickTextureVector;
 
@@ -43,14 +57,6 @@ private:
 
 	SDL_Surface *hartSurface;
 	SDL_Texture *hartTexture;
-
-	TTF_Font *FONT_LARGE;
-	TTF_Font *FONT_SMALL;
-	TTF_Font *FONT_SCORE;
-
-	SDL_Color COLOR_WHITE = { 255, 255, 255 };
-	SDL_Color COLOR_GREEN = { 141, 182, 0 };
-	SDL_Color COLOR_BLACK = { 0, 0 , 0 };
 
 	SDL_Surface *titleSurface;
 	SDL_Texture *titleTexture;
@@ -70,7 +76,6 @@ private:
 
 	SDL_Rect firstOptionPosition;
 	SDL_Rect secondOptionPosition;
-
 };
 
 #endif

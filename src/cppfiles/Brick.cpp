@@ -1,13 +1,13 @@
 #include "../header/Brick.h"
 
-Brick:: Brick()
+Brick::Brick()
 {
 	isBrickHit = false;
 	currentHealth = 1;
 	maxHealth = 1;
 }
 
-Brick:: Brick( int verticalSpacing, int horizontalSpacing, int life )
+Brick::Brick( int verticalSpacing, int horizontalSpacing, int life )
 {
 	currentHealth = life;
 	maxHealth = life;
@@ -22,10 +22,4 @@ void Brick:: hit()
 	{
 		isBrickHit = true;
 	}
-}
-
-void Brick:: resetBrick()
-{
-	currentHealth = maxHealth;
-	isBrickHit = false;
 }

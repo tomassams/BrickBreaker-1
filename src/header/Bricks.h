@@ -9,12 +9,10 @@
 
 class Bricks{
 public:
-	Bricks() {
-		SDL_Log("Bricks constructor called");
-	}
-	static const int brickY = 5, brickX = 9;
-	void InitializeBricks(int top);
-	std::vector<Brick>* getBricks() { return &brickVector;}
+	void InitializeBricks(int topspacing);
+	std::vector<Brick>* getBricks() { return &brickVector; };
+	static const int brickRows = 5;
+	static const int brickColumns = 9;
 private:
 	std::vector<Brick> brickVector;
 };
