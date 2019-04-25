@@ -38,7 +38,6 @@ void CollisionManager:: collision(Ball* ball, SDL_Rect paddleRect, std::vector<B
 	}
 }
 
-/************************************ Paddle Collision *********************************************/
 bool CollisionManager:: paddleCollision( int horizontal, int vertical, SDL_Rect paddleRect )
 {
 	return horizontal >= paddleRect.x

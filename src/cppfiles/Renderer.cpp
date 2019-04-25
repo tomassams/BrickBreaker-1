@@ -82,7 +82,7 @@ void Renderer::drawMenuItems(int highlightedItem)
 void Renderer::drawMenuTitle()
 {
     SDL_RenderCopy(renderer, titleTexture, nullptr, &titlePosition);
-};
+}
 
 void Renderer::initializeGame()
 {
@@ -197,7 +197,7 @@ void Renderer:: drawStatusBar(int health, int score, Status status)
 
     gameStatusTxtSurface = TTF_RenderText_Solid(FONT_SCORE, statusText.c_str(), COLOR_GREEN);
     gameStatusTxtTexture = SDL_CreateTextureFromSurface(renderer, gameStatusTxtSurface);
-    SDL_Rect gameStatusTxtPosition = { WIDTH / 2 - (gameStatusTxtSurface->clip_rect.w / 2) , 10, gameStatusTxtSurface->clip_rect.w, gameStatusTxtSurface->clip_rect.h, };
+    gameStatusTxtPosition = { WIDTH / 2 - (gameStatusTxtSurface->clip_rect.w / 2) , 10, gameStatusTxtSurface->clip_rect.w, 				gameStatusTxtSurface->clip_rect.h, };
 
     SDL_RenderCopy(renderer, scoreTxtTexture, nullptr, &scoreTxtPosition);
     SDL_RenderCopy(renderer, gameStatusTxtTexture, nullptr, &gameStatusTxtPosition);
