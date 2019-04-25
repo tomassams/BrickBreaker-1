@@ -8,7 +8,7 @@
 class GameState {
 public:
     virtual void update() = 0;
-    virtual void display(Renderer &renderer) = 0;
+    virtual void display() = 0;
     virtual void handleEvent() = 0;
     virtual std::unique_ptr<GameState> nextState() = 0;
 

@@ -5,12 +5,13 @@
 #include "../header/MainMenuState.h"
 #include "../header/PlayingState.h"
 
-MainMenuState::MainMenuState(Renderer &r) {
+MainMenuState::MainMenuState(std::shared_ptr<Renderer> r) {
 
-    r.initializeMainMenu();
+    r->initializeMainMenu();
 
-    sRenderer = r;
-    renderer = sRenderer.getRenderer();
+    std::swap(sRenderer, r);
+
+    renderer = sRenderer->getRenderer();
 
     TTF_Init();
     largeFont = TTF_OpenFont("../res/arial/films.Dynasty.ttf", 100);
@@ -50,14 +51,14 @@ void MainMenuState::update() {
 
 }
 
-void MainMenuState::display(Renderer &renderer) {
-    SDL_RenderClear(renderer.getRenderer());
+void MainMenuState::display() {
+    SDL_RenderClear(renderer);
 
-    SDL_RenderCopy(renderer.getRenderer(), titleTexture, nullptr, &titleRect);
-    SDL_RenderCopy(renderer.getRenderer(), menuTexture[0], nullptr, &rectPosition[0]);
-    SDL_RenderCopy(renderer.getRenderer(), menuTexture[1], nullptr, &rectPosition[1]);
+    SDL_RenderCopy(renderer, titleTexture, nullptr, &titleRect);
+    SDL_RenderCopy(renderer, menuTexture[0], nullptr, &rectPosition[0]);
+    SDL_RenderCopy(renderer, menuTexture[1], nullptr, &rectPosition[1]);
 
-    SDL_RenderPresent(renderer.getRenderer());
+    SDL_RenderPresent(renderer);
 }
 
 void MainMenuState::handleEvent() {
@@ -66,7 +67,6 @@ void MainMenuState::handleEvent() {
     while(SDL_PollEvent(&event)) {
         switch(event.type) {
             case SDL_QUIT:
-                SDL_Log("Trying to quit..");
                 active = false;
                 break;
             case SDL_MOUSEMOTION:
@@ -88,15 +88,12 @@ void MainMenuState::handleEvent() {
                 }
                 break;
             case SDL_MOUSEBUTTONDOWN:
-                SDL_Log("Mouseclick triggered!");
                 x = event.button.x;
                 y = event.button.y;
                 for (int i = 0; i < options; i++) {
                     if (isMouseOnItem(i))
                     {
                         selectedItem = (i == 0) ? 1 : 0;
-                        SDL_Log("Mouseonitem!! %d", i);
-                        SDL_Log("Mouseonitem!! %d", selectedItem);
                     }
                 }
                 break;
@@ -109,12 +106,12 @@ void MainMenuState::handleEvent() {
 std::unique_ptr<GameState> MainMenuState::nextState() {
 
     if(selectedItem == 1) {
-
         SDL_Log("Triggering new game!");
         std::unique_ptr<GameState> nextState(new PlayingState(sRenderer));
 
         return nextState;
     } else if(selectedItem == 0) {
+        SDL_Log("Triggering exit!");
         this->MainMenuState::~MainMenuState();
     }
 

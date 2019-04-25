@@ -2,6 +2,10 @@
 #include <SDL_image.h>
 #include "../header/Renderer.h"
 
+Renderer::Renderer() {
+    SDL_Log("Renderer created");
+}
+
 void Renderer::initialize() {
 
     SDL_Init(SDL_INIT_VIDEO);
@@ -23,7 +27,6 @@ void Renderer::initializeMainMenu() {
 }
 
 void Renderer::initializeGame() {
-    SDL_Log("got here");
 
     ballSurface = IMG_Load("../res/images/ballBlue.png");
     if (ballSurface == nullptr)
@@ -48,7 +51,6 @@ void Renderer::initializeGame() {
     paddleTexture = SDL_CreateTextureFromSurface(renderer, paddleSurface);
     ballTexture = SDL_CreateTextureFromSurface(renderer, ballSurface);
 
-    SDL_Log("got here 3");
 }
 
 void Renderer::destroy() {

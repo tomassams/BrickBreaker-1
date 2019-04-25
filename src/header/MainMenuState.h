@@ -7,15 +7,16 @@
 
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <memory>
 #include "GameState.h"
 #include "InputManager.h"
 
 class MainMenuState : public GameState {
 public:
-    MainMenuState(Renderer &renderer);
+    MainMenuState(std::shared_ptr<Renderer> renderer);
     ~MainMenuState();
     void update() override;
-    void display(Renderer &renderer) override;
+    void display() override;
     void handleEvent() override;
     std::unique_ptr<GameState> nextState() override;
     bool isActive() override;
@@ -23,7 +24,8 @@ public:
     int showMenu();
     int selectedItem;
 private:
-    Renderer sRenderer;
+//    Renderer sRenderer;
+    std::shared_ptr<Renderer> sRenderer = std::make_shared<Renderer>();
     InputManager inputManager;
     bool active = true;
 

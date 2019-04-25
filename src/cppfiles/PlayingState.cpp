@@ -1,16 +1,16 @@
 #include <SDL.h>
 #include "../header/PlayingState.h"
 
-PlayingState::PlayingState(Renderer &r) {
-    renderer = r;
+PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
+
+    std::swap(renderer, r);
 
     paddle = Paddle();
     ball = Ball();
     bricks = Bricks();
 
-    renderer.initializeGame();
+    renderer->initializeGame();
 
-    SDL_Log("playingState constructed");
     paddle.setParams(800);
     paddle.setPaddlePositions(800, 600);
     ball.setParams(600, 800);
@@ -25,8 +25,6 @@ PlayingState::PlayingState(Renderer &r) {
 PlayingState::~PlayingState() = default;
 
 void PlayingState::update() {
-
-    SDL_Log("playingstate update");
 
     paddlePosition = { paddle.getPaddleX(), paddle.getPaddleY(), 80, 20 };
     ballPosition = ball.moveBall(paddle.getPaddleY(), paddle.getPaddleX());
@@ -43,25 +41,18 @@ void PlayingState::update() {
 
 }
 
-void PlayingState::display(Renderer &rr) {
-    SDL_Log("playingstate display1");
-    SDL_RenderClear(renderer.getRenderer());
-    SDL_Log("playingstate display1");
+void PlayingState::display() {
+    SDL_RenderClear(renderer->getRenderer());
 
     // TODO: loop through a SDL_
-    renderer.drawBricks(bricks); // causes crash
-    SDL_Log("playingstate display--1");
-    renderer.drawPaddle(paddlePosition);
-    SDL_Log("playingstate display--2");
-    renderer.drawBall(ballPosition);
-    SDL_Log("playingstate display--3");
+    renderer->drawBricks(bricks);
+    renderer->drawPaddle(paddlePosition);
+    renderer->drawBall(ballPosition);
 
-    SDL_RenderPresent(renderer.getRenderer());
-    SDL_Log("playingstate display2");
+    SDL_RenderPresent(renderer->getRenderer());
 }
 
 void PlayingState::handleEvent() {
-    SDL_Log("playingstate eventhandle");
     switch(inputManager.handle()) {
         case 0:
             active = false;
@@ -83,7 +74,6 @@ bool PlayingState::isActive() {
 }
 
 std::unique_ptr<GameState> PlayingState::nextState() {
-    SDL_Log("playingstate nextstate return");
     // TODO: handle transition to next state (e.g. pause or exit/menu)
     return nullptr;
 }

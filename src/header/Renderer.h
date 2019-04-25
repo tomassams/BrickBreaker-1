@@ -6,6 +6,7 @@
 
 class Renderer {
 public:
+    Renderer();
     void initialize();
 	void initializeMainMenu();
     void initializeGame();

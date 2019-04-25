@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SDL.h>
+#include <memory>
 
 #include "Ball.h"
 #include "Bricks.h"
@@ -18,7 +19,7 @@ public:
 	void quit();
 	bool gameEnded = false;
 private:
-    Renderer stateRenderer;
+    std::shared_ptr<Renderer> stateRenderer = std::make_unique<Renderer>();
 };
 
 #endif

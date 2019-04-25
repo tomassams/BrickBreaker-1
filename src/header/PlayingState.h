@@ -13,15 +13,15 @@
 
 class PlayingState : public GameState {
 public:
-    PlayingState(Renderer &renderer);
+    PlayingState(std::shared_ptr<Renderer> renderer);
     ~PlayingState();
     void update() override;
-    void display(Renderer &renderer) override;
+    void display() override;
     void handleEvent() override;
     std::unique_ptr<GameState> nextState() override;
 private:
     InputManager inputManager;
-    Renderer renderer;
+    std::shared_ptr<Renderer> renderer;
 
     Bricks bricks;
     Paddle paddle;
