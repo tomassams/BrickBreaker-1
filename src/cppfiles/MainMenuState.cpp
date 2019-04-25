@@ -51,11 +51,13 @@ void MainMenuState::handleEvent() {
 }
 
 std::unique_ptr<GameState> MainMenuState::nextState() {
+
     if(selectedItem == 0) {
         std::unique_ptr<GameState> nextState(new PlayingState(renderer));
         renderer->destroyMainMenu();
         return nextState;
     }
+
     else if(selectedItem == 1) {
         active = false;
         return nullptr;
