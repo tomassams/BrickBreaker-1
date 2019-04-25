@@ -100,11 +100,11 @@ void Renderer::initializeGame() {
 		return;
 	}
 
-	brickSurfaceVector.push_back(IMG_Load("../res/images/rectPurple.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectGreen.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectBlue.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectYellow.png"));
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectRed.png"));
+	brickSurfaceVector.push_back(IMG_Load("../res/images/rectPurple.png"));
 
     std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [this](auto surface)
     {
@@ -166,7 +166,7 @@ void Renderer:: drawBrick(int health, SDL_Rect rect)
     SDL_Log("got here");
 	SDL_RenderCopy(
 			renderer,
-			brickTextureVector.at(health),
+			brickTextureVector.at((health <= 0) ? 0 : health-1),
 			nullptr,
 			&rect
 	);
@@ -180,7 +180,6 @@ void Renderer:: drawTopLine(int health)
 		SDL_Rect rect = {WIDTH - (40 + (35 * i)) , 10, 30, 28};
 		SDL_RenderCopy(renderer, hartTexture, nullptr, &rect);
 		SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-		//SDL_RenderDrawLine(renderer, 0, 42, WIDTH, 42);
 		SDL_RenderDrawLine(renderer, 0, 43, WIDTH, 43);
 		SDL_RenderDrawLine(renderer, 0, 44, WIDTH, 44);
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);

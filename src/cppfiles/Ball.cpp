@@ -31,29 +31,33 @@ SDL_Rect Ball:: moveBall()
 	return ballRect;
 }
 
-
-
 void Ball:: collision( SDL_Rect paddleRect, std::vector<Brick>* bricks )
 {
-	std::thread handlePaddleCollision( [this, paddleRect]()
+	bool shouldChangeVerticalVelocity = false;
+	bool shouldChangeHorizontalVelocity = false;
+
+	std::thread handlePaddleCollision( [this, paddleRect, &shouldChangeHorizontalVelocity, &shouldChangeVerticalVelocity]()
 	{
 	   if ( paddleCollision(paddleRect) || vertical + ballScaling <= 50)
 	   {
 		   if (paddleCollisionAtEnd(paddleRect.x, paddleRect.w))
 		   {
-			   changeVerticalVelocity();
+			   shouldChangeVerticalVelocity = true;
 		   }
-		   changeHorizontalVelocity();
+		   shouldChangeHorizontalVelocity = true;
 	   }
 	});
 
-	std::thread handleBrickCollision( [this, &bricks](){
-		ballBrickCollision(bricks);
+	std::thread handleBrickCollision( [this, &bricks, &shouldChangeHorizontalVelocity](){
+		if ( ballBrickCollision(bricks) )
+		{
+			shouldChangeHorizontalVelocity = true;
+		}
 	});
 
 	if (horizontal + ballScaling == WIDTH || horizontal + ballScaling == 0)
 	{
-		changeVerticalVelocity();
+		shouldChangeVerticalVelocity = true;
 	}
 
 	if (vertical + ballScaling >= HEIGHT)
@@ -62,6 +66,15 @@ void Ball:: collision( SDL_Rect paddleRect, std::vector<Brick>* bricks )
 	}
 	handlePaddleCollision.join();
 	handleBrickCollision.join();
+
+	if ( shouldChangeVerticalVelocity )
+	{
+		changeVerticalVelocity();
+	}
+	if ( shouldChangeHorizontalVelocity )
+	{
+		changeHorizontalVelocity();
+	}
 }
 
 /************************************ Paddle Collision *********************************************/
@@ -100,15 +113,17 @@ bool Ball:: ballBrickCollisionDetected( SDL_Rect brickRect )
 	else return brickRect.y + brickRect.h >= ballRect.y;
 }
 
-void Ball:: ballBrickCollision(std::vector<Brick>* bricks)
+bool Ball:: ballBrickCollision(std::vector<Brick>* bricks)
 {
-	std::for_each(bricks->begin(), bricks->end(), [this](Brick &brick)
+	bool changeVelocity = false;
+	std::for_each(bricks->begin(), bricks->end(), [this, &changeVelocity] ( Brick &brick )
 	{
 		if (ballBrickCollisionDetected(brick.rect) && !brick.isHit())
 		{
 			brick.hit();
-			changeHorizontalVelocity();
+			changeVelocity = true;
 			return;
 		}
 	});
+	return changeVelocity;
 }

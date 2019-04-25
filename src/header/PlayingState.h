@@ -27,7 +27,7 @@ public:
     std::unique_ptr<GameState> nextState() override;
 private:
 	int numBrokenBricks = 0;
-	int health = 3;
+	int health = 5;
 	bool active = true;
 
     InputManager inputManager;
