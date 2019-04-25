@@ -165,7 +165,7 @@ void Renderer:: drawBrick(int health, SDL_Rect rect)
 {
 	SDL_RenderCopy(
 			renderer,
-			brickTextureVector.at((health <= 0) ? 0 : health-1),
+			brickTextureVector.at((health <= 0) ? 0 : health-1), //Make sure health is never less then 0
 			nullptr,
 			&rect
 	);
