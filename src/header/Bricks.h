@@ -11,7 +11,7 @@ class Bricks{
 public:
 	static const int brickY = 5, brickX = 9;
 	void InitializeBricks(int top);
-	auto getBricks() { return &brickVector;}
+	std::vector<Brick>* getBricks() { return &brickVector;}
 private:
 	std::vector<Brick> brickVector;
 };

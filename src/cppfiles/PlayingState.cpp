@@ -2,7 +2,6 @@
 #include "../header/PlayingState.h"
 
 PlayingState::PlayingState(std::shared_ptr<Renderer> r) {
-    SDL_Log("PlayingState() constructor called");
     exitToMenu = false;
     renderer = std::move(r);
 

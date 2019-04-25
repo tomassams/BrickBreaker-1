@@ -109,7 +109,7 @@ void Renderer::initializeGame()
     brickSurfaceVector.push_back(IMG_Load("../res/images/rectRed.png"));
 	brickSurfaceVector.push_back(IMG_Load("../res/images/rectPurple.png"));
 
-    std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [this](auto surface)
+    std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [this](SDL_Surface* surface)
     {
 		if (surface == nullptr)
 		{
@@ -136,11 +136,11 @@ void Renderer:: destroyGame()
 	brickSurfaceVector.clear();
 	brickTextureVector.clear();
 
-    std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [](auto surface){
+    std::for_each(brickSurfaceVector.begin(), brickSurfaceVector.end(), [](SDL_Surface* surface){
         SDL_FreeSurface(surface);
     });
 
-    std::for_each(brickTextureVector.begin(), brickTextureVector.end(), [](auto texture){
+    std::for_each(brickTextureVector.begin(), brickTextureVector.end(), [](SDL_Texture* texture){
         SDL_DestroyTexture(texture);
     });
 }

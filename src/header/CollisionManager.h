@@ -22,6 +22,6 @@ private:
 	int brickCollisionCounter = 0;
 	static bool paddleCollision( int horizontal, int vertical, SDL_Rect paddleRect);
 	static bool paddleCollisionAtEnd(int horizontal, int x, int w );
-	bool ballBrickCollision( SDL_Rect ballRect, std::vector<Brick>* bricks);
+	bool ballBrickCollision(const SDL_Rect* ballRect, std::vector<Brick>* bricks );
 };
 #endif

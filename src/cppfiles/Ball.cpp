@@ -14,11 +14,9 @@ void Ball::setBallStartPosition()
 	std::default_random_engine engine(r());
 	std::uniform_int_distribution<int> uniformDist(10, WIDTH-10);
 
-	const int i = uniformDist(engine);
-	std::cout << i << std::endl;
 	outOfBounds = false;
 	vertical = HEIGHT-250;
-	horizontal = i;
+	horizontal = uniformDist(engine);
 	horizontalVelocity = 1;
 	verticalVelocity = 1;
 
