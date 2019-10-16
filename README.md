@@ -3,6 +3,8 @@ Exam assignment for course PG4400 C++ programming.
 
 This is our edition of the classic game Arkanoid. Our solution is built using SDL as graphics library and as much as possible of the C\++ standard library. The game at first glance may look simple, but make no mistake. The bricks get harder and harder to break the closer to the top you'll get. Colors display the number of hits you will have to make on one simple brick in order to break it.
 
+<img src="/res/bb1.PNG" width="400"><img src="/res/bb2.PNG" width="400">
+
 ## How to run
 Open the project in e.g. CLion (Tested on CLion on both Mac and Windows) and hit the run button. The program is extensively tested on both operativsystems. Or you can run the included cmake script yourself.
 
